@@ -2,14 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
-    <TextView
+    <com.agrawalsuneet.loaderspack.loaders.ClockLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        app:clock_animSpeedMultiplier="0.5"
+        app:clock_bigCircleColor="@color/colorPrimary"
+        app:clock_bigCircleRadius="80dp"
+        app:clock_hourHandColor="@color/colorAccent"
+        app:clock_hourHandLength="40dp"
+        app:clock_innerCircleColor="@color/colorPrimaryDark"
+        app:clock_innerCircleRadius="5dp"
+        app:clock_minuteHandColor="@color/colorAccent"
+        app:clock_minuteHandLength="60dp"
+        app:clock_outerCircleBorderColor="@color/colorAccent"
+        app:clock_outerCircleBorderWidth="10dp" />
+
 
 </LinearLayout>
