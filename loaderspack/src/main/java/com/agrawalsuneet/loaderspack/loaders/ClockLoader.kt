@@ -18,20 +18,66 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 class ClockLoader : View, LoaderContract {
 
     var outerCircleBorderWidth: Float = 30.0f
+        set(value) {
+            field = value
+            initPaints()
+            initValues()
+        }
+
     var bigCircleRadius: Float = 350.0f
+        set(value) {
+            field = value
+            initValues()
+        }
 
     var innerCircleRadius: Float = 20.0f
+        set(value) {
+            field = value
+            initValues()
+        }
 
-    var hourHandLength: Int = 240
-    var minuteHandLength: Int = 300
+    var hourHandLength: Float = 240.0f
+        set(value) {
+            field = value
+            initValues()
+        }
+    var minuteHandLength: Float = 300.0f
+        set(value) {
+            field = value
+            initValues()
+        }
 
     var outerCircleBorderColor: Int = resources.getColor(R.color.grey)
-    var bigCircleColor: Int = resources.getColor(R.color.black)
-    var hourHandColor: Int = resources.getColor(R.color.grey)
-    var minuteHandColor: Int = resources.getColor(R.color.grey)
-    var innerCircleColor: Int = resources.getColor(R.color.grey)
+        set(value) {
+            field = value
+            initPaints()
+        }
 
-    var animSpeedMultiple: Float = 1.0f
+    var bigCircleColor: Int = resources.getColor(R.color.black)
+        set(value) {
+            field = value
+            initPaints()
+        }
+
+    var hourHandColor: Int = resources.getColor(R.color.grey)
+        set(value) {
+            field = value
+            initPaints()
+        }
+
+    var minuteHandColor: Int = resources.getColor(R.color.grey)
+        set(value) {
+            field = value
+            initPaints()
+        }
+
+    var innerCircleColor: Int = resources.getColor(R.color.grey)
+        set(value) {
+            field = value
+            initPaints()
+        }
+
+    var animSpeedMultiplier: Float = 1.0f
 
     private var minuteHandAngle: Float = 267.0f
     private var hourHandAngle: Float = 327.0f
@@ -67,7 +113,30 @@ class ClockLoader : View, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClockLoader, 0, 0)
 
+        this.outerCircleBorderWidth = typedArray
+                .getDimension(R.styleable.ClockLoader_clock_outerCircleBorderWidth, 30.0f)
+        this.bigCircleRadius = typedArray
+                .getDimension(R.styleable.ClockLoader_clock_bigCircleRadius, 350.0f)
+        this.innerCircleRadius = typedArray
+                .getDimension(R.styleable.ClockLoader_clock_innerCircleRadius, 20.0f)
+        this.hourHandLength = typedArray
+                .getDimension(R.styleable.ClockLoader_clock_hourHandLength, 240.0f)
+        this.minuteHandLength = typedArray
+                .getDimension(R.styleable.ClockLoader_clock_minuteHandLength, 300.0f)
 
+        this.outerCircleBorderColor = typedArray
+                .getColor(R.styleable.ClockLoader_clock_outerCircleBorderColor, resources.getColor(R.color.grey))
+        this.bigCircleColor = typedArray
+                .getColor(R.styleable.ClockLoader_clock_bigCircleColor, resources.getColor(R.color.black))
+        this.innerCircleColor = typedArray
+                .getColor(R.styleable.ClockLoader_clock_innerCircleColor, resources.getColor(R.color.grey))
+        this.hourHandColor = typedArray
+                .getColor(R.styleable.ClockLoader_clock_hourHandColor, resources.getColor(R.color.grey))
+        this.minuteHandColor = typedArray
+                .getColor(R.styleable.ClockLoader_clock_minuteHandColor, resources.getColor(R.color.grey))
+
+        this.animSpeedMultiplier = typedArray
+                .getFloat(R.styleable.ClockLoader_clock_animSpeedMultiplier, 1.0f)
 
         typedArray.recycle()
     }
@@ -97,18 +166,20 @@ class ClockLoader : View, LoaderContract {
         innerCirclePaint.style = Paint.Style.FILL
         innerCirclePaint.isAntiAlias = true
 
-        minuteHandPaint = Paint()
-        minuteHandPaint.color = minuteHandColor
-        minuteHandPaint.style = Paint.Style.FILL
-        minuteHandPaint.isAntiAlias = true
-
         hourHandPaint = Paint()
         hourHandPaint.color = hourHandColor
         hourHandPaint.style = Paint.Style.FILL
         hourHandPaint.isAntiAlias = true
+
+        minuteHandPaint = Paint()
+        minuteHandPaint.color = minuteHandColor
+        minuteHandPaint.style = Paint.Style.FILL
+        minuteHandPaint.isAntiAlias = true
     }
 
     private fun initValues() {
+        centerPoint = bigCircleRadius + outerCircleBorderWidth
+
         hourOval = RectF().apply {
             left = centerPoint - hourHandLength
             right = centerPoint + hourHandLength
@@ -122,8 +193,6 @@ class ClockLoader : View, LoaderContract {
             top = centerPoint - minuteHandLength
             bottom = centerPoint + minuteHandLength
         }
-
-        centerPoint = bigCircleRadius + outerCircleBorderWidth
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -145,8 +214,8 @@ class ClockLoader : View, LoaderContract {
                 centerPoint,
                 innerCircleRadius, innerCirclePaint)
 
-        minuteHandAngle += (6.0f * animSpeedMultiple)
-        hourHandAngle += (0.5f * animSpeedMultiple)
+        minuteHandAngle += (6.0f * animSpeedMultiplier)
+        hourHandAngle += (0.5f * animSpeedMultiplier)
 
         if (minuteHandAngle > 360.0f) {
             minuteHandAngle -= 360.0f
