@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
+import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
@@ -16,17 +17,19 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 class ClockLoader : View, LoaderContract {
 
-    var outerCircleStroke: Float = 20.0f
-    var outerCircleRadius: Int = 300
+    var outerCircleStroke: Float = 30.0f
+    var outerCircleRadius: Int = 350
 
-    var innerCircleRadius: Int = 30
+    var minuteHandLength: Int = 300
+    var hourHandLength: Int = 240
 
-    var minuteHandLength: Int = 260
-    var hourHandLength: Int = 200
+    private var minutHandAngle : Float = 267.0f
+    private var hourHandAngle : Float = 327.0f
 
     private var centerPoint: Float = 0.0f
 
     private lateinit var outerCirclePaint: Paint
+    private lateinit var midCirclePaint: Paint
     private lateinit var innerCirclePaint: Paint
     private lateinit var minuteHandPaint: Paint
     private lateinit var hourHandPaint: Paint
@@ -54,23 +57,28 @@ class ClockLoader : View, LoaderContract {
 
     private fun initPaints() {
         outerCirclePaint = Paint()
-        outerCirclePaint.color = resources.getColor(R.color.black)
+        outerCirclePaint.color = resources.getColor(R.color.silver)
         outerCirclePaint.style = Paint.Style.STROKE
         outerCirclePaint.isAntiAlias = true
         outerCirclePaint.strokeWidth = outerCircleStroke
 
+        midCirclePaint = Paint()
+        midCirclePaint.color = resources.getColor(R.color.black)
+        midCirclePaint.style = Paint.Style.FILL
+        midCirclePaint.isAntiAlias = true
+
         innerCirclePaint = Paint()
-        innerCirclePaint.color = resources.getColor(R.color.black)
+        innerCirclePaint.color = resources.getColor(R.color.silver)
         innerCirclePaint.style = Paint.Style.FILL
         innerCirclePaint.isAntiAlias = true
 
         minuteHandPaint = Paint()
-        minuteHandPaint.color = resources.getColor(android.R.color.holo_purple)
+        minuteHandPaint.color = resources.getColor(R.color.silver)
         minuteHandPaint.style = Paint.Style.FILL
         minuteHandPaint.isAntiAlias = true
 
         hourHandPaint = Paint()
-        hourHandPaint.color = resources.getColor(android.R.color.holo_red_light)
+        hourHandPaint.color = resources.getColor(R.color.silver)
         hourHandPaint.style = Paint.Style.FILL
         hourHandPaint.isAntiAlias = true
 
@@ -79,6 +87,11 @@ class ClockLoader : View, LoaderContract {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+
+        canvas.drawCircle(centerPoint,
+                centerPoint,
+                outerCircleRadius.toFloat(), midCirclePaint)
 
         canvas.drawCircle(centerPoint,
                 centerPoint,
@@ -92,7 +105,7 @@ class ClockLoader : View, LoaderContract {
             bottom = centerPoint + hourHandLength
         }
 
-        canvas.drawArc(hourOval, 300.0f, 6.0f, true, hourHandPaint)
+        canvas.drawArc(hourOval, hourHandAngle, 6.0f, true, hourHandPaint)
 
         var minuteOval = RectF().apply {
             left = centerPoint - minuteHandLength
@@ -101,11 +114,24 @@ class ClockLoader : View, LoaderContract {
             bottom = centerPoint + minuteHandLength
         }
 
-        canvas.drawArc(minuteOval, 270.0f, 6.0f, true, minuteHandPaint)
+        canvas.drawArc(minuteOval, minutHandAngle, 6.0f, true, minuteHandPaint)
 
-        canvas.drawCircle(centerPoint,
+        minutHandAngle += 6.0f
+        hourHandAngle += 0.5f
+
+        if (minutHandAngle > 360.0f){
+            minutHandAngle -= 360.0f
+        }
+
+        if (hourHandAngle > 360.0f){
+            hourHandAngle -= 360.0f
+        }
+
+        ViewCompat.postInvalidateOnAnimation(this);
+
+        /*canvas.drawCircle(centerPoint,
                 centerPoint,
-                innerCircleRadius.toFloat(), innerCirclePaint)
+                innerCircleRadius.toFloat(), innerCirclePaint)*/
 
     }
 
