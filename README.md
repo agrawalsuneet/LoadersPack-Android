@@ -1,5 +1,5 @@
 # LoadersPack
-> Android Loaders            [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5961de4056635b00014ecda7&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5961de4056635b00014ecda7/build/latest?branch=master)
+> Android Loaders            [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59f8e6a0458f2b00011be986&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59f8e6a0458f2b00011be986/build/latest?branch=master)
 
 > A replacement of default android material progressbar with loaders
 
