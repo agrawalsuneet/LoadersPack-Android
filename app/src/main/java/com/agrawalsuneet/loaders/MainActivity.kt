@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        containerLayout = findViewById(R.id.container)
+        //containerLayout = findViewById(R.id.container)
 
         //initClockLoader();
         initRippleLoader()
