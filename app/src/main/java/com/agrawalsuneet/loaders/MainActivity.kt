@@ -16,7 +16,12 @@ class MainActivity : AppCompatActivity() {
 
         containerLayout = findViewById(R.id.container)
 
-        initClockLoader();
+        //initClockLoader();
+        initRippleLoader()
+
+    }
+
+    private fun initRippleLoader() {
 
     }
 
