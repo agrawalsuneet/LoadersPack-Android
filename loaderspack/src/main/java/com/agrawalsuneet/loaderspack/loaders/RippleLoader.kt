@@ -1,89 +1,64 @@
 package com.agrawalsuneet.loaderspack.loaders
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
-import android.util.Log
-import android.view.View
+import android.view.Gravity
+import android.view.ViewTreeObserver
+import android.view.animation.*
+import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.R
+import com.agrawalsuneet.loaderspack.basicviews.CircleView
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 /**
- * Created by suneet on 11/14/17.
+ * Created by suneet on 11/15/17.
  */
-class RippleLoader : View, LoaderContract {
+class RippleLoader : LinearLayout, LoaderContract {
 
-    var fromRadius: Float = 2.0f
 
-    var toRadius: Float = 120.0f
+    var circleRadius: Int = 120
         set(value) {
             field = value
             invalidate()
         }
 
-    var fromStroke: Float = 10.0f
+    var circleColor: Int = resources.getColor(R.color.blue)
 
-    var toStroke: Float = 200.0f
-        set(value) {
-            field = value
-            invalidate()
-        }
-    var fromAlpha: Int = 150
-        set(value) {
-            field = if (value >= 255) 255 else value
-        }
-    var toAlpha: Int = 10
-        set(value) {
-            field = if (value >= 255) 255 else value
-        }
+    var fromAlpha: Float = 0.6f
 
-    var animSpeedMultiplier: Float = 1.0f
+    var toAlpha: Float = 0.01f
 
-    var waveDuration: Int = 100
+    var startLoadingDefault = true
 
-    var waveColor: Int = resources.getColor(R.color.blue)
+    var animationDuration = 2000
 
-    private lateinit var wavePaint: Paint
-    private var currentRadius: Float = 0f
-    private var currentStroke: Float = 0f
-    private var currentAlpha: Float = 0f
+    var interpolator: Interpolator = DecelerateInterpolator()
 
-    private var centerPoint: Float = 0.0f
+
+    private lateinit var circleView: CircleView
+
 
     constructor(context: Context) : super(context) {
-        initPaints()
-        initValues()
+        initView()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
-        initPaints()
-        initValues()
+        initView()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
-        initPaints()
-        initValues()
+        initView()
     }
 
 
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleLoader, 0, 0)
 
-        fromRadius = typedArray
-                .getDimension(R.styleable.RippleLoader_ripple_fromRadius, 2.0f)
+        circleRadius = typedArray
+                .getDimensionPixelSize(R.styleable.RippleLoader_ripple_circleRadius, 120)
 
-        toRadius = typedArray
-                .getDimension(R.styleable.RippleLoader_ripple_toRadius, 120.0f)
-
-        fromStroke = typedArray
-                .getDimension(R.styleable.RippleLoader_ripple_fromStroke, 10.0f)
-
-        toStroke = typedArray
-                .getDimension(R.styleable.RippleLoader_ripple_toStroke, 200.0f)
 
 
         typedArray.recycle()
@@ -92,50 +67,63 @@ class RippleLoader : View, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        setMeasuredDimension(2 * (toRadius + toStroke).toInt(),
-                2 * (toRadius + toStroke).toInt())
+        setMeasuredDimension(4 * circleRadius, 4 * circleRadius)
     }
 
-    private fun initPaints() {
-        wavePaint = Paint()
-        wavePaint.color = waveColor
-        wavePaint.style = Paint.Style.STROKE
-        wavePaint.isAntiAlias = true
-        wavePaint.strokeWidth = fromStroke
-        wavePaint.alpha = fromAlpha
-    }
 
-    private fun initValues() {
-        currentRadius = fromRadius
-        currentStroke = fromStroke
-        currentAlpha = fromAlpha.toFloat()
+    private fun initView() {
+        this.gravity = Gravity.CENTER
+        circleView = CircleView(context, circleRadius, circleColor)
 
-        centerPoint = toRadius + toStroke
-    }
+        addView(circleView)
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
+        if (startLoadingDefault) {
+            val viewTreeObserver = this.viewTreeObserver
+            val loaderView = this
 
-        canvas.drawCircle(centerPoint, centerPoint, currentRadius, wavePaint)
+            viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    startLoading()
 
-
-        currentRadius += ((toRadius - fromRadius) / waveDuration)
-        currentStroke += ((toStroke - fromStroke) / waveDuration)
-        currentAlpha -= ((fromAlpha.toFloat() - toAlpha.toFloat()) / waveDuration.toFloat())
-
-        Log.d("Current Radius", currentRadius.toString())
-        Log.d("Current Stroke", currentStroke.toString())
-
-        if (currentRadius >= toRadius) {
-            currentRadius = fromRadius
-            currentStroke = fromStroke
-            currentAlpha = fromAlpha.toFloat()
+                    val vto = loaderView.viewTreeObserver
+                    vto.removeOnGlobalLayoutListener(this)
+                }
+            })
+            startLoadingDefault = false
         }
+    }
+
+    fun startLoading() {
+        var animSet = getAnimSet()
+
+        circleView.startAnimation(animSet)
+    }
+
+    private fun getAnimSet(): Animation {
+        var set = AnimationSet(true)
+
+        val scaleAnim = ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        scaleAnim.duration = animationDuration.toLong()
+        scaleAnim.interpolator = interpolator
+        scaleAnim.repeatCount = Animation.INFINITE
+        scaleAnim.repeatMode = Animation.RESTART
 
 
-        wavePaint.strokeWidth = currentStroke
-        wavePaint.alpha = currentAlpha.toInt()
+        val alphaAnim = AlphaAnimation(fromAlpha, toAlpha)
+        alphaAnim.duration = animationDuration.toLong()
+        alphaAnim.interpolator = interpolator
+        alphaAnim.repeatCount = Animation.INFINITE
+        alphaAnim.repeatMode = Animation.RESTART
 
-        ViewCompat.postInvalidateOnAnimation(this)
+        set.duration = animationDuration.toLong()
+        set.interpolator = interpolator
+        set.repeatCount = Animation.INFINITE
+        set.repeatMode = Animation.RESTART
+
+        set.addAnimation(scaleAnim)
+        set.addAnimation(alphaAnim)
+
+        return set
     }
 }

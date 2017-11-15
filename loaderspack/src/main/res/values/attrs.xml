@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="CircleView">
+        <attr name="circleRadius" format="dimension" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="ClockLoader">
         <attr name="clock_outerCircleBorderWidth" format="dimension" />
         <attr name="clock_bigCircleRadius" format="dimension" />
@@ -18,10 +23,7 @@
     </declare-styleable>
 
     <declare-styleable name="RippleLoader">
-        <attr name="ripple_fromRadius" format="dimension" />
-        <attr name="ripple_toRadius" format="dimension" />
-        <attr name="ripple_fromStroke" format="dimension" />
-        <attr name="ripple_toStroke" format="dimension" />
+        <attr name="ripple_circleRadius" format="dimension" />
     </declare-styleable>
 
 </resources>

@@ -7,18 +7,11 @@
     <com.agrawalsuneet.loaderspack.loaders.RippleLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:ripple_fromRadius="40dp"
-        app:ripple_fromStroke="40dp"
-        app:ripple_toRadius="120dp"
-        app:ripple_toStroke="100dp" />
+        app:ripple_circleRadius="80dp" />
 
     <com.agrawalsuneet.loaderspack.loaders.ClockLoader
         android:layout_width="180dp"

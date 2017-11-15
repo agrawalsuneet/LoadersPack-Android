@@ -6,16 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
-
 
     <com.agrawalsuneet.loaderspack.loaders.RippleLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ripple_fromRadius="10dp"
-        app:ripple_fromStroke="20dp"
-        app:ripple_toRadius="100dp"
-        app:ripple_toStroke="80dp" />
+        app:ripple_circleRadius="20dp" />
+
 
     <!--<com.agrawalsuneet.loaderspack.loaders.ClockLoader
         android:layout_width="wrap_content"
