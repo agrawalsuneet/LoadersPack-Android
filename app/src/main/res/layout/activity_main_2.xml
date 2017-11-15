@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.agrawalsuneet.loaderspack.loaders.RippleLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ripple_fromRadius="40dp"
+        app:ripple_fromStroke="40dp"
+        app:ripple_toRadius="120dp"
+        app:ripple_toStroke="100dp" />
+
+    <com.agrawalsuneet.loaderspack.loaders.ClockLoader
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        app:clock_animSpeedMultiplier="0.5"
+        app:clock_bigCircleColor="@color/colorPrimary"
+        app:clock_bigCircleRadius="80dp"
+        app:clock_hourHandColor="@color/colorAccent"
+        app:clock_hourHandLength="40dp"
+        app:clock_innerCircleColor="@color/colorPrimaryDark"
+        app:clock_innerCircleRadius="5dp"
+        app:clock_minuteHandColor="@color/colorAccent"
+        app:clock_minuteHandLength="60dp"
+        app:clock_outerCircleBorderColor="@color/colorAccent"
+        app:clock_outerCircleBorderWidth="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

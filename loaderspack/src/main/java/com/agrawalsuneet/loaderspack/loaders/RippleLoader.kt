@@ -71,7 +71,22 @@ class RippleLoader : View, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleLoader, 0, 0)
 
+        fromRadius = typedArray
+                .getDimension(R.styleable.RippleLoader_ripple_fromRadius, 2.0f)
+
+        toRadius = typedArray
+                .getDimension(R.styleable.RippleLoader_ripple_toRadius, 120.0f)
+
+        fromStroke = typedArray
+                .getDimension(R.styleable.RippleLoader_ripple_fromStroke, 10.0f)
+
+        toStroke = typedArray
+                .getDimension(R.styleable.RippleLoader_ripple_toStroke, 200.0f)
+
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

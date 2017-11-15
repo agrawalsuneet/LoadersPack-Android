@@ -17,4 +17,11 @@
         <attr name="clock_animSpeedMultiplier" format="float" />
     </declare-styleable>
 
+    <declare-styleable name="RippleLoader">
+        <attr name="ripple_fromRadius" format="dimension" />
+        <attr name="ripple_toRadius" format="dimension" />
+        <attr name="ripple_fromStroke" format="dimension" />
+        <attr name="ripple_toStroke" format="dimension" />
+    </declare-styleable>
+
 </resources>

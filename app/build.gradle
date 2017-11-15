@@ -24,4 +24,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation project(':loaderspack')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }
