@@ -12,7 +12,12 @@
     <com.agrawalsuneet.loaderspack.loaders.RippleLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ripple_circleRadius="20dp" />
+        app:ripple_animDuration="3000"
+        app:ripple_circleColor="@color/blue"
+        app:ripple_circleInitialRadius="50dp"
+        app:ripple_fromAlpha="1.0"
+        app:ripple_interpolator="@android:anim/decelerate_interpolator"
+        app:ripple_toAplha="0.5" />
 
 
     <!--<com.agrawalsuneet.loaderspack.loaders.ClockLoader

@@ -3,8 +3,11 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader
+import com.agrawalsuneet.loaderspack.loaders.RippleLoader
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,9 +15,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_2)
+        setContentView(R.layout.activity_main)
 
-        //containerLayout = findViewById(R.id.container)
+        containerLayout = findViewById(R.id.container)
 
         //initClockLoader();
         initRippleLoader()
@@ -22,7 +25,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRippleLoader() {
+        val ripple = RippleLoader(baseContext).apply {
+            circleInitialRadius = 80
+            circleColor = resources.getColor(R.color.black)
+            fromAlpha = 1.0f
+            toAlpha = 0f
+            animationDuration = 1000
+            interpolator = DecelerateInterpolator()
+        }
 
+        containerLayout.addView(ripple)
     }
 
     private fun initClockLoader() {

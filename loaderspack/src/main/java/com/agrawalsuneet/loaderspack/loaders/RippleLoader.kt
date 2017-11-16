@@ -16,15 +16,19 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 class RippleLoader : LinearLayout, LoaderContract {
 
 
-    var circleRadius: Int = 120
+    var circleInitialRadius: Int = 40
         set(value) {
             field = value
-            invalidate()
+            initView()
         }
 
-    var circleColor: Int = resources.getColor(R.color.blue)
+    var circleColor: Int = resources.getColor(R.color.red)
+        set(value) {
+            field = value
+            initView()
+        }
 
-    var fromAlpha: Float = 0.6f
+    var fromAlpha: Float = 0.9f
 
     var toAlpha: Float = 0.01f
 
@@ -33,7 +37,6 @@ class RippleLoader : LinearLayout, LoaderContract {
     var animationDuration = 2000
 
     var interpolator: Interpolator = DecelerateInterpolator()
-
 
     private lateinit var circleView: CircleView
 
@@ -56,10 +59,23 @@ class RippleLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleLoader, 0, 0)
 
-        circleRadius = typedArray
-                .getDimensionPixelSize(R.styleable.RippleLoader_ripple_circleRadius, 120)
+        circleInitialRadius = typedArray
+                .getDimensionPixelSize(R.styleable.RippleLoader_ripple_circleInitialRadius, 40)
+
+        circleColor = typedArray.getColor(R.styleable.RippleLoader_ripple_circleColor,
+                resources.getColor(R.color.red))
 
 
+        fromAlpha = typedArray.getFloat(R.styleable.RippleLoader_ripple_fromAlpha, 0.9f)
+        toAlpha = typedArray.getFloat(R.styleable.RippleLoader_ripple_toAplha, 0.01f)
+
+        animationDuration = typedArray.getInteger(R.styleable.RippleLoader_ripple_animDuration, 2000)
+
+        startLoadingDefault = typedArray.getBoolean(R.styleable.RippleLoader_ripple_startLoadingDefault, true)
+
+        interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.RippleLoader_ripple_interpolator,
+                        android.R.anim.decelerate_interpolator))
 
         typedArray.recycle()
     }
@@ -67,13 +83,16 @@ class RippleLoader : LinearLayout, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        setMeasuredDimension(4 * circleRadius, 4 * circleRadius)
+        setMeasuredDimension(4 * circleInitialRadius, 4 * circleInitialRadius)
     }
 
 
     private fun initView() {
+        removeAllViews()
+        removeAllViewsInLayout()
+
         this.gravity = Gravity.CENTER
-        circleView = CircleView(context, circleRadius, circleColor)
+        circleView = CircleView(context, circleInitialRadius, circleColor)
 
         addView(circleView)
 
@@ -95,7 +114,6 @@ class RippleLoader : LinearLayout, LoaderContract {
 
     fun startLoading() {
         var animSet = getAnimSet()
-
         circleView.startAnimation(animSet)
     }
 
