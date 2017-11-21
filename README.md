@@ -7,8 +7,8 @@
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/32249174-f36a9eb8-be7f-11e7-98aa-48d398b178f8.gif)
 
-### RippleLoader
-A loader emitting continous ripples like waves with a fading effect when it reaches till end.
+### [RippleLoader](https://www.youtube.com/watch?v=FkBRhS4nJ0o)
+![RippleLoader](https://user-images.githubusercontent.com/12999622/33100022-cffe8e62-cf0a-11e7-86bf-473c732085c3.gif)
 
 Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
