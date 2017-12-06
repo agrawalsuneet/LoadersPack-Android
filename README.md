@@ -7,8 +7,10 @@
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/32249174-f36a9eb8-be7f-11e7-98aa-48d398b178f8.gif)
 
-### [RippleLoader](https://www.youtube.com/watch?v=FkBRhS4nJ0o)
-![RippleLoader](https://user-images.githubusercontent.com/12999622/33100022-cffe8e62-cf0a-11e7-86bf-473c732085c3.gif)
+### RippleLoader
+![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
+
+please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
 Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
