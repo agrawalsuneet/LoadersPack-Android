@@ -27,6 +27,7 @@ open class CircularSticksBaseView : View, LoaderContract {
 
     private lateinit var outerCircleOval: RectF
 
+
     constructor(context: Context) : super(context) {
         initPaints()
     }
@@ -38,6 +39,15 @@ open class CircularSticksBaseView : View, LoaderContract {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initPaints()
+    }
+
+    constructor(context: Context, noOfSticks: Int, outerCircleRadius: Float, innerCircleRadius: Float, sticksColor: Int, viewBackgroundColor: Int) : super(context) {
+        this.noOfSticks = noOfSticks
+        this.outerCircleRadius = outerCircleRadius
+        this.innerCircleRadius = innerCircleRadius
+        this.sticksColor = sticksColor
+        this.viewBackgroundColor = viewBackgroundColor
         initPaints()
     }
 

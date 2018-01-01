@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,15 +8,15 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"/>
-
 
     <com.agrawalsuneet.loaderspack.loaders.CircularRotatingSticksLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        app:rotatingstick_innerCircleRadius="15dp"
+        app:rotatingstick_outerCircleRadius="30dp"
+        app:rotatingstick_stickColor="@color/red"
+        app:rotatingstick_viewBackgroundColor="@color/white"
+        app:rotatingstick_animDuration="5000"/>
 
 </LinearLayout>

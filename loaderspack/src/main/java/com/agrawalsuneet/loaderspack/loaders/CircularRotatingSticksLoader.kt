@@ -74,19 +74,14 @@ class CircularRotatingSticksLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        val loaderView = this
+        circularSticksBaseView = CircularSticksBaseView(context, noOfSticks,
+                outerCircleRadius, innerCircleRadius,
+                sticksColor, viewBackgroundColor)
 
-        circularSticksBaseView = CircularSticksBaseView(context)
-                .apply {
-                    noOfSticks = loaderView.noOfSticks
-                    outerCircleRadius = loaderView.outerCircleRadius
-                    innerCircleRadius = loaderView.innerCircleRadius
-
-                    sticksColor = loaderView.sticksColor
-                    viewBackgroundColor = loaderView.viewBackgroundColor
-                }
 
         addView(circularSticksBaseView)
+
+        val loaderView = this
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
