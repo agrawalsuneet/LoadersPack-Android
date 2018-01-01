@@ -40,13 +40,13 @@
         <attr name="ripple_interpolator" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="CircularRotatingSticksLoader">
-        <attr name="rotatingstick_noOfSticks" format="integer" />
-        <attr name="rotatingstick_outerCircleRadius" format="dimension" />
-        <attr name="rotatingstick_innerCircleRadius" format="dimension" />
-        <attr name="rotatingstick_stickColor" format="color" />
-        <attr name="rotatingstick_viewBackgroundColor" format="color" />
-        <attr name="rotatingstick_animDuration" format="integer" />
+    <declare-styleable name="RotatingCircularSticksLoader">
+        <attr name="rotatingsticks_noOfSticks" format="integer" />
+        <attr name="rotatingsticks_outerCircleRadius" format="dimension" />
+        <attr name="rotatingsticks_innerCircleRadius" format="dimension" />
+        <attr name="rotatingsticks_stickColor" format="color" />
+        <attr name="rotatingsticks_viewBackgroundColor" format="color" />
+        <attr name="rotatingsticks_animDuration" format="integer" />
     </declare-styleable>
 
 </resources>

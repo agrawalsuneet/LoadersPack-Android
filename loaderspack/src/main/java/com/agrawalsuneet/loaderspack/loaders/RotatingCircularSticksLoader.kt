@@ -14,7 +14,7 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 /**
  * Created by suneet on 1/1/18.
  */
-class CircularRotatingSticksLoader : LinearLayout, LoaderContract {
+class RotatingCircularSticksLoader : LinearLayout, LoaderContract {
 
     var noOfSticks: Int = 50
 
@@ -42,25 +42,34 @@ class CircularRotatingSticksLoader : LinearLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context, noOfSticks: Int, outerCircleRadius: Float, innerCircleRadius: Float, sticksColor: Int, viewBackgroundColor: Int) : super(context) {
+        this.noOfSticks = noOfSticks
+        this.outerCircleRadius = outerCircleRadius
+        this.innerCircleRadius = innerCircleRadius
+        this.sticksColor = sticksColor
+        this.viewBackgroundColor = viewBackgroundColor
+        initView()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularRotatingSticksLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RotatingCircularSticksLoader, 0, 0)
 
         this.noOfSticks = typedArray
-                .getInteger(R.styleable.CircularRotatingSticksLoader_rotatingstick_noOfSticks, 50)
+                .getInteger(R.styleable.RotatingCircularSticksLoader_rotatingsticks_noOfSticks, 50)
 
         this.outerCircleRadius = typedArray
-                .getDimension(R.styleable.CircularRotatingSticksLoader_rotatingstick_outerCircleRadius, 200.0f)
+                .getDimension(R.styleable.RotatingCircularSticksLoader_rotatingsticks_outerCircleRadius, 200.0f)
         this.innerCircleRadius = typedArray
-                .getDimension(R.styleable.CircularRotatingSticksLoader_rotatingstick_innerCircleRadius, 100.0f)
+                .getDimension(R.styleable.RotatingCircularSticksLoader_rotatingsticks_innerCircleRadius, 100.0f)
 
 
         this.sticksColor = typedArray
-                .getColor(R.styleable.CircularRotatingSticksLoader_rotatingstick_stickColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_stickColor, resources.getColor(R.color.grey))
         this.viewBackgroundColor = typedArray
-                .getColor(R.styleable.CircularRotatingSticksLoader_rotatingstick_viewBackgroundColor, resources.getColor(android.R.color.white))
+                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_viewBackgroundColor, resources.getColor(android.R.color.white))
 
         this.animDuration = typedArray
-                .getInteger(R.styleable.CircularRotatingSticksLoader_rotatingstick_animDuration, 5000)
+                .getInteger(R.styleable.RotatingCircularSticksLoader_rotatingsticks_animDuration, 5000)
 
         typedArray.recycle()
     }

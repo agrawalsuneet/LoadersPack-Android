@@ -9,14 +9,14 @@
     android:orientation="vertical">
 
 
-    <com.agrawalsuneet.loaderspack.loaders.CircularRotatingSticksLoader
+    <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:rotatingstick_innerCircleRadius="15dp"
-        app:rotatingstick_outerCircleRadius="30dp"
-        app:rotatingstick_stickColor="@color/red"
-        app:rotatingstick_viewBackgroundColor="@color/white"
-        app:rotatingstick_animDuration="5000"/>
+        app:rotatingsticks_innerCircleRadius="15dp"
+        app:rotatingsticks_outerCircleRadius="30dp"
+        app:rotatingsticks_stickColor="@color/grey"
+        app:rotatingsticks_viewBackgroundColor="@color/white"
+        app:rotatingsticks_animDuration="5000"/>
 
 </LinearLayout>
