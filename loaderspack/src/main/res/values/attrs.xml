@@ -6,6 +6,14 @@
         <attr name="circleColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="CircularSticksBaseView">
+        <attr name="sticksbase_noOfSticks" format="integer" />
+        <attr name="sticksbase_outerCircleRadius" format="dimension" />
+        <attr name="sticksbase_innerCircleRadius" format="dimension" />
+        <attr name="sticksbase_stickColor" format="color" />
+        <attr name="sticksbase_viewBackgroundColor" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="ClockLoader">
         <attr name="clock_outerCircleBorderWidth" format="dimension" />
         <attr name="clock_bigCircleRadius" format="dimension" />
@@ -30,6 +38,15 @@
         <attr name="ripple_startLoadingDefault" format="boolean" />
         <attr name="ripple_animDuration" format="integer" />
         <attr name="ripple_interpolator" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RotatingCircularSticksLoader">
+        <attr name="rotatingsticks_noOfSticks" format="integer" />
+        <attr name="rotatingsticks_outerCircleRadius" format="dimension" />
+        <attr name="rotatingsticks_innerCircleRadius" format="dimension" />
+        <attr name="rotatingsticks_stickColor" format="color" />
+        <attr name="rotatingsticks_viewBackgroundColor" format="color" />
+        <attr name="rotatingsticks_animDuration" format="integer" />
     </declare-styleable>
 
 </resources>

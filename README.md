@@ -12,12 +12,18 @@
 
 please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
+### RotatingCircularSticksLoader
+
+
+please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
+
+
 Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:loaderspack:0.1'
+compile 'com.agrawalsuneet.androidlibs:loaderspack:0.2'
 ```
 
 ### ClockLoader
@@ -126,10 +132,47 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.1'
         container.addView(ripple);
 ```
 
+### RotatingCircularSticksLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rotatingsticks_noOfSticks="50"
+        app:rotatingsticks_innerCircleRadius="15dp"
+        app:rotatingsticks_outerCircleRadius="30dp"
+        app:rotatingsticks_stickColor="@color/grey"
+        app:rotatingsticks_viewBackgroundColor="@color/white"
+        app:rotatingsticks_animDuration="5000"/>
+```
+##### Through Code
+* Kotlin
+```
+        val loader = RotatingCircularSticksLoader(this, 16, 100f, 50f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, android.R.color.white))
+                        .apply {
+                            animDuration = 5000
+                        }
+        
+                containerLayout.addView(loader)
+```
+
+* Java
+```
+        RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
+                        16, 100f, 50f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, android.R.color.white));
+        
+                loader.setAnimDuration(5000);
+                container.addView(loader);
+```
+
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 ```
-Copyright 2017 Suneet Agrawal
+Copyright 2018 Suneet Agrawal
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
