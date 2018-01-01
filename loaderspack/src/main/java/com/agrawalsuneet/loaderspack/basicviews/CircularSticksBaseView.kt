@@ -55,18 +55,18 @@ open class CircularSticksBaseView : View, LoaderContract {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularSticksBaseView, 0, 0)
 
         this.noOfSticks = typedArray
-                .getInteger(R.styleable.CircularSticksBaseView_stickbase_noOfSticks, 80)
+                .getInteger(R.styleable.CircularSticksBaseView_sticksbase_noOfSticks, 80)
 
         this.outerCircleRadius = typedArray
-                .getDimension(R.styleable.CircularSticksBaseView_stickbase_outerCircleRadius, 200.0f)
+                .getDimension(R.styleable.CircularSticksBaseView_sticksbase_outerCircleRadius, 200.0f)
         this.innerCircleRadius = typedArray
-                .getDimension(R.styleable.CircularSticksBaseView_stickbase_innerCircleRadius, 100.0f)
+                .getDimension(R.styleable.CircularSticksBaseView_sticksbase_innerCircleRadius, 100.0f)
 
 
         this.sticksColor = typedArray
-                .getColor(R.styleable.CircularSticksBaseView_stickbase_stickColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.CircularSticksBaseView_sticksbase_stickColor, resources.getColor(R.color.grey))
         this.viewBackgroundColor = typedArray
-                .getColor(R.styleable.CircularSticksBaseView_stickbase_viewBackgroundColor, resources.getColor(android.R.color.white))
+                .getColor(R.styleable.CircularSticksBaseView_sticksbase_viewBackgroundColor, resources.getColor(android.R.color.white))
 
         typedArray.recycle()
     }

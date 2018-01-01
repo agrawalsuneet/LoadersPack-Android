@@ -7,11 +7,11 @@
     </declare-styleable>
 
     <declare-styleable name="CircularSticksBaseView">
-        <attr name="stickbase_noOfSticks" format="integer" />
-        <attr name="stickbase_outerCircleRadius" format="dimension" />
-        <attr name="stickbase_innerCircleRadius" format="dimension" />
-        <attr name="stickbase_stickColor" format="color" />
-        <attr name="stickbase_viewBackgroundColor" format="color" />
+        <attr name="sticksbase_noOfSticks" format="integer" />
+        <attr name="sticksbase_outerCircleRadius" format="dimension" />
+        <attr name="sticksbase_innerCircleRadius" format="dimension" />
+        <attr name="sticksbase_stickColor" format="color" />
+        <attr name="sticksbase_viewBackgroundColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="ClockLoader">
