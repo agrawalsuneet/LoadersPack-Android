@@ -172,7 +172,7 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.2'
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 ```
-Copyright 2017 Suneet Agrawal
+Copyright 2018 Suneet Agrawal
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
