@@ -7,9 +7,12 @@
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/32249174-f36a9eb8-be7f-11e7-98aa-48d398b178f8.gif)
 
+### RippleLoader
+![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
 
+please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
-Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader)
+Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
@@ -77,6 +80,50 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.1'
         clockLoader.setAnimSpeedMultiplier(2.0f);
         
         container.addView(clockLoader);
+```
+
+### RippleLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.RippleLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ripple_animDuration="500"
+        app:ripple_circleColor="@color/blue"
+        app:ripple_circleInitialRadius="50dp"
+        app:ripple_fromAlpha="1.0"
+        app:ripple_interpolator="@android:anim/decelerate_interpolator"
+        app:ripple_startLoadingDefault="true"
+        app:ripple_toAplha="0.01" />
+```
+##### Through Code
+* Kotlin
+```
+        val ripple = RippleLoader(baseContext).apply {
+            circleInitialRadius = 80
+            circleColor = resources.getColor(R.color.black)
+            fromAlpha = 1.0f
+            toAlpha = 0f
+            animationDuration = 1000
+            interpolator = DecelerateInterpolator()
+        }
+
+
+        containerLayout.addView(ripple)
+```
+
+* Java
+```
+        RippleLoader ripple = new RippleLoader(this);
+        ripple.setCircleInitialRadius(80);
+        ripple.setCircleColor(getResources().getColor(R.color.red));
+        ripple.setFromAlpha(1.0f);
+        ripple.setToAlpha(0.01f);
+        ripple.setAnimationDuration(1000);
+        ripple.setInterpolator(new DecelerateInterpolator());
+        ripple.setStartLoadingDefault(true);
+        
+        container.addView(ripple);
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
