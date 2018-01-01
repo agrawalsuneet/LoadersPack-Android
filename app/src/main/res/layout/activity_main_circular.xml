@@ -7,8 +7,15 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.agrawalsuneet.loaderspack.basicviews.CircularBaseView
+    <com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
+
+    <com.agrawalsuneet.loaderspack.loaders.CircularRotatingSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
 
 </LinearLayout>
