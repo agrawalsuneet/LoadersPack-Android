@@ -18,7 +18,7 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Y
 please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
 
-Other loaders: [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
+Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
