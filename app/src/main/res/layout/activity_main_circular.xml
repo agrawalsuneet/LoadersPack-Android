@@ -8,15 +8,69 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:rotatingsticks_animDuration="5000"
+            app:rotatingsticks_innerCircleRadius="15dp"
+            app:rotatingsticks_noOfSticks="16"
+            app:rotatingsticks_outerCircleRadius="30dp"
+            app:rotatingsticks_stickColor="@color/red"
+            app:rotatingsticks_viewBackgroundColor="@color/white" />
+
+        <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:rotatingsticks_animDuration="5000"
+            app:rotatingsticks_innerCircleRadius="15dp"
+            app:rotatingsticks_noOfSticks="16"
+            app:rotatingsticks_outerCircleRadius="30dp"
+            app:rotatingsticks_stickColor="@color/yellow"
+            app:rotatingsticks_viewBackgroundColor="@color/white" />
+
+        <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:rotatingsticks_animDuration="5000"
+            app:rotatingsticks_innerCircleRadius="15dp"
+            app:rotatingsticks_noOfSticks="16"
+            app:rotatingsticks_outerCircleRadius="30dp"
+            app:rotatingsticks_stickColor="@color/green"
+            app:rotatingsticks_viewBackgroundColor="@color/white" />
+
+    </LinearLayout>
+
 
     <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:rotatingsticks_innerCircleRadius="15dp"
-        app:rotatingsticks_outerCircleRadius="30dp"
+        app:rotatingsticks_animDuration="8000"
+        app:rotatingsticks_innerCircleRadius="20dp"
+        app:rotatingsticks_noOfSticks="50"
+        app:rotatingsticks_outerCircleRadius="60dp"
+        app:rotatingsticks_stickColor="@color/blue"
+        app:rotatingsticks_viewBackgroundColor="@color/white" />
+
+    <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:rotatingsticks_animDuration="10000"
+        app:rotatingsticks_innerCircleRadius="60dp"
+        app:rotatingsticks_noOfSticks="50"
+        app:rotatingsticks_outerCircleRadius="80dp"
         app:rotatingsticks_stickColor="@color/grey"
-        app:rotatingsticks_viewBackgroundColor="@color/white"
-        app:rotatingsticks_animDuration="5000"/>
+        app:rotatingsticks_viewBackgroundColor="@color/white" />
 
 </LinearLayout>

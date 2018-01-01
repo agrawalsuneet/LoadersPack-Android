@@ -138,6 +138,7 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.2'
 <com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:rotatingsticks_noOfSticks="50"
         app:rotatingsticks_innerCircleRadius="15dp"
         app:rotatingsticks_outerCircleRadius="30dp"
         app:rotatingsticks_stickColor="@color/grey"
