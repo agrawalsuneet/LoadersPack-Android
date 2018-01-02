@@ -13,9 +13,9 @@
 please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
 ### RotatingCircularSticksLoader
+![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
 
-
-please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
+please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY_jT3o)
 
 
 Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)
