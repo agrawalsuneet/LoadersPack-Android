@@ -5,7 +5,10 @@
 
 
 ### ClockLoader
-![clockloader](https://user-images.githubusercontent.com/12999622/32249174-f36a9eb8-be7f-11e7-98aa-48d398b178f8.gif)
+![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
+
+
+please check a better quality demo [here](https://youtu.be/9YSQ6UAm-vQ)
 
 ### RippleLoader
 ![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
