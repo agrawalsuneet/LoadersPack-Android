@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_circular)
+        setContentView(R.layout.activity_main)
 
-        supportActionBar?.setTitle("RotatingCircularSticksLoader")
+        supportActionBar?.setTitle("ClockLoader")
 
         containerLayout = findViewById(R.id.container)
 
