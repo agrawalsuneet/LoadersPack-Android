@@ -14,7 +14,7 @@ import com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
  */
 class CircularSticksLoader : CircularSticksBaseView {
 
-    override var sticksColor: Int = resources.getColor(R.color.loader_defalut)
+    override var sticksColor: Int = resources.getColor(R.color.grey)
         set(defaultColor) {
             field = defaultColor
             if (defaultStickPaint != null) {
@@ -22,7 +22,7 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
-    open var selectedStickColor: Int = resources.getColor(R.color.red)
+    open var selectedStickColor: Int = resources.getColor(R.color.black)
         set(selectedColor) {
             field = selectedColor
             if (selectedStickPaint != null) {
@@ -31,40 +31,43 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
+    var showRunningShadow: Boolean = true
 
     var firstShadowColor: Int = 0
         set(value) {
-            field = value
             if (value != 0) {
+                field = value
                 isShadowColorSet = true
-                initShadowPaints()
+                if (firstShadowPaint != null) {
+                    firstShadowPaint?.color = value
+                }
             }
         }
 
 
     var secondShadowColor: Int = 0
         set(value) {
-            field = value
             if (value != 0) {
+                field = value
                 isShadowColorSet = true
-                initShadowPaints()
+                if (secondShadowPaint != null) {
+                    secondShadowPaint?.color = value
+                }
             }
         }
 
     var animDur = 100
 
-    var showRunningShadow: Boolean = true
     private var isShadowColorSet = false
 
-    protected var selectedStickPos = 1
-
+    private var selectedStickPos = 1
     private var shouldAnimate = true
 
     private var defaultStickPaint: Paint? = null
     private var selectedStickPaint: Paint? = null
 
-    private lateinit var firstShadowPaint: Paint
-    private lateinit var secondShadowPaint: Paint
+    private var firstShadowPaint: Paint? = null
+    private var secondShadowPaint: Paint? = null
 
     private var logTime: Long = 0
 
@@ -95,11 +98,33 @@ class CircularSticksLoader : CircularSticksBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        super.initAttributes(attrs)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularSticksLoader, 0, 0)
 
-        noOfSticks =  50
-        animDur = 20
-        showRunningShadow = false
+        this.noOfSticks = typedArray
+                .getInteger(R.styleable.CircularSticksLoader_circularsticks_noOfSticks, 80)
+
+        this.outerCircleRadius = typedArray
+                .getDimension(R.styleable.CircularSticksLoader_circularsticks_outerCircleRadius, 200.0f)
+        this.innerCircleRadius = typedArray
+                .getDimension(R.styleable.CircularSticksLoader_circularsticks_innerCircleRadius, 100.0f)
+
+
+        this.sticksColor = typedArray
+                .getColor(R.styleable.CircularSticksLoader_circularsticks_stickColor, resources.getColor(R.color.grey))
+        this.selectedStickColor = typedArray
+                .getColor(R.styleable.CircularSticksLoader_circularsticks_selectedStickColor, resources.getColor(R.color.black))
+
+        this.viewBackgroundColor = typedArray
+                .getColor(R.styleable.CircularSticksLoader_circularsticks_viewBackgroundColor, resources.getColor(android.R.color.white))
+
+        this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularSticksLoader_circularsticks_showRunningShadow, true)
+
+        this.firstShadowColor = typedArray.getColor(R.styleable.CircularSticksLoader_circularsticks_firstShadowColor, 0)
+        this.secondShadowColor = typedArray.getColor(R.styleable.CircularSticksLoader_circularsticks_secondShadowColor, 0)
+
+        animDur = typedArray.getInteger(R.styleable.CircularSticksLoader_circularsticks_animDuration, 100)
+
+        typedArray.recycle()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -171,14 +196,14 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
 
             firstShadowPaint = Paint()
-            firstShadowPaint.isAntiAlias = true
-            firstShadowPaint.style = Paint.Style.FILL
-            firstShadowPaint.color = firstShadowColor
+            firstShadowPaint?.isAntiAlias = true
+            firstShadowPaint?.style = Paint.Style.FILL
+            firstShadowPaint?.color = firstShadowColor
 
             secondShadowPaint = Paint()
-            secondShadowPaint.isAntiAlias = true
-            secondShadowPaint.style = Paint.Style.FILL
-            secondShadowPaint.color = secondShadowColor
+            secondShadowPaint?.isAntiAlias = true
+            secondShadowPaint?.style = Paint.Style.FILL
+            secondShadowPaint?.color = secondShadowColor
         }
     }
 

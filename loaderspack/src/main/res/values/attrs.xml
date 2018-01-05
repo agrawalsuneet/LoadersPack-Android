@@ -49,4 +49,21 @@
         <attr name="rotatingsticks_animDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="CircularSticksLoader">
+        <attr name="circularsticks_noOfSticks" format="integer" />
+        <attr name="circularsticks_outerCircleRadius" format="dimension" />
+        <attr name="circularsticks_innerCircleRadius" format="dimension" />
+
+        <attr name="circularsticks_stickColor" format="color" />
+        <attr name="circularsticks_selectedStickColor" format="color" />
+        <attr name="circularsticks_viewBackgroundColor" format="color" />
+
+
+        <attr name="circularsticks_showRunningShadow" format="boolean" />
+        <attr name="circularsticks_firstShadowColor" format="color" />
+        <attr name="circularsticks_secondShadowColor" format="color" />
+
+        <attr name="circularsticks_animDuration" format="integer" />
+    </declare-styleable>
+
 </resources>

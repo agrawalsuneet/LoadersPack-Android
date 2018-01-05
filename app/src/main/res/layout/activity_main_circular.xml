@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:circularsticks_noOfSticks="16"
+        app:circularsticks_animDuration="100"
+        app:circularsticks_stickColor="#33777777"
+        app:circularsticks_selectedStickColor="@color/green"
+        app:circularsticks_showRunningShadow="true"/>
 
 </LinearLayout>
