@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_circular)
 
-        supportActionBar?.setTitle("RotatingCircularSticksLoader")
+        supportActionBar?.setTitle("CircularSticksLoader")
 
         containerLayout = findViewById(R.id.container)
 
