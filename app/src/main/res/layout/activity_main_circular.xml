@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-<!--    <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -90,7 +90,7 @@
         app:circularsticks_selectedStickColor="@color/black"
         app:circularsticks_showRunningShadow="true"
         app:circularsticks_stickColor="@color/grey"
-        app:circularsticks_viewBackgroundColor="@color/white" />-->
+        app:circularsticks_viewBackgroundColor="@color/white" />
 
 
 </LinearLayout>
