@@ -157,9 +157,6 @@ class CircularSticksLoader : CircularSticksBaseView {
         var startAngle: Float = (0 - (sweepAngle / 2))
 
         for (i in 0 until noOfSticks) {
-            //boolean isSelected = (i + 1 == selectedStickPos);
-            //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius, isSelected ? selectedStickPaint : defaultStickPaint);
-
 
             if (i + 1 == selectedStickPos) {
                 canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, selectedStickPaint)

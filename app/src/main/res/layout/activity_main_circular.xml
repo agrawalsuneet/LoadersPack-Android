@@ -4,17 +4,93 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:circularsticks_animDuration="80"
+            app:circularsticks_firstShadowColor="#aaff0000"
+            app:circularsticks_innerCircleRadius="15dp"
+            app:circularsticks_noOfSticks="20"
+            app:circularsticks_outerCircleRadius="30dp"
+            app:circularsticks_secondShadowColor="#99ff0000"
+            app:circularsticks_selectedStickColor="@color/red"
+            app:circularsticks_showRunningShadow="true"
+            app:circularsticks_stickColor="#33777777"
+            app:circularsticks_viewBackgroundColor="@color/white" />
+
+        <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:circularsticks_animDuration="80"
+            app:circularsticks_firstShadowColor="#aaFFC200"
+            app:circularsticks_innerCircleRadius="15dp"
+            app:circularsticks_noOfSticks="20"
+            app:circularsticks_outerCircleRadius="30dp"
+            app:circularsticks_secondShadowColor="#99FFC200"
+            app:circularsticks_selectedStickColor="@color/yellow"
+            app:circularsticks_showRunningShadow="true"
+            app:circularsticks_stickColor="#33777777"
+            app:circularsticks_viewBackgroundColor="@color/white" />
+
+        <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:circularsticks_animDuration="80"
+            app:circularsticks_firstShadowColor="#aa00e500"
+            app:circularsticks_innerCircleRadius="15dp"
+            app:circularsticks_noOfSticks="20"
+            app:circularsticks_outerCircleRadius="30dp"
+            app:circularsticks_secondShadowColor="#9900e500"
+            app:circularsticks_selectedStickColor="@color/green"
+            app:circularsticks_showRunningShadow="true"
+            app:circularsticks_stickColor="#33777777"
+            app:circularsticks_viewBackgroundColor="@color/white" />
+
+
+    </LinearLayout>
+
 
     <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:circularsticks_noOfSticks="16"
+        android:layout_margin="16dp"
         app:circularsticks_animDuration="100"
-        app:circularsticks_stickColor="#33777777"
-        app:circularsticks_selectedStickColor="@color/green"
-        app:circularsticks_showRunningShadow="true"/>
+        app:circularsticks_innerCircleRadius="20dp"
+        app:circularsticks_noOfSticks="40"
+        app:circularsticks_outerCircleRadius="60dp"
+        app:circularsticks_selectedStickColor="@color/blue"
+        app:circularsticks_showRunningShadow="false"
+        app:circularsticks_stickColor="#330000ff"
+        app:circularsticks_viewBackgroundColor="@color/white" />
+
+    <com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:circularsticks_animDuration="100"
+        app:circularsticks_firstShadowColor="#aa000000"
+        app:circularsticks_innerCircleRadius="50dp"
+        app:circularsticks_noOfSticks="32"
+        app:circularsticks_outerCircleRadius="80dp"
+        app:circularsticks_secondShadowColor="#77000000"
+        app:circularsticks_selectedStickColor="@color/black"
+        app:circularsticks_showRunningShadow="true"
+        app:circularsticks_stickColor="@color/grey"
+        app:circularsticks_viewBackgroundColor="@color/white" />
+
 
 </LinearLayout>
