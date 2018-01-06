@@ -19,13 +19,13 @@ open class CircularSticksBaseView : View, LoaderContract {
     var outerCircleRadius: Float = 200.0f
     var innerCircleRadius: Float = 100.0f
 
-    var sticksColor: Int = resources.getColor(R.color.grey)
+    open var sticksColor: Int = resources.getColor(R.color.grey)
     var viewBackgroundColor: Int = resources.getColor(android.R.color.white)
 
-    private lateinit var sticksPaint: Paint
-    private lateinit var innerCirclePaint: Paint
+    protected lateinit var sticksPaint: Paint
+    protected lateinit var innerCirclePaint: Paint
 
-    private lateinit var outerCircleOval: RectF
+    protected lateinit var outerCircleOval: RectF
 
 
     constructor(context: Context) : super(context) {
@@ -76,7 +76,7 @@ open class CircularSticksBaseView : View, LoaderContract {
         setMeasuredDimension(2 * outerCircleRadius.toInt(), 2 * outerCircleRadius.toInt())
     }
 
-    private fun initPaints() {
+    open protected fun initPaints() {
         sticksPaint = Paint()
         sticksPaint.color = sticksColor
         sticksPaint.style = Paint.Style.FILL

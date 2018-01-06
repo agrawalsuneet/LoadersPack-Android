@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
+import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader
 import com.agrawalsuneet.loaderspack.loaders.RippleLoader
 import com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
@@ -14,16 +15,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_circular)
 
-        supportActionBar?.setTitle("ClockLoader")
+        supportActionBar?.setTitle("CircularSticksLoader")
 
         containerLayout = findViewById(R.id.container)
 
         //initClockLoader();
         //initRippleLoader()
         //initRotatingCircularSticksLoader()
+        //initCircularSticksLoader()
+    }
 
+    private fun initCircularSticksLoader() {
+        val loader = CircularSticksLoader(this, 16, 200f, 100f,
+                ContextCompat.getColor(this, R.color.blue),
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, android.R.color.white))
+                .apply {
+                    showRunningShadow = true
+                    firstShadowColor = ContextCompat.getColor(context, R.color.green)
+                    secondShadowColor = ContextCompat.getColor(context, R.color.yellow)
+                    animDuration = 100
+                }
+
+        containerLayout.addView(loader)
     }
 
     private fun initRotatingCircularSticksLoader() {
