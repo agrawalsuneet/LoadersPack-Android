@@ -7,7 +7,6 @@
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
 
-
 please check a better quality demo [here](https://youtu.be/9YSQ6UAm-vQ)
 
 ### RippleLoader
@@ -20,13 +19,17 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Y
 
 please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY_jT3o)
 
+### CircularSticksLoader
 
-Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)
+please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
+
+
+Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:loaderspack:0.2'
+compile 'com.agrawalsuneet.androidlibs:loaderspack:0.3'
 ```
 
 ### ClockLoader
@@ -171,6 +174,58 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.2'
                 loader.setAnimDuration(5000);
                 container.addView(loader);
 ```
+
+### CircularSticksLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:circularsticks_animDuration="100"
+        app:circularsticks_firstShadowColor="#aa000000"
+        app:circularsticks_innerCircleRadius="50dp"
+        app:circularsticks_noOfSticks="32"
+        app:circularsticks_outerCircleRadius="80dp"
+        app:circularsticks_secondShadowColor="#77000000"
+        app:circularsticks_selectedStickColor="@color/black"
+        app:circularsticks_showRunningShadow="true"
+        app:circularsticks_stickColor="@color/grey"
+        app:circularsticks_viewBackgroundColor="@color/white" />
+```
+##### Through Code
+* Kotlin
+```
+        val loader = CircularSticksLoader(this, 16, 200f, 100f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.red),
+                        ContextCompat.getColor(this, android.R.color.white))
+                        .apply {
+                            showRunningShadow = true
+                            firstShadowColor = ContextCompat.getColor(context, R.color.green)
+                            secondShadowColor = ContextCompat.getColor(context, R.color.yellow)
+                            animDuration = 100
+                        }
+        
+                containerLayout.addView(loader)
+```
+
+* Java
+```
+        CircularSticksLoader loader = new CircularSticksLoader(this, 16,
+                        200f, 100f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.red),
+                        ContextCompat.getColor(this, android.R.color.white));
+        
+                loader.setShowRunningShadow(true);
+                loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.green));
+                loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
+                loader.setAnimDuration(100);
+        
+                container.addView(loader);
+```
+
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
