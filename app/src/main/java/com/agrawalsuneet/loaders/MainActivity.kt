@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         //initClockLoader();
         //initRippleLoader()
         //initRotatingCircularSticksLoader()
-        initCircularSticksLoader()
+        //initCircularSticksLoader()
     }
 
     private fun initCircularSticksLoader() {

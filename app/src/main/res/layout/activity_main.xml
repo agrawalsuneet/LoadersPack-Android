@@ -9,23 +9,14 @@
     android:orientation="vertical"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
-    <com.agrawalsuneet.loaderspack.loaders.RippleLoader
+
+    <com.agrawalsuneet.loaderspack.loaders.ClockLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ripple_animDuration="3000"
-        app:ripple_circleColor="@color/blue"
-        app:ripple_circleInitialRadius="50dp"
-        app:ripple_fromAlpha="1.0"
-        app:ripple_interpolator="@android:anim/decelerate_interpolator"
-        app:ripple_toAplha="0.5" />
-
-
-    <!--<com.agrawalsuneet.loaderspack.loaders.ClockLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:clock_animSpeedMultiplier="0.5"
+        app:clock_animSpeedMultiplier="1"
         app:clock_bigCircleColor="@color/colorPrimary"
         app:clock_bigCircleRadius="80dp"
+        android:layout_margin="16dp"
         app:clock_hourHandColor="@color/colorAccent"
         app:clock_hourHandLength="40dp"
         app:clock_innerCircleColor="@color/colorPrimaryDark"
@@ -33,6 +24,23 @@
         app:clock_minuteHandColor="@color/colorAccent"
         app:clock_minuteHandLength="60dp"
         app:clock_outerCircleBorderColor="@color/colorAccent"
-        app:clock_outerCircleBorderWidth="10dp" />-->
+        app:clock_outerCircleBorderWidth="10dp" />
+
+
+    <com.agrawalsuneet.loaderspack.loaders.ClockLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:clock_animSpeedMultiplier="0.5"
+        android:layout_margin="16dp"
+        app:clock_bigCircleColor="@color/black"
+        app:clock_bigCircleRadius="100dp"
+        app:clock_hourHandColor="@color/grey"
+        app:clock_hourHandLength="50dp"
+        app:clock_innerCircleColor="@color/grey"
+        app:clock_innerCircleRadius="5dp"
+        app:clock_minuteHandColor="@color/grey"
+        app:clock_minuteHandLength="80dp"
+        app:clock_outerCircleBorderColor="@color/grey"
+        app:clock_outerCircleBorderWidth="10dp" />
 
 </LinearLayout>
