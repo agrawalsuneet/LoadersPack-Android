@@ -56,7 +56,7 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
-    var animDur = 100
+    var animDuration = 100
 
     private var isShadowColorSet = false
 
@@ -87,11 +87,13 @@ class CircularSticksLoader : CircularSticksBaseView {
         initShadowPaints()
     }
 
-    constructor(context: Context, noOfSticks: Int, outerCircleRadius: Float, innerCircleRadius: Float, sticksColor: Int, viewBackgroundColor: Int) : super(context) {
+    constructor(context: Context, noOfSticks: Int, outerCircleRadius: Float, innerCircleRadius: Float,
+                sticksColor: Int, selectedStickColor: Int, viewBackgroundColor: Int) : super(context) {
         this.noOfSticks = noOfSticks
         this.outerCircleRadius = outerCircleRadius
         this.innerCircleRadius = innerCircleRadius
         this.sticksColor = sticksColor
+        this.selectedStickColor = selectedStickColor
         this.viewBackgroundColor = viewBackgroundColor
         initPaints()
         initShadowPaints()
@@ -122,7 +124,7 @@ class CircularSticksLoader : CircularSticksBaseView {
         this.firstShadowColor = typedArray.getColor(R.styleable.CircularSticksLoader_circularsticks_firstShadowColor, 0)
         this.secondShadowColor = typedArray.getColor(R.styleable.CircularSticksLoader_circularsticks_secondShadowColor, 0)
 
-        animDur = typedArray.getInteger(R.styleable.CircularSticksLoader_circularsticks_animDuration, 100)
+        animDuration = typedArray.getInteger(R.styleable.CircularSticksLoader_circularsticks_animDuration, 100)
 
         typedArray.recycle()
     }
@@ -134,7 +136,7 @@ class CircularSticksLoader : CircularSticksBaseView {
 
         if (shouldAnimate) {
             Handler().postDelayed({
-                if (System.currentTimeMillis() - logTime >= animDur) {
+                if (System.currentTimeMillis() - logTime >= animDuration) {
 
                     selectedStickPos++
 
@@ -145,7 +147,7 @@ class CircularSticksLoader : CircularSticksBaseView {
                     invalidate()
                     logTime = System.currentTimeMillis()
                 }
-            }, animDur.toLong())
+            }, animDuration.toLong())
         }
     }
 
