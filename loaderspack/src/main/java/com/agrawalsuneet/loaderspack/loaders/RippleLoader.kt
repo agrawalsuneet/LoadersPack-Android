@@ -32,8 +32,6 @@ open class RippleLoader : LinearLayout, LoaderContract {
 
     var toAlpha: Float = 0.01f
 
-    var startLoadingDefault = true
-
     var animationDuration = 2000
 
     var interpolator: Interpolator = DecelerateInterpolator()
@@ -70,8 +68,6 @@ open class RippleLoader : LinearLayout, LoaderContract {
 
         animationDuration = typedArray.getInteger(R.styleable.RippleLoader_ripple_animDuration, 2000)
 
-        startLoadingDefault = typedArray.getBoolean(R.styleable.RippleLoader_ripple_startLoadingDefault, true)
-
         interpolator = AnimationUtils.loadInterpolator(context,
                 typedArray.getResourceId(R.styleable.RippleLoader_ripple_interpolator,
                         android.R.anim.decelerate_interpolator))
@@ -95,20 +91,17 @@ open class RippleLoader : LinearLayout, LoaderContract {
 
         addView(circleView)
 
-        if (startLoadingDefault) {
-            val viewTreeObserver = this.viewTreeObserver
-            val loaderView = this
+        val viewTreeObserver = this.viewTreeObserver
+        val loaderView = this
 
-            viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    startLoading()
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                startLoading()
 
-                    val vto = loaderView.viewTreeObserver
-                    vto.removeOnGlobalLayoutListener(this)
-                }
-            })
-            startLoadingDefault = false
-        }
+                val vto = loaderView.viewTreeObserver
+                vto.removeOnGlobalLayoutListener(this)
+            }
+        })
     }
 
     open fun startLoading() {
