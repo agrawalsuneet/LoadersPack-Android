@@ -6,7 +6,9 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircleView
 
 class MultipleRippleLoader : RippleLoader {
@@ -31,8 +33,29 @@ class MultipleRippleLoader : RippleLoader {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        circleInitialRadius = 160
-        animationDuration = 3000
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultipleRippleLoader, 0, 0)
+
+        circleInitialRadius = typedArray
+                .getDimensionPixelSize(R.styleable.MultipleRippleLoader_multipleripple_circleInitialRadius, 40)
+
+        circleColor = typedArray.getColor(R.styleable.MultipleRippleLoader_multipleripple_circleColor,
+                resources.getColor(R.color.red))
+
+        noOfRipples = typedArray.getInteger(R.styleable.MultipleRippleLoader_multipleripple_noOfRipples, 2000)
+
+
+        fromAlpha = typedArray.getFloat(R.styleable.MultipleRippleLoader_multipleripple_fromAlpha, 0.9f)
+        toAlpha = typedArray.getFloat(R.styleable.MultipleRippleLoader_multipleripple_toAplha, 0.01f)
+
+        animationDuration = typedArray.getInteger(R.styleable.MultipleRippleLoader_multipleripple_animDuration, 2000)
+
+        startLoadingDefault = typedArray.getBoolean(R.styleable.MultipleRippleLoader_multipleripple_startLoadingDefault, true)
+
+        interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.MultipleRippleLoader_multipleripple_interpolator,
+                        android.R.anim.decelerate_interpolator))
+
+        typedArray.recycle()
     }
 
     override fun initView() {

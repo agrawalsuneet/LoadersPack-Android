@@ -40,6 +40,19 @@
         <attr name="ripple_interpolator" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="MultipleRippleLoader">
+        <attr name="multipleripple_circleInitialRadius" format="dimension" />
+        <attr name="multipleripple_circleColor" format="color" />
+
+        <attr name="multipleripple_noOfRipples" format="integer" />
+
+        <attr name="multipleripple_fromAlpha" format="float" />
+        <attr name="multipleripple_toAplha" format="float" />
+        <attr name="multipleripple_startLoadingDefault" format="boolean" />
+        <attr name="multipleripple_animDuration" format="integer" />
+        <attr name="multipleripple_interpolator" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="RotatingCircularSticksLoader">
         <attr name="rotatingsticks_noOfSticks" format="integer" />
         <attr name="rotatingsticks_outerCircleRadius" format="dimension" />
