@@ -9,4 +9,7 @@
     <color name="green">#00e500</color>
     <color name="yellow">#ffff00</color>
     <color name="amber">#FFC200</color>
+
+    <color name="blue_selected">#2196F3</color>
+    <color name="blue_delfault">#BBDEFB</color>
 </resources>

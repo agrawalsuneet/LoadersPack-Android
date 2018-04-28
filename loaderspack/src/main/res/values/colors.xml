@@ -5,7 +5,4 @@
 
     <color name="blue">#0000ff</color>
     <color name="red">#ff0000</color>
-
-    <color name="blue_selected">#2196F3</color>
-    <color name="blue_delfault">#BBDEFB</color>
 </resources>
