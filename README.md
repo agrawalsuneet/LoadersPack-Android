@@ -20,16 +20,21 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Y
 please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY_jT3o)
 
 ### CircularSticksLoader
+![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
+### MultipleRippleLoader
+![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
 
 
-Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android)
+please check a better quality demo [here](https://youtu.be/JDkMXfXEtVI)
+
+
+Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [LinearDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [CircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [LazyLoader](https://github.com/agrawalsuneet/DotsLoader), [TashieLoader](https://github.com/agrawalsuneet/DotsLoader), [SlidingLoader](https://github.com/agrawalsuneet/DotsLoader), [RotatingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [TrailingCircularDotsLoader](https://github.com/agrawalsuneet/DotsLoader), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:loaderspack:0.3'
+compile 'com.agrawalsuneet.androidlibs:loaderspack:0.4'
 ```
 
 ### ClockLoader
@@ -224,6 +229,53 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.3'
                 loader.setAnimDuration(100);
         
                 container.addView(loader);
+```
+
+### MultipleRippleLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:multipleripple_animDuration="6000"
+            app:multipleripple_circleColor="@color/green"
+            app:multipleripple_circleInitialRadius="20dp"
+            app:multipleripple_fromAlpha="0.8"
+            app:multipleripple_interpolator="@android:anim/decelerate_interpolator"
+            app:multipleripple_noOfRipples="3"
+            app:multipleripple_toAplha="0.1" />
+```
+##### Through Code
+* Kotlin
+```
+        val multipleRippleLoader = MultipleRippleLoader(this,
+                        40, 
+                        ContextCompat.getColor(this, R.color.blue), 
+                        2)
+                        .apply {
+                            fromAlpha = 0.9f
+                            toAlpha = 0.2f
+                            animationDuration = 2000
+                            interpolator = LinearInterpolator()
+                        }
+        
+                containerLayout.addView(multipleRippleLoader)
+```
+
+* Java
+```
+        MultipleRippleLoader multipleRippleLoader = new MultipleRippleLoader(this,
+                        40,
+                        ContextCompat.getColor(this, R.color.blue),
+                        2);
+        
+                multipleRippleLoader.setFromAlpha(0.9f);
+                multipleRippleLoader.setToAlpha(0.2f);
+                multipleRippleLoader.setAnimationDuration(2000);
+                multipleRippleLoader.setInterpolator(new LinearInterpolator());
+        
+        
+                container.addView(multipleRippleLoader);
 ```
 
 

@@ -3,11 +3,10 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.LinearInterpolator
+import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
-import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
-import com.agrawalsuneet.loaderspack.loaders.ClockLoader
-import com.agrawalsuneet.loaderspack.loaders.RippleLoader
-import com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+import com.agrawalsuneet.loaderspack.loaders.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_circular)
+        setContentView(R.layout.activity_main_multipleripple)
 
-        supportActionBar?.setTitle("CircularSticksLoader")
+        supportActionBar?.setTitle("MultipleRippleLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -25,6 +24,23 @@ class MainActivity : AppCompatActivity() {
         //initRippleLoader()
         //initRotatingCircularSticksLoader()
         //initCircularSticksLoader()
+
+        //initMultipleRippleLoader()
+    }
+
+    private fun initMultipleRippleLoader() {
+        val multipleRippleLoader = MultipleRippleLoader(this,
+                40,
+                ContextCompat.getColor(this, R.color.blue),
+                2)
+                .apply {
+                    fromAlpha = 0.9f
+                    toAlpha = 0.2f
+                    animationDuration = 2000
+                    interpolator = LinearInterpolator()
+                }
+
+        containerLayout.addView(multipleRippleLoader)
     }
 
     private fun initCircularSticksLoader() {

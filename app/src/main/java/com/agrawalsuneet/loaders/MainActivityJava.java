@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
 import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader;
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
+import com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -65,6 +67,21 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setAnimDuration(100);
 
         container.addView(loader);
+
+
+        //MultipleRippleLoader
+        MultipleRippleLoader multipleRippleLoader = new MultipleRippleLoader(this,
+                40,
+                ContextCompat.getColor(this, R.color.blue),
+                2);
+
+        multipleRippleLoader.setFromAlpha(0.9f);
+        multipleRippleLoader.setToAlpha(0.2f);
+        multipleRippleLoader.setAnimationDuration(2000);
+        multipleRippleLoader.setInterpolator(new LinearInterpolator());
+
+
+        container.addView(multipleRippleLoader);
     }
 
 
