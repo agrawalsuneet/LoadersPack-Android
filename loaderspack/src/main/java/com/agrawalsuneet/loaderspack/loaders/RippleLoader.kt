@@ -52,7 +52,6 @@ open class RippleLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleLoader, 0, 0)
 

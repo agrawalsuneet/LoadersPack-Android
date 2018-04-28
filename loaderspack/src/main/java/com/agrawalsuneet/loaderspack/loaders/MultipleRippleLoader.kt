@@ -35,6 +35,12 @@ class MultipleRippleLoader : RippleLoader {
         initView()
     }
 
+    constructor(context: Context, circleInitialRadius: Int, circleColor: Int, noOfRipples: Int) : super(context) {
+        this.circleInitialRadius = circleInitialRadius
+        this.circleColor = circleColor
+        this.noOfRipples = noOfRipples
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultipleRippleLoader, 0, 0)
 

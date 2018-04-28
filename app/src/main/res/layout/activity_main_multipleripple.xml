@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -62,10 +61,10 @@
         <com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             app:multipleripple_animDuration="3000"
             app:multipleripple_circleColor="@color/blue_selected"
             app:multipleripple_circleInitialRadius="40dp"
-            android:layout_centerInParent="true"
             app:multipleripple_fromAlpha="0.9"
             app:multipleripple_interpolator="@android:anim/linear_interpolator"
             app:multipleripple_noOfRipples="3"
@@ -81,7 +80,6 @@
     </RelativeLayout>
 
 
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,10 +89,10 @@
         <com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             app:multipleripple_animDuration="4000"
             app:multipleripple_circleColor="@color/grey"
             app:multipleripple_circleInitialRadius="36dp"
-            android:layout_centerInParent="true"
             app:multipleripple_fromAlpha="0.6"
             app:multipleripple_interpolator="@android:anim/linear_interpolator"
             app:multipleripple_noOfRipples="3"
@@ -107,6 +105,6 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_round" />
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </LinearLayout>
