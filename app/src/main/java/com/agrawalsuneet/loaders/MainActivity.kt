@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_2)
+        setContentView(R.layout.activity_main_multipleripple)
 
-        supportActionBar?.setTitle("CircularSticksLoader")
+        supportActionBar?.setTitle("MultipleRippleLoader")
 
-        //containerLayout = findViewById(R.id.container)
+        containerLayout = findViewById(R.id.container)
 
         //initClockLoader();
         //initRippleLoader()

@@ -13,7 +13,7 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 /**
  * Created by suneet on 11/15/17.
  */
-class RippleLoader : LinearLayout, LoaderContract {
+open class RippleLoader : LinearLayout, LoaderContract {
 
 
     var circleInitialRadius: Int = 40
@@ -39,7 +39,6 @@ class RippleLoader : LinearLayout, LoaderContract {
     var interpolator: Interpolator = DecelerateInterpolator()
 
     private lateinit var circleView: CircleView
-
 
     constructor(context: Context) : super(context) {
         initView()
@@ -87,7 +86,7 @@ class RippleLoader : LinearLayout, LoaderContract {
     }
 
 
-    private fun initView() {
+    protected open fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
 
@@ -112,35 +111,29 @@ class RippleLoader : LinearLayout, LoaderContract {
         }
     }
 
-    fun startLoading() {
-        var animSet = getAnimSet()
+    open fun startLoading() {
+        var animSet = getAnimSet(Animation.INFINITE, 0)
         circleView.startAnimation(animSet)
     }
 
-    private fun getAnimSet(): Animation {
+    protected fun getAnimSet(repeatCount: Int, startOffset: Int): Animation {
         var set = AnimationSet(true)
 
         val scaleAnim = ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        scaleAnim.duration = animationDuration.toLong()
-        scaleAnim.interpolator = interpolator
-        scaleAnim.repeatCount = Animation.INFINITE
-        scaleAnim.repeatMode = Animation.RESTART
-
 
         val alphaAnim = AlphaAnimation(fromAlpha, toAlpha)
-        alphaAnim.duration = animationDuration.toLong()
-        alphaAnim.interpolator = interpolator
-        alphaAnim.repeatCount = Animation.INFINITE
-        alphaAnim.repeatMode = Animation.RESTART
-
-        set.duration = animationDuration.toLong()
-        set.interpolator = interpolator
-        set.repeatCount = Animation.INFINITE
-        set.repeatMode = Animation.RESTART
 
         set.addAnimation(scaleAnim)
         set.addAnimation(alphaAnim)
+
+        set.duration = animationDuration.toLong()
+        set.fillAfter = true
+        set.interpolator = interpolator
+        set.repeatCount = repeatCount
+        set.repeatMode = Animation.RESTART
+
+        set.startOffset = startOffset.toLong()
 
         return set
     }
