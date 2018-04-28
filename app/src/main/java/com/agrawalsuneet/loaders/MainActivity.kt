@@ -25,12 +25,14 @@ class MainActivity : AppCompatActivity() {
         //initRotatingCircularSticksLoader()
         //initCircularSticksLoader()
 
-        initMultipleRippleLoader()
+        //initMultipleRippleLoader()
     }
 
     private fun initMultipleRippleLoader() {
         val multipleRippleLoader = MultipleRippleLoader(this,
-                40, ContextCompat.getColor(this, R.color.blue), 2)
+                40,
+                ContextCompat.getColor(this, R.color.blue),
+                2)
                 .apply {
                     fromAlpha = 0.9f
                     toAlpha = 0.2f
