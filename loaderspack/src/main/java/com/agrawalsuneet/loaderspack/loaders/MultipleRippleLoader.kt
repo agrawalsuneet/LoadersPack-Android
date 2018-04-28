@@ -1,20 +1,17 @@
 package com.agrawalsuneet.loaderspack.loaders
 
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.animation.Animation
 import android.widget.RelativeLayout
-import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircleView
 
 class MultipleRippleLoader : RippleLoader {
 
     var noOfRipples: Int = 3
-
-    var rippleDelay: Int = animationDuration / noOfRipples
 
     private lateinit var rippleCircles: Array<CircleView?>
 
@@ -81,26 +78,13 @@ class MultipleRippleLoader : RippleLoader {
     }
 
     override fun startLoading() {
-
         for (i in 0 until noOfRipples) {
-            var animSet = getAnimSet(1, (i * animationDuration) / noOfRipples)
-            rippleCircles[i]!!.startAnimation(animSet)
 
-            if (i == noOfRipples - 1) {
-                animSet.setAnimationListener(object : Animation.AnimationListener {
+            Handler().postDelayed(Runnable {
+                var animSet = getAnimSet()
+                rippleCircles[i]!!.startAnimation(animSet)
 
-                    override fun onAnimationEnd(animation: Animation?) {
-                        startLoading()
-                    }
-
-                    override fun onAnimationStart(animation: Animation?) {
-                    }
-
-                    override fun onAnimationRepeat(animation: Animation?) {
-                    }
-
-                })
-            }
+            }, ((i * animationDuration) / noOfRipples).toLong())
         }
     }
 

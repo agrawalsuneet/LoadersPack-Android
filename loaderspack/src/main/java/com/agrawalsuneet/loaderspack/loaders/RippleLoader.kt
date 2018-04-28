@@ -112,28 +112,30 @@ open class RippleLoader : LinearLayout, LoaderContract {
     }
 
     open fun startLoading() {
-        var animSet = getAnimSet(Animation.INFINITE, 0)
+        var animSet = getAnimSet()
         circleView.startAnimation(animSet)
     }
 
-    protected fun getAnimSet(repeatCount: Int, startOffset: Int): Animation {
+    protected fun getAnimSet(): Animation {
         var set = AnimationSet(true)
 
         val scaleAnim = ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        scaleAnim.duration = animationDuration.toLong()
+        scaleAnim.repeatCount = Animation.INFINITE
+
 
         val alphaAnim = AlphaAnimation(fromAlpha, toAlpha)
+        alphaAnim.duration = animationDuration.toLong()
+        alphaAnim.repeatCount = Animation.INFINITE
 
         set.addAnimation(scaleAnim)
         set.addAnimation(alphaAnim)
 
         set.duration = animationDuration.toLong()
-        set.fillAfter = true
         set.interpolator = interpolator
-        set.repeatCount = repeatCount
+        set.repeatCount = Animation.INFINITE
         set.repeatMode = Animation.RESTART
-
-        set.startOffset = startOffset.toLong()
 
         return set
     }
