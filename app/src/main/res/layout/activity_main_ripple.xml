@@ -11,7 +11,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:ripple_circleInitialRadius="70dp" />
+        app:ripple_circleInitialRadius="34dp" />
 
     <!--<com.agrawalsuneet.loaderspack.loaders.ClockLoader
         android:layout_width="180dp"
@@ -33,8 +33,8 @@
         app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintBottom_toBottomOf="parent"

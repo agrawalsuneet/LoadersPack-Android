@@ -35,9 +35,20 @@
         <attr name="ripple_circleColor" format="color" />
         <attr name="ripple_fromAlpha" format="float" />
         <attr name="ripple_toAplha" format="float" />
-        <attr name="ripple_startLoadingDefault" format="boolean" />
         <attr name="ripple_animDuration" format="integer" />
         <attr name="ripple_interpolator" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MultipleRippleLoader">
+        <attr name="multipleripple_circleInitialRadius" format="dimension" />
+        <attr name="multipleripple_circleColor" format="color" />
+
+        <attr name="multipleripple_noOfRipples" format="integer" />
+
+        <attr name="multipleripple_fromAlpha" format="float" />
+        <attr name="multipleripple_toAplha" format="float" />
+        <attr name="multipleripple_animDuration" format="integer" />
+        <attr name="multipleripple_interpolator" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="RotatingCircularSticksLoader">
