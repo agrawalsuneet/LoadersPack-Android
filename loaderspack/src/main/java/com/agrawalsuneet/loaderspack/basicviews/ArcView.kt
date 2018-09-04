@@ -8,11 +8,10 @@ import android.view.View
 import com.agrawalsuneet.loaderspack.R
 
 /**
- * Created by suneet on 11/15/17.
+ * Created by agrawalsuneet on 9/4/18.
  */
 
-
-class CircleView : View {
+class ArcView : View {
 
     var circleRadius: Int = 30
     var strokeWidth: Int = 0
@@ -66,6 +65,7 @@ class CircleView : View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         val widthHeight = (2 * (circleRadius)) + strokeWidth
+
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
