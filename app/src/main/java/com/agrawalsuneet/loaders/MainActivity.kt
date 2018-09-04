@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_multipleripple)
+        setContentView(R.layout.activity_main_clock)
 
         supportActionBar?.setTitle("MultipleRippleLoader")
 

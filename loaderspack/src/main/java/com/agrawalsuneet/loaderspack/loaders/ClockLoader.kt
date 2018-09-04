@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
-import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
@@ -225,7 +224,7 @@ class ClockLoader : View, LoaderContract {
             hourHandAngle -= 360.0f
         }
 
-        ViewCompat.postInvalidateOnAnimation(this)
+        postInvalidateOnAnimation()
     }
 
 }
