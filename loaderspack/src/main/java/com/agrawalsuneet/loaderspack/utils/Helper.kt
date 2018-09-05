@@ -1,6 +1,7 @@
 package com.agrawalsuneet.dotsloader.utils
 
 import android.graphics.Color
+import java.util.*
 
 /**
  * Created by suneet on 17/7/17.
@@ -16,4 +17,7 @@ object Helper {
         return Color.argb(alpha, red, green, blue)
     }
 }
+
+fun ClosedRange<Int>.random() =
+        Random().nextInt((endInclusive + 1) - start) + start
 
