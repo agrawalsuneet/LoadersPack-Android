@@ -137,7 +137,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 ```
         RippleLoader ripple = new RippleLoader(this);
         ripple.setCircleInitialRadius(80);
-        ripple.setArcColor(getResources().getColor(R.color.red));
+        ripple.setCircleColor(getResources().getColor(R.color.red));
         ripple.setFromAlpha(1.0f);
         ripple.setToAlpha(0.01f);
         ripple.setAnimationDuration(1000);
