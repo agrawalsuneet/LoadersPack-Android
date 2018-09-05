@@ -8,7 +8,7 @@ repositories {
 ext {
     PUBLISH_GROUP_ID = 'com.agrawalsuneet.androidlibs'
     PUBLISH_ARTIFACT_ID = 'loaderspack'
-    PUBLISH_VERSION = '0.4'
+    PUBLISH_VERSION = '0.5'
 }
 
 android {
@@ -19,8 +19,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 4
-        versionName "0.4"
+        versionCode 5
+        versionName "0.5"
     }
 
     buildTypes {

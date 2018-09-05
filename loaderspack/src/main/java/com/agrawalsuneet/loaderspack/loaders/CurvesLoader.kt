@@ -37,6 +37,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
     private var calWidthHeight: Int = 0
     private val curvesArray: ArrayList<ArcView> = arrayListOf()
 
+
     constructor(context: Context) : super(context) {
         initView()
     }
@@ -48,6 +49,16 @@ class CurvesLoader : LinearLayout, LoaderContract {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initView()
+    }
+
+    constructor(context: Context, noOfCurves: Int, outermostCurveRadius: Int, curveWidth: Int, distanceBetweenCurves: Int, curveSweepAngle: Float, curveColor: Int) : super(context) {
+        this.noOfCurves = noOfCurves
+        this.outermostCurveRadius = outermostCurveRadius
+        this.curveWidth = curveWidth
+        this.distanceBetweenCurves = distanceBetweenCurves
+        this.curveSweepAngle = curveSweepAngle
+        this.curveColor = curveColor
         initView()
     }
 
@@ -70,7 +81,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
         this.animDuration = typedArray.getInt(R.styleable.CurvesLoader_curves_animDurtion, 1500)
 
         this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.MultipleRippleLoader_multipleripple_interpolator,
+                typedArray.getResourceId(R.styleable.CurvesLoader_curves_interpolator,
                         android.R.anim.linear_interpolator))
 
         typedArray.recycle()
@@ -141,7 +152,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
     private fun startLoading() {
 
         for (i in 0..curvesArray.lastIndex) {
-            val arcView = curvesArray.get(i)
+            val arcView = curvesArray[i]
             val anim = getRotateAnim(i, arcView)
             arcView.startAnimation(anim)
         }

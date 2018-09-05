@@ -26,6 +26,10 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY
 ![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
 
 
+### CurvesLoader
+![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
+
+
 please check a better quality demo [here](https://youtu.be/JDkMXfXEtVI)
 
 
@@ -34,7 +38,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:loaderspack:0.4'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 ```
 
 ### ClockLoader
@@ -277,6 +281,59 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.4'
         
                 container.addView(multipleRippleLoader);
 ```
+
+### CurvesLoaders
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:curves_animDurtion="1000"
+        app:curves_curveColor="@color/blue_selected"
+        app:curves_curveSweepAngle="160"
+        app:curves_curveWidth="5dp"
+        app:curves_distanceBetweenCurves="5dp"
+        app:curves_interpolator="@android:anim/linear_interpolator"
+        app:curves_noOfCurves="5"
+        app:curves_outermostCurveRadius="80dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val curvesLoader = CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected))
+                        .apply {
+                            animDuration = 1000
+                            interpolator = LinearInterpolator()
+                        }
+
+                containerLayout.addView(curvesLoader)
+```
+
+* Java
+```
+        CurvesLoader curvesLoader = new CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected));
+
+
+                curvesLoader.setAnimDuration(1000);
+                curvesLoader.setInterpolator(new LinearInterpolator());
+
+                container.addView(curvesLoader);
+```
+
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
