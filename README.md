@@ -8,20 +8,18 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
 
-please check a better quality demo [here](https://youtu.be/9YSQ6UAm-vQ)
 
 ### RippleLoader
 ![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
 ### RotatingCircularSticksLoader
 ![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY_jT3o)
 
 ### CircularSticksLoader
 ![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
+
 
 ### MultipleRippleLoader
 ![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
@@ -30,8 +28,6 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY
 ### CurvesLoader
 ![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
 
-
-please check a better quality demo [here](https://youtu.be/JDkMXfXEtVI)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
