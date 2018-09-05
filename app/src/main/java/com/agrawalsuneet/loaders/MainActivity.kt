@@ -1,10 +1,10 @@
 package com.agrawalsuneet.loaders
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.animation.LinearInterpolator
-import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_clock)
+        setContentView(R.layout.main_curves)
 
         supportActionBar?.setTitle("MultipleRippleLoader")
 
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRippleLoader() {
         val ripple = RippleLoader(baseContext)/*.apply {
             circleInitialRadius = 80
-            circleColor = resources.getColor(R.color.black)
+            arcColor = resources.getColor(R.color.black)
             fromAlpha = 1.0f
             toAlpha = 0f
             animationDuration = 1000

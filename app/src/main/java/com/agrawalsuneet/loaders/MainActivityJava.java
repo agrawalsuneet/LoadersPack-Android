@@ -82,6 +82,8 @@ public class MainActivityJava extends AppCompatActivity {
 
 
         container.addView(multipleRippleLoader);
+
+        String str = new String("asd");
     }
 
 

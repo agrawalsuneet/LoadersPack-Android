@@ -3,6 +3,7 @@ package com.agrawalsuneet.loaderspack.basicviews
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
@@ -13,81 +14,97 @@ import com.agrawalsuneet.loaderspack.R
 
 class ArcView : View {
 
-    var circleRadius: Int = 30
-    var strokeWidth: Int = 0
+    var arcRadius: Int = 60
+    var arcWidth: Int = 10
 
-    var circleColor: Int = 0
-    var drawOnlyStroke: Boolean = false
+    var startAngle: Float = 0.0f
+
+    var sweepAngle: Float = 180.0f
+
+    var arcColor: Int = resources.getColor(R.color.red)
+    var drawOnlyStroke: Boolean = true
 
     private val paint: Paint = Paint()
+    private var centerPoint: Float = 0.0f
+    private var acrRect = RectF()
 
-    constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
-        this.circleRadius = circleRadius
-        this.circleColor = circleColor
-    }
-
-    constructor(context: Context, circleRadius: Int, circleColor: Int, drawOnlyStroke: Boolean, strokeWidth: Int) : super(context) {
-        this.circleRadius = circleRadius
-        this.circleColor = circleColor
-
+    constructor(context: Context?, arcRadius: Int, arcWidth: Int, startAngle: Float, sweepAngle: Float, arcColor: Int, drawOnlyStroke: Boolean) : super(context) {
+        this.arcRadius = arcRadius
+        this.arcWidth = arcWidth
+        this.startAngle = startAngle
+        this.sweepAngle = sweepAngle
+        this.arcColor = arcColor
         this.drawOnlyStroke = drawOnlyStroke
-        this.strokeWidth = strokeWidth
+
+        initValues()
     }
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        initValues()
+    }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
+        initValues()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initValues()
     }
 
 
     fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcView, 0, 0)
 
-        this.circleRadius = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
-        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, 0)
+        this.arcRadius = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcRadius, 60)
+        this.arcWidth = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcWidth, 10)
 
-        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
+        this.startAngle = typedArray.getFloat(R.styleable.ArcView_startAngle, 0.0f)
+        this.sweepAngle = typedArray.getFloat(R.styleable.ArcView_sweepAngle, 180.0f)
 
-        if (drawOnlyStroke) {
-            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleStrokeWidth, 0)
-        }
+        this.arcColor = typedArray.getColor(R.styleable.ArcView_arcColor, resources.getColor(R.color.red))
+
+        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.ArcView_drawOnlyStroke, true)
 
         typedArray.recycle()
+    }
+
+    private fun initValues() {
+        centerPoint = (arcRadius + (arcWidth / 2)).toFloat()
+
+        acrRect = RectF().apply {
+            left = centerPoint - arcRadius
+            right = centerPoint + arcRadius
+            top = centerPoint - arcRadius
+            bottom = centerPoint + arcRadius
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val widthHeight = (2 * (circleRadius)) + strokeWidth
-
+        val widthHeight = (2 * (arcRadius)) + arcWidth
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         paint.isAntiAlias = true
 
         if (drawOnlyStroke) {
             paint.style = Paint.Style.STROKE
-            paint.strokeWidth = strokeWidth.toFloat()
+            paint.strokeWidth = arcWidth.toFloat()
+            paint.strokeCap = Paint.Cap.ROUND
         } else {
             paint.style = Paint.Style.FILL
         }
-        paint.color = circleColor
+        paint.color = arcColor
 
-        //adding half of strokeWidth because
-        //the stroke will be half inside the drawing circle and half outside
-        val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
-
-        canvas!!.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+        canvas.drawArc(acrRect, startAngle, sweepAngle, false, paint)
     }
 
 

@@ -17,7 +17,7 @@ class CircleView : View {
     var circleRadius: Int = 30
     var strokeWidth: Int = 0
 
-    var circleColor: Int = 0
+    var circleColor: Int = resources.getColor(android.R.color.holo_red_light)
     var drawOnlyStroke: Boolean = false
 
     private val paint: Paint = Paint()
@@ -51,7 +51,7 @@ class CircleView : View {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
 
         this.circleRadius = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
-        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, 0)
+        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, resources.getColor(android.R.color.holo_red_light))
 
         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
 
@@ -83,7 +83,7 @@ class CircleView : View {
         }
         paint.color = circleColor
 
-        //adding half of strokeWidth because
+        //adding half of arcWidth because
         //the stroke will be half inside the drawing circle and half outside
         val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
 

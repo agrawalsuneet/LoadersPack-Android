@@ -8,6 +8,16 @@
         <attr name="circleStrokeWidth" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="ArcView">
+        <attr name="arcRadius" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="startAngle" format="float" />
+        <attr name="sweepAngle" format="float" />
+        <attr name="arcColor" format="color" />
+        <attr name="drawOnlyStroke" format="boolean" />
+    </declare-styleable>
+
+
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
         <attr name="sticksbase_outerCircleRadius" format="dimension" />
