@@ -4,7 +4,19 @@
     <declare-styleable name="CircleView">
         <attr name="circleRadius" format="dimension" />
         <attr name="circleColor" format="color" />
+        <attr name="circleDrawOnlystroke" format="boolean" />
+        <attr name="circleStrokeWidth" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ArcView">
+        <attr name="arcRadius" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="startAngle" format="float" />
+        <attr name="sweepAngle" format="float" />
+        <attr name="arcColor" format="color" />
+        <attr name="drawOnlyStroke" format="boolean" />
+    </declare-styleable>
+
 
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
@@ -75,6 +87,18 @@
         <attr name="circularsticks_secondShadowColor" format="color" />
 
         <attr name="circularsticks_animDuration" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CurvesLoader">
+        <attr name="curves_noOfCurves" format="integer" />
+        <attr name="curves_outermostCurveRadius" format="dimension" />
+        <attr name="curves_curveWidth" format="dimension" />
+        <attr name="curves_distanceBetweenCurves" format="dimension" />
+        <attr name="curves_curveSweepAngle" format="float" />
+        <attr name="curves_curveColor" format="color" />
+        <attr name="curves_animDurtion" format="integer" />
+        <attr name="curves_interpolator" format="reference" />
     </declare-styleable>
 
 </resources>

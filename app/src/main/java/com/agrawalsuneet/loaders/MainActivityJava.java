@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader;
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
+import com.agrawalsuneet.loaderspack.loaders.CurvesLoader;
 import com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader;
 
 /**
@@ -23,7 +24,7 @@ public class MainActivityJava extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_clock);
 
 
         //Clock Loader
@@ -82,6 +83,21 @@ public class MainActivityJava extends AppCompatActivity {
 
 
         container.addView(multipleRippleLoader);
+
+        CurvesLoader curvesLoader = new CurvesLoader(
+                this,
+                4,
+                100,
+                10,
+                10,
+                160.0f,
+                ContextCompat.getColor(this, R.color.blue_selected));
+
+
+        curvesLoader.setAnimDuration(1000);
+        curvesLoader.setInterpolator(new LinearInterpolator());
+
+        container.addView(curvesLoader);
     }
 
 

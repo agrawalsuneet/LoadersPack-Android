@@ -1,32 +1,33 @@
 # LoadersPack
-> Android Loaders            [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59f8e6a0458f2b00011be986&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59f8e6a0458f2b00011be986/build/latest?branch=master)
+> Android Loaders
 
 > A replacement of default android material progressbar with loaders
 
+latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/loaderspack/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/loaderspack/_latestVersion)
 
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
 
-please check a better quality demo [here](https://youtu.be/9YSQ6UAm-vQ)
 
 ### RippleLoader
 ![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=Za3g5Yx2WjI)
 
 ### RotatingCircularSticksLoader
 ![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY_jT3o)
 
 ### CircularSticksLoader
 ![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
+
 
 ### MultipleRippleLoader
 ![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
 
 
-please check a better quality demo [here](https://youtu.be/JDkMXfXEtVI)
+### CurvesLoader
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
@@ -34,7 +35,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:loaderspack:0.4'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 ```
 
 ### ClockLoader
@@ -277,6 +278,59 @@ compile 'com.agrawalsuneet.androidlibs:loaderspack:0.4'
         
                 container.addView(multipleRippleLoader);
 ```
+
+### CurvesLoaders
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:curves_animDurtion="1000"
+        app:curves_curveColor="@color/blue_selected"
+        app:curves_curveSweepAngle="160"
+        app:curves_curveWidth="5dp"
+        app:curves_distanceBetweenCurves="5dp"
+        app:curves_interpolator="@android:anim/linear_interpolator"
+        app:curves_noOfCurves="5"
+        app:curves_outermostCurveRadius="80dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val curvesLoader = CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected))
+                        .apply {
+                            animDuration = 1000
+                            interpolator = LinearInterpolator()
+                        }
+
+                containerLayout.addView(curvesLoader)
+```
+
+* Java
+```
+        CurvesLoader curvesLoader = new CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected));
+
+
+                curvesLoader.setAnimDuration(1000);
+                curvesLoader.setInterpolator(new LinearInterpolator());
+
+                container.addView(curvesLoader);
+```
+
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).

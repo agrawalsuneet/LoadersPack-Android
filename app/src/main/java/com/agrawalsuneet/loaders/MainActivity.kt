@@ -3,8 +3,8 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
 
@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_multipleripple)
+        setContentView(R.layout.main_curves)
 
-        supportActionBar?.setTitle("MultipleRippleLoader")
+        supportActionBar?.setTitle("CurvesLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -26,6 +26,25 @@ class MainActivity : AppCompatActivity() {
         //initCircularSticksLoader()
 
         //initMultipleRippleLoader()
+
+        //initCurvesLoader()
+    }
+
+    private fun initCurvesLoader() {
+        val curvesLoader = CurvesLoader(
+                this,
+                4,
+                100,
+                10,
+                10,
+                160.0f,
+                ContextCompat.getColor(this, R.color.blue_selected))
+                .apply {
+                    animDuration = 1000
+                    interpolator = LinearInterpolator()
+                }
+
+        containerLayout.addView(curvesLoader)
     }
 
     private fun initMultipleRippleLoader() {
