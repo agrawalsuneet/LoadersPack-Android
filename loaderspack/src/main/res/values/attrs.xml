@@ -89,4 +89,16 @@
         <attr name="circularsticks_animDuration" format="integer" />
     </declare-styleable>
 
+
+    <declare-styleable name="CurvesLoader">
+        <attr name="curves_noOfCurves" format="integer" />
+        <attr name="curves_outermostCurveRadius" format="dimension" />
+        <attr name="curves_curveWidth" format="dimension" />
+        <attr name="curves_distanceBetweenCurves" format="dimension" />
+        <attr name="curves_curveSweepAngle" format="float" />
+        <attr name="curves_curveColor" format="color" />
+        <attr name="curves_animDurtion" format="integer" />
+        <attr name="curves_interpolator" format="reference" />
+    </declare-styleable>
+
 </resources>

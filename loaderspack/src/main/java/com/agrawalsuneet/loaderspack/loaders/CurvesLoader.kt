@@ -4,13 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
-import android.view.animation.Animation
-import android.view.animation.Interpolator
-import android.view.animation.LinearInterpolator
-import android.view.animation.RotateAnimation
+import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.utils.random
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.ArcView
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 import java.util.*
@@ -23,9 +21,9 @@ class CurvesLoader : LinearLayout, LoaderContract {
 
     var noOfCurves: Int = 4
 
-    var outermostCurveRadius: Int = 300
-    var curveWidth: Int = 20
-    var distanceBetweenCurve: Int = 40
+    var outermostCurveRadius: Int = 100
+    var curveWidth: Int = 10
+    var distanceBetweenCurves: Int = 10
     var curveSweepAngle: Float = 160.0f
 
     var curveColor: Int = resources.getColor(android.R.color.holo_red_light)
@@ -55,21 +53,27 @@ class CurvesLoader : LinearLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CurvesLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
+        this.noOfCurves = typedArray.getInteger(R.styleable.CurvesLoader_curves_noOfCurves, 4)
 
-        this.distanceMultiplier = typedArray.getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
+        this.outermostCurveRadius = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_outermostCurveRadius, 100)
 
-        this.firsDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
-                resources.getColor(R.color.loader_selected))
+        this.curveWidth = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_curveWidth, 10)
+        this.distanceBetweenCurves = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_distanceBetweenCurves, 10)
 
-        this.secondDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
-                resources.getColor(R.color.loader_selected))
+        this.curveSweepAngle = typedArray.getFloat(R.styleable.CurvesLoader_curves_curveSweepAngle, 160.0f)
 
-        this.animDuration = typedArray.getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
+        this.curveColor = typedArray.getColor(R.styleable.CurvesLoader_curves_curveColor,
+                resources.getColor(android.R.color.holo_red_light))
 
-        typedArray.recycle()*/
+        this.animDuration = typedArray.getInt(R.styleable.CurvesLoader_curves_animDurtion, 1500)
+
+        this.interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.MultipleRippleLoader_multipleripple_interpolator,
+                        android.R.anim.linear_interpolator))
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -101,7 +105,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
 
         for (i in 0 until noOfCurves) {
 
-            val circleRadius = outermostCurveRadius - (i * curveWidth) - (i * distanceBetweenCurve)
+            val circleRadius = outermostCurveRadius - (i * curveWidth) - (i * distanceBetweenCurves)
 
             val arcView = ArcView(context, circleRadius, curveWidth, startAngle, curveSweepAngle, curveColor, true)
             startAngle += (10..80).random()
@@ -152,7 +156,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
                 (arcView.width / 2).toFloat(), (arcView.height / 2).toFloat())
         rotateAnimation.duration = animDuration.toLong()
         rotateAnimation.fillAfter = true
-        rotateAnimation.interpolator = LinearInterpolator()
+        rotateAnimation.interpolator = interpolator
         rotateAnimation.repeatCount = Animation.INFINITE
 
         return rotateAnimation

@@ -6,11 +6,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.agrawalsuneet.loaderspack.basicviews.ArcView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp" />
-
     <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
