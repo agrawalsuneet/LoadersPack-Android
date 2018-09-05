@@ -3,6 +3,7 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRippleLoader() {
         val ripple = RippleLoader(baseContext)/*.apply {
             circleInitialRadius = 80
-            arcColor = resources.getColor(R.color.black)
+            circleColor = resources.getColor(R.color.black)
             fromAlpha = 1.0f
             toAlpha = 0f
             animationDuration = 1000
