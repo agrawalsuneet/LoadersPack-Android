@@ -1,8 +1,9 @@
 # LoadersPack
-> Android Loaders            [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59f8e6a0458f2b00011be986&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59f8e6a0458f2b00011be986/build/latest?branch=master)
+> Android Loaders
 
 > A replacement of default android material progressbar with loaders
 
+latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/loaderspack/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/loaderspack/_latestVersion)
 
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
@@ -27,7 +28,7 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=mFl5NY
 
 
 ### CurvesLoader
-![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
 
 
 please check a better quality demo [here](https://youtu.be/JDkMXfXEtVI)
