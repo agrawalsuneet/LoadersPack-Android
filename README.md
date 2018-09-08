@@ -285,7 +285,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:curves_animDurtion="1000"
+        app:curves_animDuration="1000"
         app:curves_curveColor="@color/blue_selected"
         app:curves_curveSweepAngle="160"
         app:curves_curveWidth="5dp"
