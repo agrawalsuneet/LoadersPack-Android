@@ -11,6 +11,7 @@ import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader;
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
 import com.agrawalsuneet.loaderspack.loaders.CurvesLoader;
 import com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader;
+import com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -98,6 +99,19 @@ public class MainActivityJava extends AppCompatActivity {
         curvesLoader.setInterpolator(new LinearInterpolator());
 
         container.addView(curvesLoader);
+
+
+        RingAndCircleLoader ringAndCircleLoader = new RingAndCircleLoader(
+                this,
+                20,
+                100,
+                10,
+                ContextCompat.getColor(this, R.color.blue),
+                ContextCompat.getColor(this, R.color.blue_delfault));
+
+        ringAndCircleLoader.setAnimDuration(1000);
+
+        container.addView(ringAndCircleLoader);
     }
 
 

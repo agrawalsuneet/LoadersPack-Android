@@ -8,7 +8,7 @@ repositories {
 ext {
     PUBLISH_GROUP_ID = 'com.agrawalsuneet.androidlibs'
     PUBLISH_ARTIFACT_ID = 'loaderspack'
-    PUBLISH_VERSION = '0.5'
+    PUBLISH_VERSION = '0.6'
 }
 
 android {
@@ -19,8 +19,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 5
-        versionName "0.5"
+        versionCode 6
+        versionName "0.6"
     }
 
     buildTypes {
@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
