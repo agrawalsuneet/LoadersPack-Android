@@ -29,6 +29,9 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
 
 
+### RingAndCircleLoader
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
@@ -285,7 +288,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:curves_animDurtion="1000"
+        app:curves_animDuration="1000"
         app:curves_curveColor="@color/blue_selected"
         app:curves_curveSweepAngle="160"
         app:curves_curveWidth="5dp"
@@ -331,6 +334,51 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
                 container.addView(curvesLoader);
 ```
 
+
+### RingAndCircleLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"g
+            app:ringandcircle_animDuration="800"
+            app:ringandcircle_circleColor="@color/green"
+            app:ringandcircle_circleRadius="6dp"
+            app:ringandcircle_ringColor="@color/green_default"
+            app:ringandcircle_ringRadius="20dp"
+            app:ringandcircle_ringWidth="4dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val ringAndCircleLoader = RingAndCircleLoader(
+                        this,
+                        20,
+                        100,
+                        10,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.blue_delfault))
+                        .apply {
+                            animDuration = 1000
+                        }
+
+                containerLayout.addView(ringAndCircleLoader)
+```
+
+* Java
+```
+        RingAndCircleLoader ringAndCircleLoader = new RingAndCircleLoader(
+                        this,
+                        20,
+                        100,
+                        10,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.blue_delfault));
+
+                ringAndCircleLoader.setAnimDuration(1000);
+
+                container.addView(ringAndCircleLoader);
+```
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).

@@ -97,8 +97,19 @@
         <attr name="curves_distanceBetweenCurves" format="dimension" />
         <attr name="curves_curveSweepAngle" format="float" />
         <attr name="curves_curveColor" format="color" />
-        <attr name="curves_animDurtion" format="integer" />
+        <attr name="curves_animDuration" format="integer" />
         <attr name="curves_interpolator" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RingAndCircleLoader">
+        <attr name="ringandcircle_circleRadius" format="dimension" />
+
+        <attr name="ringandcircle_ringRadius" format="dimension" />
+        <attr name="ringandcircle_ringWidth" format="dimension" />
+
+        <attr name="ringandcircle_circleColor" format="color" />
+        <attr name="ringandcircle_ringColor" format="color" />
+        <attr name="ringandcircle_animDuration" format="integer" />
     </declare-styleable>
 
 </resources>

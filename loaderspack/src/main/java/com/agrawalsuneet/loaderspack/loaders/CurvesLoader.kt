@@ -78,7 +78,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
         this.curveColor = typedArray.getColor(R.styleable.CurvesLoader_curves_curveColor,
                 resources.getColor(android.R.color.holo_red_light))
 
-        this.animDuration = typedArray.getInt(R.styleable.CurvesLoader_curves_animDurtion, 1500)
+        this.animDuration = typedArray.getInt(R.styleable.CurvesLoader_curves_animDuration, 1500)
 
         this.interpolator = AnimationUtils.loadInterpolator(context,
                 typedArray.getResourceId(R.styleable.CurvesLoader_curves_interpolator,
