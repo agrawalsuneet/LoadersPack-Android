@@ -30,7 +30,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### RingAndCircleLoader
-![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+![ringandcircleloader](https://user-images.githubusercontent.com/12999622/45266388-59b2ad00-b452-11e8-9e51-28cdb5c538b3.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
@@ -38,7 +38,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.6'
 ```
 
 ### ClockLoader
