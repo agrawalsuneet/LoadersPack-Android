@@ -3,7 +3,6 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
@@ -28,6 +27,23 @@ class MainActivity : AppCompatActivity() {
         //initMultipleRippleLoader()
 
         //initCurvesLoader()
+
+        //initRingAndCircleLoader()
+    }
+
+    private fun initRingAndCircleLoader() {
+        val ringAndCircleLoader = RingAndCircleLoader(
+                this,
+                20,
+                100,
+                10,
+                ContextCompat.getColor(this, R.color.blue),
+                ContextCompat.getColor(this, R.color.blue_delfault))
+                .apply {
+                    animDuration = 1000
+                }
+
+        containerLayout.addView(ringAndCircleLoader)
     }
 
     private fun initCurvesLoader() {

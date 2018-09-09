@@ -351,38 +351,33 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
 ##### Through Code
 * Kotlin
 ```
-        val curvesLoader = CurvesLoader(
+        val ringAndCircleLoader = RingAndCircleLoader(
                         this,
-                        4,
+                        20,
                         100,
                         10,
-                        10,
-                        160.0f,
-                        ContextCompat.getColor(this, R.color.blue_selected))
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.blue_delfault))
                         .apply {
                             animDuration = 1000
-                            interpolator = LinearInterpolator()
                         }
 
-                containerLayout.addView(curvesLoader)
+                containerLayout.addView(ringAndCircleLoader)
 ```
 
 * Java
 ```
-        CurvesLoader curvesLoader = new CurvesLoader(
+        RingAndCircleLoader ringAndCircleLoader = new RingAndCircleLoader(
                         this,
-                        4,
+                        20,
                         100,
                         10,
-                        10,
-                        160.0f,
-                        ContextCompat.getColor(this, R.color.blue_selected));
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.blue_delfault));
 
+                ringAndCircleLoader.setAnimDuration(1000);
 
-                curvesLoader.setAnimDuration(1000);
-                curvesLoader.setInterpolator(new LinearInterpolator());
-
-                container.addView(curvesLoader);
+                container.addView(ringAndCircleLoader);
 ```
 
 
