@@ -34,6 +34,7 @@ class RingAndCircleLoader : LinearLayout, LoaderContract {
 
     private var calWidthHeight: Int = 0
 
+
     constructor(context: Context) : super(context) {
         initView()
     }
@@ -45,6 +46,15 @@ class RingAndCircleLoader : LinearLayout, LoaderContract {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initView()
+    }
+
+    constructor(context: Context?, circleRadius: Int, ringRadius: Int, ringWidth: Int, circleColor: Int, ringColor: Int) : super(context) {
+        this.circleRadius = circleRadius
+        this.ringRadius = ringRadius
+        this.ringWidth = ringWidth
+        this.circleColor = circleColor
+        this.ringColor = ringColor
         initView()
     }
 

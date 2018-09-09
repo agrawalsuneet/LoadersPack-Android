@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="horizontal">
 
+        <com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:ringandcircle_animDuration="800"
+            app:ringandcircle_circleColor="@color/red"
+            app:ringandcircle_circleRadius="6dp"
+            app:ringandcircle_ringColor="@color/red_default"
+            app:ringandcircle_ringRadius="20dp"
+            app:ringandcircle_ringWidth="4dp" />
 
-    </LinearLayout>-->
+        <com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:ringandcircle_animDuration="800"
+            app:ringandcircle_circleColor="@color/amber"
+            app:ringandcircle_circleRadius="6dp"
+            app:ringandcircle_ringColor="@color/amber_default"
+            app:ringandcircle_ringRadius="20dp"
+            app:ringandcircle_ringWidth="4dp" />
+
+        <com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:ringandcircle_animDuration="800"
+            app:ringandcircle_circleColor="@color/green"
+            app:ringandcircle_circleRadius="6dp"
+            app:ringandcircle_ringColor="@color/green_default"
+            app:ringandcircle_ringRadius="20dp"
+            app:ringandcircle_ringWidth="4dp" />
+
+
+    </LinearLayout>
 
 
     <com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:ringandcircle_animDuration="1500"
+        app:ringandcircle_circleColor="@color/blue_selected"
+        app:ringandcircle_circleRadius="10dp"
+        app:ringandcircle_ringColor="@color/blue_delfault"
+        app:ringandcircle_ringRadius="80dp"
+        app:ringandcircle_ringWidth="4dp" />
+
+
+    <com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:ringandcircle_animDuration="1000"
+        app:ringandcircle_circleColor="@android:color/darker_gray"
+        app:ringandcircle_circleRadius="8dp"
+        app:ringandcircle_ringColor="@color/grey_default"
+        app:ringandcircle_ringRadius="60dp"
+        app:ringandcircle_ringWidth="4dp" />
 
 
 </LinearLayout>

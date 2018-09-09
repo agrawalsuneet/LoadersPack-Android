@@ -29,6 +29,9 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
 
 
+### RingAndCircleLoader
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
@@ -331,6 +334,56 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.5'
                 container.addView(curvesLoader);
 ```
 
+
+### RingAndCircleLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"g
+            app:ringandcircle_animDuration="800"
+            app:ringandcircle_circleColor="@color/green"
+            app:ringandcircle_circleRadius="6dp"
+            app:ringandcircle_ringColor="@color/green_default"
+            app:ringandcircle_ringRadius="20dp"
+            app:ringandcircle_ringWidth="4dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val curvesLoader = CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected))
+                        .apply {
+                            animDuration = 1000
+                            interpolator = LinearInterpolator()
+                        }
+
+                containerLayout.addView(curvesLoader)
+```
+
+* Java
+```
+        CurvesLoader curvesLoader = new CurvesLoader(
+                        this,
+                        4,
+                        100,
+                        10,
+                        10,
+                        160.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected));
+
+
+                curvesLoader.setAnimDuration(1000);
+                curvesLoader.setInterpolator(new LinearInterpolator());
+
+                container.addView(curvesLoader);
+```
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).

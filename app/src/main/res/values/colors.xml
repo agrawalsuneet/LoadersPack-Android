@@ -6,10 +6,15 @@
 
     <color name="white">#ffffff</color>
     <color name="red">#ff0000</color>
+    <color name="red_default">#77ff0000</color>
     <color name="green">#00e500</color>
+    <color name="green_default">#7700e500</color>
     <color name="yellow">#ffff00</color>
     <color name="amber">#FFC200</color>
+    <color name="amber_default">#77FFC200</color>
 
     <color name="blue_selected">#2196F3</color>
     <color name="blue_delfault">#BBDEFB</color>
+
+    <color name="grey_default">#55A9A9A9</color>
 </resources>
