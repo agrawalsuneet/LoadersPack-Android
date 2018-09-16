@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_ringandcircle)
+        setContentView(R.layout.main_arcprogress)
 
-        supportActionBar?.setTitle("RingAndCircleLoader")
+        supportActionBar?.setTitle("ArcProgressLoader")
 
         containerLayout = findViewById(R.id.container)
 
