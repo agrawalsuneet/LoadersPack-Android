@@ -30,7 +30,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### RingAndCircleLoader
-![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+![ringandcircleloader](https://user-images.githubusercontent.com/12999622/45266388-59b2ad00-b452-11e8-9e51-28cdb5c538b3.gif)
 
 
 ### ArcProgressLoader
