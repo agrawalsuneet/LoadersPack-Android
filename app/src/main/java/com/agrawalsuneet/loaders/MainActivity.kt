@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_arcprogress)
+        setContentView(R.layout.main_fidget)
 
         supportActionBar?.setTitle("ArcProgressLoader")
 
