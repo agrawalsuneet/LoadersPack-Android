@@ -33,12 +33,16 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![ringandcircleloader](https://user-images.githubusercontent.com/12999622/45266388-59b2ad00-b452-11e8-9e51-28cdb5c538b3.gif)
 
 
+### ArcProgressLoader
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.6'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.7'
 ```
 
 ### ClockLoader
@@ -380,6 +384,49 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.6'
                 container.addView(ringAndCircleLoader);
 ```
 
+
+
+### ArcProgressLoader
+```
+<array name="colors_rgb">
+        <item>@color/red</item>
+        <item>@color/amber</item>
+        <item>@color/green</item>
+        <item>@color/grey</item>
+    </array>
+```
+
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:arcprogress_arcColorsArray="@array/colors_rgb"
+        app:arcprogress_arcRadius="60dp"
+        app:arcprogress_arcWidth="8dp"
+        app:arcprogress_incrementalAngle="7.0"
+        app:arcprogress_maxArcAngle="220.0" />
+```
+##### Through Code
+* Kotlin
+```
+         val arcProgressLoader = ArcProgressLoader(this,
+                        120, 20,
+                        10.0f, 180.0f,
+                        resources.getIntArray(R.array.colors_rgb))
+
+                containerLayout.addView(arcProgressLoader)
+```
+
+* Java
+```
+        ArcProgressLoader arcProgressLoader = new ArcProgressLoader(this,
+                        120, 20,
+                        10.0f, 180.0f,
+                        getResources().getIntArray(R.array.colors_rgb));
+
+                container.addView(arcProgressLoader);
+```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
