@@ -17,4 +17,29 @@
     <color name="blue_delfault">#BBDEFB</color>
 
     <color name="grey_default">#55A9A9A9</color>
+
+    <array name="colors_red">
+        <item>@color/red</item>
+    </array>
+
+    <array name="colors_amber">
+        <item>@color/amber</item>
+    </array>
+
+    <array name="colors_green">
+        <item>@color/green</item>
+    </array>
+
+    <array name="colors_rgb">
+        <item>@color/red</item>
+        <item>@color/amber</item>
+        <item>@color/green</item>
+        <item>@color/grey</item>
+    </array>
+
+    <array name="colors_blue">
+        <item>@color/blue_selected</item>
+        <item>@color/blue_delfault</item>
+    </array>
+
 </resources>
