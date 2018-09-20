@@ -112,4 +112,14 @@
         <attr name="ringandcircle_animDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="ArcProgressLoader">
+        <attr name="arcprogress_arcRadius" format="dimension" />
+        <attr name="arcprogress_arcWidth" format="dimension" />
+
+        <attr name="arcprogress_incrementalAngle" format="float" />
+        <attr name="arcprogress_maxArcAngle" format="float" />
+
+        <attr name="arcprogress_arcColorsArray" format="reference" />
+    </declare-styleable>
+
 </resources>
