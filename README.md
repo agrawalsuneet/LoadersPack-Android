@@ -34,7 +34,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### ArcProgressLoader
-![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+![arcprogressloader](https://user-images.githubusercontent.com/12999622/45809206-3fe05800-bce5-11e8-90ef-f68e46de64cc.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
