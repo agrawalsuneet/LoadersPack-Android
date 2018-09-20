@@ -40,6 +40,7 @@ class ArcProgressLoader : View, LoaderContract {
     private var endAngle: Float = ZeroAngle + incrementalAngle
     private var colorIndex: Int = 0
 
+
     constructor(context: Context) : super(context) {
         initValues()
     }
@@ -54,6 +55,15 @@ class ArcProgressLoader : View, LoaderContract {
         initValues()
     }
 
+    constructor(context: Context, arcRadius: Int, arcWidth: Int, incrementalAngle: Float, maxArcAngle: Float, arcColorsArray: IntArray) : super(context) {
+        this.arcRadius = arcRadius
+        this.arcWidth = arcWidth
+        this.incrementalAngle = incrementalAngle
+        this.maxArcAngle = maxArcAngle
+        this.arcColorsArray = arcColorsArray
+        initValues()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcProgressLoader)
@@ -65,7 +75,6 @@ class ArcProgressLoader : View, LoaderContract {
         incrementalAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_incrementalAngle, 6.0f)
 
         maxArcAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_maxArcAngle, 200.0f)
-
 
         val colorsArrayId = typedArray.getResourceId(R.styleable.ArcProgressLoader_arcprogress_arcColorsArray, 0)
 

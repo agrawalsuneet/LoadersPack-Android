@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
+import com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader;
 import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader;
 import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
 import com.agrawalsuneet.loaderspack.loaders.CurvesLoader;
@@ -112,6 +113,14 @@ public class MainActivityJava extends AppCompatActivity {
         ringAndCircleLoader.setAnimDuration(1000);
 
         container.addView(ringAndCircleLoader);
+
+
+        ArcProgressLoader arcProgressLoader = new ArcProgressLoader(this,
+                120, 20,
+                10.0f, 180.0f,
+                getResources().getIntArray(R.array.colors_rgb));
+
+        container.addView(arcProgressLoader);
     }
 
 

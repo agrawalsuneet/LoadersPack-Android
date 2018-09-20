@@ -29,6 +29,18 @@ class MainActivity : AppCompatActivity() {
         //initCurvesLoader()
 
         //initRingAndCircleLoader()
+
+        //initArcProgressLoader()
+    }
+
+    private fun initArcProgressLoader() {
+        val arcProgressLoader = ArcProgressLoader(this,
+                120, 20,
+                10.0f, 180.0f,
+                resources.getIntArray(R.array.colors_rgb))
+
+        containerLayout.addView(arcProgressLoader)
+
     }
 
     private fun initRingAndCircleLoader() {
