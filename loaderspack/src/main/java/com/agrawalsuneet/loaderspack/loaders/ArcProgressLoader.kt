@@ -15,17 +15,15 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 class ArcProgressLoader : View, LoaderContract {
 
-
     var arcRadius: Int = 200
     var arcWidth: Int = 40
 
-    var increamentalAngle: Float = 6.0f
+    var incrementalAngle: Float = 6.0f
 
-    var maxArcAngle: Int = 270
+    var maxArcAngle: Float = 200.0f
         set(value) {
             field = if (value > 360) (value % 360) else value
         }
-
 
     var arcColorsArray: IntArray = intArrayOf(resources.getColor(R.color.red),
             resources.getColor(R.color.amber),
@@ -39,9 +37,8 @@ class ArcProgressLoader : View, LoaderContract {
     private val ThreeSixtyAngle: Float = 630.0f
 
     private var startAngle: Float = ZeroAngle
-    private var endAngle: Float = ZeroAngle + increamentalAngle
+    private var endAngle: Float = ZeroAngle + incrementalAngle
     private var colorIndex: Int = 0
-
 
     constructor(context: Context) : super(context) {
         initValues()
@@ -59,46 +56,28 @@ class ArcProgressLoader : View, LoaderContract {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SVGLoader)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcProgressLoader)
 
-        markerLength = typedArray.getDimensionPixelSize(R.styleable.SVGLoader_svgloader_markerLength, 50)
+        arcRadius = typedArray.getDimensionPixelSize(R.styleable.ArcProgressLoader_arcprogress_arcRadius, 200)
 
-        viewportWidth = typedArray.getFloat(R.styleable.SVGLoader_svgloader_viewportWidth, 500f)
-        viewportHeight = typedArray.getFloat(R.styleable.SVGLoader_svgloader_viewportHeight, 500f)
+        arcWidth = typedArray.getDimensionPixelSize(R.styleable.ArcProgressLoader_arcprogress_arcWidth, 40)
 
-        fillTime = typedArray.getInteger(R.styleable.SVGLoader_svgloader_fillTime, 1000)
-        timePerShape = typedArray.getInteger(R.styleable.SVGLoader_svgloader_timePerShape, 2000)
+        incrementalAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_incrementalAngle, 6.0f)
 
-        interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.SVGLoader_svgloader_interpolator,
-                        android.R.anim.decelerate_interpolator))
+        maxArcAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_maxArcAngle, 200.0f)
 
-        viewportWidth = viewportWidth
-        viewportHeight = viewportHeight
 
-        val shapesStringArrayId = typedArray.getResourceId(R.styleable.SVGLoader_svgloader_shapesStringArray, 0)
-        val traceColorArrayId = typedArray.getResourceId(R.styleable.SVGLoader_svgloader_traceColorsArray, 0)
-        val traceResidueColorsArrayId = typedArray.getResourceId(R.styleable.SVGLoader_svgloader_residueColorsArray, 0)
-        val fillColorsArrayId = typedArray.getResourceId(R.styleable.SVGLoader_svgloader_fillColorsArray, 0)
+        val colorsArrayId = typedArray.getResourceId(R.styleable.ArcProgressLoader_arcprogress_arcColorsArray, 0)
 
         typedArray.recycle()
 
-        if (shapesStringArrayId == 0) {
-            throw RuntimeException("You need to set the shapes string array first.")
-        } else if (fillColorsArrayId == 0) {
-            throw RuntimeException("You need to set the shapes color array first.")
+        if (colorsArrayId != 0) {
+            arcColorsArray = resources.getIntArray(colorsArrayId)
+
+            if (arcColorsArray == null || arcColorsArray.size < 1) {
+                throw RuntimeException("ArcProgressLoader : Please provide a valid, non-empty colors array")
+            }
         }
-
-        shapesStringArray = resources.getStringArray(shapesStringArrayId)
-        fillColorsArray = resources.getIntArray(fillColorsArrayId)
-
-        if (shapesStringArray.size > fillColorsArray.size) {
-            throw RuntimeException("Not enough colors to match all shapes. " +
-                    "Please check the size of shapes arting array and colors array")
-        }
-
-        traceColorsArray = validateColorsArray(traceColorArrayId, Color.BLACK, 1.0f)
-        traceResidueColorsArray = validateColorsArray(traceResidueColorsArrayId, Color.GRAY, 0.3f)*/
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -139,7 +118,7 @@ class ArcProgressLoader : View, LoaderContract {
         //both reached the end, restart with next color
         if (startAngle >= ThreeSixtyAngle && endAngle >= ThreeSixtyAngle) {
             startAngle = ZeroAngle
-            endAngle = ZeroAngle + increamentalAngle
+            endAngle = ZeroAngle + incrementalAngle
 
 
             if (colorIndex == arcColorsArray.lastIndex) {
@@ -154,22 +133,20 @@ class ArcProgressLoader : View, LoaderContract {
         //endangle didn't reach end, keep increasing
         else if (endAngle < ThreeSixtyAngle) {
 
-            endAngle += increamentalAngle
+            endAngle += incrementalAngle
 
             //max arc angel reached increase start angel also
             if (sweepAngle >= maxArcAngle) {
-                startAngle += increamentalAngle
+                startAngle += incrementalAngle
             }
         }
 
         //end angel reached limit, increase only start angel
         else {
-            startAngle += increamentalAngle
+            startAngle += incrementalAngle
         }
 
-
-        postInvalidateOnAnimation()
-
+        postInvalidate()
     }
 
 }
