@@ -13,6 +13,7 @@ import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
 import com.agrawalsuneet.loaderspack.loaders.CurvesLoader;
 import com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader;
 import com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader;
+import com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -48,17 +49,17 @@ public class MainActivityJava extends AppCompatActivity {
         container.addView(clockLoader);
 
         //RotatingCircularSticksLoader
-        /*RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
+        RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
                 16, 100f, 50f,
                 ContextCompat.getColor(this, R.color.blue),
                 ContextCompat.getColor(this, android.R.color.white));
 
         loader.setAnimDuration(5000);
-        container.addView(loader);*/
+        container.addView(loader);
 
 
         //CircularSticksLoader
-        CircularSticksLoader loader = new CircularSticksLoader(this, 16,
+        /*CircularSticksLoader loader = new CircularSticksLoader(this, 16,
                 200f, 100f,
                 ContextCompat.getColor(this, R.color.blue),
                 ContextCompat.getColor(this, R.color.red),
@@ -69,7 +70,7 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
         loader.setAnimDuration(100);
 
-        container.addView(loader);
+        container.addView(loader);*/
 
 
         //MultipleRippleLoader

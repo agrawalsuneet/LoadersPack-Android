@@ -28,6 +28,7 @@ class FidgetView : View {
 
     private val distanceFactor = 0.8
 
+
     constructor(context: Context) : super(context) {
         initValues()
     }
@@ -39,6 +40,14 @@ class FidgetView : View {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initValues()
+    }
+
+    constructor(context: Context, fidgetRadius: Int, sidesRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
+        this.fidgetRadius = fidgetRadius
+        this.sidesRadius = sidesRadius
+        this.bodyColor = bodyColor
+        this.sideCirclesColor = sideCirclesColor
         initValues()
     }
 
