@@ -46,31 +46,31 @@ class ClockLoader : View, LoaderContract {
             initValues()
         }
 
-    var outerCircleBorderColor: Int = resources.getColor(R.color.grey)
+    var outerCircleBorderColor: Int = resources.getColor(android.R.color.darker_gray)
         set(value) {
             field = value
             initPaints()
         }
 
-    var bigCircleColor: Int = resources.getColor(R.color.black)
+    var bigCircleColor: Int = resources.getColor(android.R.color.black)
         set(value) {
             field = value
             initPaints()
         }
 
-    var hourHandColor: Int = resources.getColor(R.color.grey)
+    var hourHandColor: Int = resources.getColor(android.R.color.darker_gray)
         set(value) {
             field = value
             initPaints()
         }
 
-    var minuteHandColor: Int = resources.getColor(R.color.grey)
+    var minuteHandColor: Int = resources.getColor(android.R.color.darker_gray)
         set(value) {
             field = value
             initPaints()
         }
 
-    var innerCircleColor: Int = resources.getColor(R.color.grey)
+    var innerCircleColor: Int = resources.getColor(android.R.color.darker_gray)
         set(value) {
             field = value
             initPaints()
@@ -124,15 +124,15 @@ class ClockLoader : View, LoaderContract {
                 .getDimension(R.styleable.ClockLoader_clock_minuteHandLength, 300.0f)
 
         this.outerCircleBorderColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_outerCircleBorderColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.ClockLoader_clock_outerCircleBorderColor, resources.getColor(android.R.color.darker_gray))
         this.bigCircleColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_bigCircleColor, resources.getColor(R.color.black))
+                .getColor(R.styleable.ClockLoader_clock_bigCircleColor, resources.getColor(android.R.color.black))
         this.innerCircleColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_innerCircleColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.ClockLoader_clock_innerCircleColor, resources.getColor(android.R.color.darker_gray))
         this.hourHandColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_hourHandColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.ClockLoader_clock_hourHandColor, resources.getColor(android.R.color.darker_gray))
         this.minuteHandColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_minuteHandColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.ClockLoader_clock_minuteHandColor, resources.getColor(android.R.color.darker_gray))
 
         this.animSpeedMultiplier = typedArray
                 .getFloat(R.styleable.ClockLoader_clock_animSpeedMultiplier, 1.0f)

@@ -32,15 +32,15 @@
         android:layout_height="wrap_content"
         app:clock_animSpeedMultiplier="0.5"
         android:layout_margin="16dp"
-        app:clock_bigCircleColor="@color/black"
+        app:clock_bigCircleColor="@android:color/black"
         app:clock_bigCircleRadius="100dp"
-        app:clock_hourHandColor="@color/grey"
+        app:clock_hourHandColor="@android:color/darker_gray"
         app:clock_hourHandLength="50dp"
-        app:clock_innerCircleColor="@color/grey"
+        app:clock_innerCircleColor="@android:color/darker_gray"
         app:clock_innerCircleRadius="5dp"
-        app:clock_minuteHandColor="@color/grey"
+        app:clock_minuteHandColor="@android:color/darker_gray"
         app:clock_minuteHandLength="80dp"
-        app:clock_outerCircleBorderColor="@color/grey"
+        app:clock_outerCircleBorderColor="@android:color/darker_gray"
         app:clock_outerCircleBorderWidth="10dp" />
 
 </LinearLayout>

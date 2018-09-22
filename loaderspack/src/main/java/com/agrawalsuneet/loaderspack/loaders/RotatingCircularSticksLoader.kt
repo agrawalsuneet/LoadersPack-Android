@@ -21,7 +21,7 @@ class RotatingCircularSticksLoader : LinearLayout, LoaderContract {
     var outerCircleRadius: Float = 200.0f
     var innerCircleRadius: Float = 100.0f
 
-    var sticksColor: Int = resources.getColor(R.color.grey)
+    var sticksColor: Int = resources.getColor(android.R.color.darker_gray)
     var viewBackgroundColor: Int = resources.getColor(android.R.color.white)
 
     var animDuration: Int = 5000
@@ -64,7 +64,7 @@ class RotatingCircularSticksLoader : LinearLayout, LoaderContract {
 
 
         this.sticksColor = typedArray
-                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_stickColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_stickColor, resources.getColor(android.R.color.darker_gray))
         this.viewBackgroundColor = typedArray
                 .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_viewBackgroundColor, resources.getColor(android.R.color.white))
 

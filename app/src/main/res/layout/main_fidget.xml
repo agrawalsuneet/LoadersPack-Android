@@ -7,58 +7,70 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:arcprogress_arcColorsArray="@array/colors_red"
-            app:arcprogress_arcRadius="30dp"
-            app:arcprogress_arcWidth="5dp"
-            app:arcprogress_incrementalAngle="8.0"
-            app:arcprogress_maxArcAngle="200.0" />
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/red"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
 
-
-        <com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:arcprogress_arcColorsArray="@array/colors_amber"
-            app:arcprogress_arcRadius="30dp"
-            app:arcprogress_arcWidth="5dp"
-            app:arcprogress_incrementalAngle="8.0"
-            app:arcprogress_maxArcAngle="200.0" />
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/amber"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
 
-        <com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:arcprogress_arcColorsArray="@array/colors_green"
-            app:arcprogress_arcRadius="30dp"
-            app:arcprogress_arcWidth="5dp"
-            app:arcprogress_incrementalAngle="8.0"
-            app:arcprogress_maxArcAngle="200.0" />
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/green"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
 
-    </LinearLayout>-->
-
-    <com.agrawalsuneet.loaderspack.basicviews.FidgetView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fidgetBodyColor="@color/blue_selected"
-        app:fidgetRadius="30dp"
-        app:fidgetSideCirclesColor="@color/amber"
-        android:layout_margin="16dp" />
+    </LinearLayout>
 
 
     <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp" />
+        android:layout_margin="8dp"
+        app:fidget_animDuration="3000"
+        app:fidget_bodyColor="@color/blue_selected"
+        app:fidget_fidgetRadius="30dp"
+        app:fidget_interpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:fidget_noOfRotation="10"
+        app:fidget_sideCirclesColor="@android:color/darker_gray" />
+
+
+    <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:fidget_animDuration="1000"
+        app:fidget_bodyColor="@android:color/black"
+        app:fidget_fidgetRadius="25dp"
+        app:fidget_interpolator="@android:anim/linear_interpolator"
+        app:fidget_noOfRotation="1"
+        app:fidget_sideCirclesColor="@color/darkmagenta" />
 
 
 </LinearLayout>

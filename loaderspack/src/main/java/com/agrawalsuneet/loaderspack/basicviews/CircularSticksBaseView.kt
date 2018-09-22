@@ -19,7 +19,7 @@ open class CircularSticksBaseView : View, LoaderContract {
     var outerCircleRadius: Float = 200.0f
     var innerCircleRadius: Float = 100.0f
 
-    open var sticksColor: Int = resources.getColor(R.color.grey)
+    open var sticksColor: Int = resources.getColor(android.R.color.darker_gray)
     var viewBackgroundColor: Int = resources.getColor(android.R.color.white)
 
     protected lateinit var sticksPaint: Paint
@@ -64,7 +64,7 @@ open class CircularSticksBaseView : View, LoaderContract {
 
 
         this.sticksColor = typedArray
-                .getColor(R.styleable.CircularSticksBaseView_sticksbase_stickColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.CircularSticksBaseView_sticksbase_stickColor, resources.getColor(android.R.color.darker_gray))
         this.viewBackgroundColor = typedArray
                 .getColor(R.styleable.CircularSticksBaseView_sticksbase_viewBackgroundColor, resources.getColor(android.R.color.white))
 

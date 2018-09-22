@@ -48,7 +48,7 @@ class MultipleRippleLoader : RippleLoader {
                 .getDimensionPixelSize(R.styleable.MultipleRippleLoader_multipleripple_circleInitialRadius, 40)
 
         circleColor = typedArray.getColor(R.styleable.MultipleRippleLoader_multipleripple_circleColor,
-                resources.getColor(R.color.red))
+                resources.getColor(android.R.color.holo_red_dark))
 
         noOfRipples = typedArray.getInteger(R.styleable.MultipleRippleLoader_multipleripple_noOfRipples, 3)
 

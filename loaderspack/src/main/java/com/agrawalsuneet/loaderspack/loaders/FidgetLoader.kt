@@ -39,7 +39,7 @@ class FidgetLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context?, fidgetRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
+    constructor(context: Context, fidgetRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
         this.fidgetRadius = fidgetRadius
         this.bodyColor = bodyColor
         this.sideCirclesColor = sideCirclesColor
@@ -50,7 +50,7 @@ class FidgetLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FidgetLoader, 0, 0)
 
-        fidgetRadius = typedArray.getInteger(R.styleable.FidgetLoader_fidget_fidgetRadius, 100)
+        fidgetRadius = typedArray.getDimensionPixelSize(R.styleable.FidgetLoader_fidget_fidgetRadius, 100)
 
         bodyColor = typedArray.getColor(R.styleable.FidgetLoader_fidget_bodyColor,
                 resources.getColor(android.R.color.holo_red_light))
@@ -63,7 +63,7 @@ class FidgetLoader : LinearLayout, LoaderContract {
 
         animDuration = typedArray.getInt(R.styleable.FidgetLoader_fidget_animDuration, 3000)
 
-        this.interpolator = AnimationUtils.loadInterpolator(context,
+        interpolator = AnimationUtils.loadInterpolator(context,
                 typedArray.getResourceId(R.styleable.FidgetLoader_fidget_interpolator,
                         android.R.anim.accelerate_decelerate_interpolator))
 
