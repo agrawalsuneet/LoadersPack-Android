@@ -15,12 +15,12 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
  */
 class FidgetLoader : LinearLayout, LoaderContract {
 
-
     var fidgetRadius: Int = 100
-    var bodyColor: Int = resources.getColor(R.color.red)
-    var sideCirclesColor = resources.getColor(R.color.grey)
+    var bodyColor: Int = resources.getColor(android.R.color.holo_red_light)
+    var sideCirclesColor = resources.getColor(android.R.color.darker_gray)
 
-    var animDuration: Int = 5000
+    var noOfRotation: Int = 20
+    var animDuration: Int = 3000
     var interpolator: Interpolator = AccelerateDecelerateInterpolator()
 
     private lateinit var fidgetView: FidgetView
@@ -39,29 +39,35 @@ class FidgetLoader : LinearLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context?, fidgetRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
+        this.fidgetRadius = fidgetRadius
+        this.bodyColor = bodyColor
+        this.sideCirclesColor = sideCirclesColor
+        initView()
+    }
+
 
     override fun initAttributes(attrs: AttributeSet) {
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CurvesLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FidgetLoader, 0, 0)
 
-        fidgetRadius = typedArray.getInteger(R.styleable.CurvesLoader_curves_noOfCurves, 4)
+        fidgetRadius = typedArray.getInteger(R.styleable.FidgetLoader_fidget_fidgetRadius, 100)
 
-        this.outermostCurveRadius = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_outermostCurveRadius, 100)
-
-        this.curveWidth = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_curveWidth, 10)
-        this.distanceBetweenCurves = typedArray.getDimensionPixelSize(R.styleable.CurvesLoader_curves_distanceBetweenCurves, 10)
-
-        this.curveSweepAngle = typedArray.getFloat(R.styleable.CurvesLoader_curves_curveSweepAngle, 160.0f)
-
-        this.curveColor = typedArray.getColor(R.styleable.CurvesLoader_curves_curveColor,
+        bodyColor = typedArray.getColor(R.styleable.FidgetLoader_fidget_bodyColor,
                 resources.getColor(android.R.color.holo_red_light))
 
-        this.animDuration = typedArray.getInt(R.styleable.CurvesLoader_curves_animDuration, 1500)
+        sideCirclesColor = typedArray.getColor(R.styleable.FidgetLoader_fidget_sideCirclesColor,
+                resources.getColor(android.R.color.darker_gray))
+
+
+        noOfRotation = typedArray.getInt(R.styleable.FidgetLoader_fidget_noOfRotation, 20)
+
+        animDuration = typedArray.getInt(R.styleable.FidgetLoader_fidget_animDuration, 3000)
 
         this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.CurvesLoader_curves_interpolator,
-                        android.R.anim.linear_interpolator))
+                typedArray.getResourceId(R.styleable.FidgetLoader_fidget_interpolator,
+                        android.R.anim.accelerate_decelerate_interpolator))
 
-        typedArray.recycle()*/
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -83,7 +89,6 @@ class FidgetLoader : LinearLayout, LoaderContract {
 
         val loaderView = this
 
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
@@ -102,7 +107,7 @@ class FidgetLoader : LinearLayout, LoaderContract {
     private fun getRotateAnim(): RotateAnimation {
 
         val fromDegree = 0.0f
-        val toDegree = 360f * 20.0f
+        val toDegree = 360f * noOfRotation
 
         val rotateAnimation = RotateAnimation(fromDegree, toDegree,
                 fidgetView.pivotX, fidgetView.pivotY)

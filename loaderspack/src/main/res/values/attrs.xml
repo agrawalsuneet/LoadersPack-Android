@@ -128,4 +128,14 @@
         <attr name="arcprogress_arcColorsArray" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="FidgetLoader">
+        <attr name="fidget_fidgetRadius" format="dimension" />
+        <attr name="fidget_bodyColor" format="color" />
+        <attr name="fidget_sideCirclesColor" format="color" />
+
+        <attr name="fidget_noOfRotation" format="integer" />
+        <attr name="fidget_animDuration" format="integer" />
+        <attr name="fidget_interpolator" format="reference" />
+    </declare-styleable>
+
 </resources>

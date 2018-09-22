@@ -18,8 +18,8 @@ class FidgetView : View {
     }
 
     var fidgetRadius: Int = 100
-    var bodyColor: Int = resources.getColor(R.color.red)
-    var sideCirclesColor = resources.getColor(R.color.grey)
+    var bodyColor: Int = resources.getColor(android.R.color.holo_red_light)
+    var sideCirclesColor = resources.getColor(android.R.color.darker_gray)
 
     private val centerPaint: Paint = Paint()
     private val sidesPaint: Paint = Paint()
@@ -56,8 +56,8 @@ class FidgetView : View {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FidgetView, 0, 0)
 
         fidgetRadius = typedArray.getDimensionPixelSize(R.styleable.FidgetView_fidgetRadius, 100)
-        bodyColor = typedArray.getColor(R.styleable.FidgetView_fidgetBodyColor, resources.getColor(R.color.red))
-        sideCirclesColor = typedArray.getColor(R.styleable.FidgetView_fidgetSideCirclesColor, resources.getColor(R.color.grey))
+        bodyColor = typedArray.getColor(R.styleable.FidgetView_fidgetBodyColor, resources.getColor(android.R.color.holo_red_light))
+        sideCirclesColor = typedArray.getColor(R.styleable.FidgetView_fidgetSideCirclesColor, resources.getColor(android.R.color.darker_gray))
 
         typedArray.recycle()
     }
