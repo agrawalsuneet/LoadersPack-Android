@@ -3,6 +3,7 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.BounceInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_fidget)
 
-        supportActionBar?.setTitle("ArcProgressLoader")
+        supportActionBar?.setTitle("FidgetLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -31,6 +32,22 @@ class MainActivity : AppCompatActivity() {
         //initRingAndCircleLoader()
 
         //initArcProgressLoader()
+
+        //initFidgetLoader()
+    }
+
+    private fun initFidgetLoader() {
+        val fidgetLoader = FidgetLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, R.color.amber))
+                .apply {
+                    animDuration = 3000
+                    noOfRotation = 1
+                    interpolator = BounceInterpolator()
+                }
+
+        containerLayout.addView(fidgetLoader)
     }
 
     private fun initArcProgressLoader() {
