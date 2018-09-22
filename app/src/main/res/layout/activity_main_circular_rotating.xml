@@ -70,7 +70,7 @@
         app:rotatingsticks_innerCircleRadius="60dp"
         app:rotatingsticks_noOfSticks="50"
         app:rotatingsticks_outerCircleRadius="80dp"
-        app:rotatingsticks_stickColor="@color/grey"
+        app:rotatingsticks_stickColor="@android:color/darker_gray"
         app:rotatingsticks_viewBackgroundColor="@color/white" />
 
 </LinearLayout>

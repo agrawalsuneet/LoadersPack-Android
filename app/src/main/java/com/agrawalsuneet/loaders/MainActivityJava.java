@@ -4,15 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.BounceInterpolator;
 import android.widget.LinearLayout;
 
-import com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader;
-import com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader;
-import com.agrawalsuneet.loaderspack.loaders.ClockLoader;
-import com.agrawalsuneet.loaderspack.loaders.CurvesLoader;
-import com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader;
-import com.agrawalsuneet.loaderspack.loaders.RingAndCircleLoader;
+import com.agrawalsuneet.loaderspack.loaders.FidgetLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -29,7 +24,7 @@ public class MainActivityJava extends AppCompatActivity {
         setContentView(R.layout.activity_main_clock);
 
 
-        //Clock Loader
+        /*//Clock Loader
         ClockLoader clockLoader = new ClockLoader(this);
         clockLoader.setOuterCircleBorderWidth(8.0f);
         clockLoader.setBigCircleRadius(150.0f);
@@ -48,17 +43,17 @@ public class MainActivityJava extends AppCompatActivity {
         container.addView(clockLoader);
 
         //RotatingCircularSticksLoader
-        /*RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
+        RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
                 16, 100f, 50f,
                 ContextCompat.getColor(this, R.color.blue),
                 ContextCompat.getColor(this, android.R.color.white));
 
         loader.setAnimDuration(5000);
-        container.addView(loader);*/
+        container.addView(loader);
 
 
         //CircularSticksLoader
-        CircularSticksLoader loader = new CircularSticksLoader(this, 16,
+        *//*CircularSticksLoader loader = new CircularSticksLoader(this, 16,
                 200f, 100f,
                 ContextCompat.getColor(this, R.color.blue),
                 ContextCompat.getColor(this, R.color.red),
@@ -69,7 +64,7 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
         loader.setAnimDuration(100);
 
-        container.addView(loader);
+        container.addView(loader);*//*
 
 
         //MultipleRippleLoader
@@ -120,7 +115,19 @@ public class MainActivityJava extends AppCompatActivity {
                 10.0f, 180.0f,
                 getResources().getIntArray(R.array.colors_rgb));
 
-        container.addView(arcProgressLoader);
+        container.addView(arcProgressLoader);*/
+
+
+        FidgetLoader fidgetLoader = new FidgetLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, R.color.amber));
+
+        fidgetLoader.setAnimDuration(3000);
+        fidgetLoader.setNoOfRotation(1);
+        fidgetLoader.setInterpolator(new BounceInterpolator());
+
+        container.addView(fidgetLoader);
     }
 
 

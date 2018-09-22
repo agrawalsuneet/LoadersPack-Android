@@ -25,9 +25,9 @@ class ArcProgressLoader : View, LoaderContract {
             field = if (value > 360) (value % 360) else value
         }
 
-    var arcColorsArray: IntArray = intArrayOf(resources.getColor(R.color.red),
-            resources.getColor(R.color.amber),
-            resources.getColor(R.color.green))
+    var arcColorsArray: IntArray = intArrayOf(resources.getColor(android.R.color.holo_red_dark),
+            resources.getColor(android.R.color.holo_orange_light),
+            resources.getColor(android.R.color.holo_green_light))
 
     private val paint: Paint = Paint()
     private var centerPoint: Float = 0.0f

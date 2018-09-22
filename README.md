@@ -37,12 +37,16 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![arcprogressloader](https://user-images.githubusercontent.com/12999622/45809206-3fe05800-bce5-11e8-90ef-f68e46de64cc.gif)
 
 
+### FidgetLoader
+![fidgetloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.7'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
 ```
 
 ### ClockLoader
@@ -398,6 +402,50 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.7'
 
 ##### Through XML
 ```
+<com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fidget_animDuration="3000"
+        app:fidget_bodyColor="@color/blue_selected"
+        app:fidget_fidgetRadius="30dp"
+        app:fidget_interpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:fidget_noOfRotation="10"
+        app:fidget_sideCirclesColor="@android:color/darker_gray" />
+```
+##### Through Code
+* Kotlin
+```
+         val fidgetLoader = FidgetLoader(this,
+                         20,
+                         ContextCompat.getColor(this, R.color.blue_selected),
+                         ContextCompat.getColor(this, R.color.amber))
+                         .apply {
+                             animDuration = 3000
+                             noOfRotation = 1
+                             interpolator = BounceInterpolator()
+                         }
+
+                 containerLayout.addView(fidgetLoader)
+```
+
+* Java
+```
+        FidgetLoader fidgetLoader = new FidgetLoader(this,
+                        20,
+                        ContextCompat.getColor(this, R.color.blue_selected),
+                        ContextCompat.getColor(this, R.color.amber));
+
+                fidgetLoader.setAnimDuration(3000);
+                fidgetLoader.setNoOfRotation(1);
+                fidgetLoader.setInterpolator(new BounceInterpolator());
+
+                container.addView(fidgetLoader);
+```
+
+
+### FidgetLoader
+##### Through XML
+```
 <com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -427,6 +475,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.7'
 
                 container.addView(arcProgressLoader);
 ```
+
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.

@@ -21,7 +21,7 @@ class ArcView : View {
 
     var sweepAngle: Float = 180.0f
 
-    var arcColor: Int = resources.getColor(R.color.red)
+    var arcColor: Int = resources.getColor(android.R.color.holo_red_dark)
     var drawOnlyStroke: Boolean = true
 
     private val paint: Paint = Paint()
@@ -64,7 +64,7 @@ class ArcView : View {
         this.startAngle = typedArray.getFloat(R.styleable.ArcView_startAngle, 0.0f)
         this.sweepAngle = typedArray.getFloat(R.styleable.ArcView_sweepAngle, 180.0f)
 
-        this.arcColor = typedArray.getColor(R.styleable.ArcView_arcColor, resources.getColor(R.color.red))
+        this.arcColor = typedArray.getColor(R.styleable.ArcView_arcColor, resources.getColor(android.R.color.holo_red_dark))
 
         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.ArcView_drawOnlyStroke, true)
 
