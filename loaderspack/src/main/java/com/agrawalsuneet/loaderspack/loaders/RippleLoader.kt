@@ -22,7 +22,7 @@ open class RippleLoader : LinearLayout, LoaderContract {
             initView()
         }
 
-    var circleColor: Int = resources.getColor(R.color.red)
+    var circleColor: Int = resources.getColor(android.R.color.holo_red_dark)
         set(value) {
             field = value
             initView()
@@ -59,7 +59,7 @@ open class RippleLoader : LinearLayout, LoaderContract {
                 .getDimensionPixelSize(R.styleable.RippleLoader_ripple_circleInitialRadius, 40)
 
         circleColor = typedArray.getColor(R.styleable.RippleLoader_ripple_circleColor,
-                resources.getColor(R.color.red))
+                resources.getColor(android.R.color.holo_red_dark))
 
 
         fromAlpha = typedArray.getFloat(R.styleable.RippleLoader_ripple_fromAlpha, 0.9f)

@@ -87,9 +87,9 @@
         app:circularsticks_noOfSticks="32"
         app:circularsticks_outerCircleRadius="80dp"
         app:circularsticks_secondShadowColor="#77000000"
-        app:circularsticks_selectedStickColor="@color/black"
+        app:circularsticks_selectedStickColor="@android:color/black"
         app:circularsticks_showRunningShadow="true"
-        app:circularsticks_stickColor="@color/grey"
+        app:circularsticks_stickColor="@android:color/darker_gray"
         app:circularsticks_viewBackgroundColor="@color/white" />
 
 

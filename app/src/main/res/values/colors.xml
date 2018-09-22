@@ -13,10 +13,13 @@
     <color name="amber">#FFC200</color>
     <color name="amber_default">#77FFC200</color>
 
+    <color name="blue">#0000ff</color>
     <color name="blue_selected">#2196F3</color>
     <color name="blue_delfault">#BBDEFB</color>
 
     <color name="grey_default">#55A9A9A9</color>
+
+    <color name="darkmagenta">#8B008B</color>
 
     <array name="colors_red">
         <item>@color/red</item>
@@ -34,7 +37,7 @@
         <item>@color/red</item>
         <item>@color/amber</item>
         <item>@color/green</item>
-        <item>@color/grey</item>
+        <item>@android:color/darker_gray</item>
     </array>
 
     <array name="colors_blue">

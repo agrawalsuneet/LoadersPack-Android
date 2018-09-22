@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:curves_animDuration="1000"
-        app:curves_curveColor="@color/grey"
+        app:curves_curveColor="@android:color/darker_gray"
         app:curves_curveSweepAngle="150"
         app:curves_curveWidth="5dp"
         app:curves_distanceBetweenCurves="5dp"

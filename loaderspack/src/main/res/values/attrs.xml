@@ -17,6 +17,12 @@
         <attr name="drawOnlyStroke" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="FidgetView">
+        <attr name="fidgetRadius" format="dimension" />
+        <attr name="fidgetBodyColor" format="color" />
+        <attr name="fidgetSideCirclesColor" format="color" />
+    </declare-styleable>
+
 
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
@@ -120,6 +126,16 @@
         <attr name="arcprogress_maxArcAngle" format="float" />
 
         <attr name="arcprogress_arcColorsArray" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FidgetLoader">
+        <attr name="fidget_fidgetRadius" format="dimension" />
+        <attr name="fidget_bodyColor" format="color" />
+        <attr name="fidget_sideCirclesColor" format="color" />
+
+        <attr name="fidget_noOfRotation" format="integer" />
+        <attr name="fidget_animDuration" format="integer" />
+        <attr name="fidget_interpolator" format="reference" />
     </declare-styleable>
 
 </resources>

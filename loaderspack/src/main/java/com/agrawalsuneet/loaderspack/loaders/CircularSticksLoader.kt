@@ -14,7 +14,7 @@ import com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
  */
 class CircularSticksLoader : CircularSticksBaseView {
 
-    override var sticksColor: Int = resources.getColor(R.color.grey)
+    override var sticksColor: Int = resources.getColor(android.R.color.darker_gray)
         set(defaultColor) {
             field = defaultColor
             if (defaultStickPaint != null) {
@@ -22,7 +22,7 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
-    open var selectedStickColor: Int = resources.getColor(R.color.black)
+    open var selectedStickColor: Int = resources.getColor(android.R.color.black)
         set(selectedColor) {
             field = selectedColor
             if (selectedStickPaint != null) {
@@ -112,9 +112,9 @@ class CircularSticksLoader : CircularSticksBaseView {
 
 
         this.sticksColor = typedArray
-                .getColor(R.styleable.CircularSticksLoader_circularsticks_stickColor, resources.getColor(R.color.grey))
+                .getColor(R.styleable.CircularSticksLoader_circularsticks_stickColor, resources.getColor(android.R.color.darker_gray))
         this.selectedStickColor = typedArray
-                .getColor(R.styleable.CircularSticksLoader_circularsticks_selectedStickColor, resources.getColor(R.color.black))
+                .getColor(R.styleable.CircularSticksLoader_circularsticks_selectedStickColor, resources.getColor(android.R.color.black))
 
         this.viewBackgroundColor = typedArray
                 .getColor(R.styleable.CircularSticksLoader_circularsticks_viewBackgroundColor, resources.getColor(android.R.color.white))

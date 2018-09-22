@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:multipleripple_animDuration="4000"
-            app:multipleripple_circleColor="@color/grey"
+            app:multipleripple_circleColor="@android:color/darker_gray"
             app:multipleripple_circleInitialRadius="36dp"
             app:multipleripple_fromAlpha="0.6"
             app:multipleripple_interpolator="@android:anim/linear_interpolator"

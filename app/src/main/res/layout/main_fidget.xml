@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/red"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/amber"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+
+        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:fidget_animDuration="5000"
+            app:fidget_bodyColor="@color/green"
+            app:fidget_fidgetRadius="18dp"
+            app:fidget_interpolator="@android:anim/linear_interpolator"
+            app:fidget_noOfRotation="5"
+            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+
+    <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:fidget_animDuration="3000"
+        app:fidget_bodyColor="@color/blue_selected"
+        app:fidget_fidgetRadius="30dp"
+        app:fidget_interpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:fidget_noOfRotation="10"
+        app:fidget_sideCirclesColor="@android:color/darker_gray" />
+
+
+    <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:fidget_animDuration="1000"
+        app:fidget_bodyColor="@android:color/black"
+        app:fidget_fidgetRadius="25dp"
+        app:fidget_interpolator="@android:anim/linear_interpolator"
+        app:fidget_noOfRotation="1"
+        app:fidget_sideCirclesColor="@color/darkmagenta" />
+
+
+</LinearLayout>
