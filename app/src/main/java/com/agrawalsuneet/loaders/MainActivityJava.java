@@ -30,7 +30,7 @@ public class MainActivityJava extends AppCompatActivity {
         setContentView(R.layout.activity_main_clock);
 
 
-        //Clock Loader
+        /*//Clock Loader
         ClockLoader clockLoader = new ClockLoader(this);
         clockLoader.setOuterCircleBorderWidth(8.0f);
         clockLoader.setBigCircleRadius(150.0f);
@@ -59,7 +59,7 @@ public class MainActivityJava extends AppCompatActivity {
 
 
         //CircularSticksLoader
-        /*CircularSticksLoader loader = new CircularSticksLoader(this, 16,
+        *//*CircularSticksLoader loader = new CircularSticksLoader(this, 16,
                 200f, 100f,
                 ContextCompat.getColor(this, R.color.blue),
                 ContextCompat.getColor(this, R.color.red),
@@ -70,7 +70,7 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
         loader.setAnimDuration(100);
 
-        container.addView(loader);*/
+        container.addView(loader);*//*
 
 
         //MultipleRippleLoader
@@ -121,7 +121,7 @@ public class MainActivityJava extends AppCompatActivity {
                 10.0f, 180.0f,
                 getResources().getIntArray(R.array.colors_rgb));
 
-        container.addView(arcProgressLoader);
+        container.addView(arcProgressLoader);*/
     }
 
 

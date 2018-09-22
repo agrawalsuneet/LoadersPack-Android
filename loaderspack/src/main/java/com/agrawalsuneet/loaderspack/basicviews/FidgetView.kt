@@ -13,21 +13,21 @@ import com.agrawalsuneet.loaderspack.R
 
 class FidgetView : View {
 
-    var fidgetRadius: Int = 130
-    var sidesRadius: Int = 130
+    companion object {
+        const val distanceFactor = 0.8
+    }
+
+    var fidgetRadius: Int = 100
     var bodyColor: Int = resources.getColor(R.color.red)
     var sideCirclesColor = resources.getColor(R.color.grey)
 
     private val centerPaint: Paint = Paint()
     private val sidesPaint: Paint = Paint()
 
-    private var calWidth = 0.0f
-    private var calHeight = 0.0f
+    private var calWidthHeight = 0.0f
+
     private val sin30 = 0.5
     private val cos30 = 0.866
-
-    private val distanceFactor = 0.8
-
 
     constructor(context: Context) : super(context) {
         initValues()
@@ -43,9 +43,8 @@ class FidgetView : View {
         initValues()
     }
 
-    constructor(context: Context, fidgetRadius: Int, sidesRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
+    constructor(context: Context, fidgetRadius: Int, bodyColor: Int, sideCirclesColor: Int) : super(context) {
         this.fidgetRadius = fidgetRadius
-        this.sidesRadius = sidesRadius
         this.bodyColor = bodyColor
         this.sideCirclesColor = sideCirclesColor
         initValues()
@@ -54,19 +53,13 @@ class FidgetView : View {
 
     fun initAttributes(attrs: AttributeSet) {
 
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcView, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FidgetView, 0, 0)
 
-        this.arcRadius = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcRadius, 60)
-        this.arcWidth = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcWidth, 10)
+        fidgetRadius = typedArray.getDimensionPixelSize(R.styleable.FidgetView_fidgetRadius, 100)
+        bodyColor = typedArray.getColor(R.styleable.FidgetView_fidgetBodyColor, resources.getColor(R.color.red))
+        sideCirclesColor = typedArray.getColor(R.styleable.FidgetView_fidgetSideCirclesColor, resources.getColor(R.color.grey))
 
-        this.startAngle = typedArray.getFloat(R.styleable.ArcView_startAngle, 0.0f)
-        this.sweepAngle = typedArray.getFloat(R.styleable.ArcView_sweepAngle, 180.0f)
-
-        this.arcColor = typedArray.getColor(R.styleable.ArcView_arcColor, resources.getColor(R.color.red))
-
-        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.ArcView_drawOnlyStroke, true)
-
-        typedArray.recycle()*/
+        typedArray.recycle()
     }
 
     private fun initValues() {
@@ -83,46 +76,41 @@ class FidgetView : View {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        calWidth = (2 * sidesRadius) + (2 * cos30 * distanceFactor * (fidgetRadius + sidesRadius)).toFloat()
-
-        calHeight = ((2 * sidesRadius)
-                + (distanceFactor * (fidgetRadius + sidesRadius))
-                + (sin30 * distanceFactor * (fidgetRadius + sidesRadius))).toFloat()
-        setMeasuredDimension(calWidth.toInt(), calHeight.toInt())
+        calWidthHeight = (2 * fidgetRadius) + (4 * distanceFactor * (fidgetRadius)).toFloat()
+        setMeasuredDimension(calWidthHeight.toInt(), calWidthHeight.toInt())
     }
 
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val centerX = (calWidth / 2)
-        val centerY = (sidesRadius + (distanceFactor * (fidgetRadius + sidesRadius))).toFloat()
+        val centerXY = (calWidthHeight / 2)
 
         //center circle
-        canvas.drawCircle(centerX, centerY, fidgetRadius.toFloat(), centerPaint)
+        canvas.drawCircle(centerXY, centerXY, fidgetRadius.toFloat(), centerPaint)
 
         //top circle
-        var xCor = calWidth / 2
-        var yCor = (centerY - ((fidgetRadius + sidesRadius) * distanceFactor)).toFloat()
-        canvas.drawCircle(xCor, yCor, sidesRadius.toFloat(), centerPaint)
+        var xCor = calWidthHeight / 2
+        var yCor = (centerXY - ((2 * fidgetRadius) * distanceFactor)).toFloat()
 
-        canvas.drawCircle(xCor, yCor, (sidesRadius * 3 / 5).toFloat(), sidesPaint)
+        canvas.drawCircle(xCor, yCor, fidgetRadius.toFloat(), centerPaint)
+        canvas.drawCircle(xCor, yCor, (fidgetRadius * 3 / 5).toFloat(), sidesPaint)
 
         //right circle
-        xCor = centerX + (cos30 * distanceFactor * (fidgetRadius + sidesRadius)).toFloat()
-        yCor = centerY + (sin30 * distanceFactor * (fidgetRadius + sidesRadius)).toFloat()
-        canvas.drawCircle(xCor, yCor, sidesRadius.toFloat(), centerPaint)
+        xCor = centerXY + (cos30 * distanceFactor * (2 * fidgetRadius)).toFloat()
+        yCor = centerXY + (sin30 * distanceFactor * (2 * fidgetRadius)).toFloat()
 
-        canvas.drawCircle(xCor, yCor, (sidesRadius * 3 / 5).toFloat(), sidesPaint)
+        canvas.drawCircle(xCor, yCor, fidgetRadius.toFloat(), centerPaint)
+        canvas.drawCircle(xCor, yCor, (fidgetRadius * 3 / 5).toFloat(), sidesPaint)
 
         //left circle
-        xCor = centerX - (cos30 * distanceFactor * (fidgetRadius + sidesRadius)).toFloat()
-        yCor = centerY + (sin30 * distanceFactor * (fidgetRadius + sidesRadius)).toFloat()
-        canvas.drawCircle(xCor, yCor, sidesRadius.toFloat(), centerPaint)
+        xCor = centerXY - (cos30 * distanceFactor * (2 * fidgetRadius)).toFloat()
+        yCor = centerXY + (sin30 * distanceFactor * (2 * fidgetRadius)).toFloat()
 
-        canvas.drawCircle(xCor, yCor, (sidesRadius * 3 / 5).toFloat(), sidesPaint)
+        canvas.drawCircle(xCor, yCor, fidgetRadius.toFloat(), centerPaint)
+        canvas.drawCircle(xCor, yCor, (fidgetRadius * 3 / 5).toFloat(), sidesPaint)
 
-        pivotX = centerX
-        pivotY = centerY
+        pivotX = centerXY
+        pivotY = centerXY
     }
 }
