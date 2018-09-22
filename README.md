@@ -38,7 +38,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### FidgetLoader
-![arcprogressloader](https://user-images.githubusercontent.com/12999622/45809206-3fe05800-bce5-11e8-90ef-f68e46de64cc.gif)
+![fidgetloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
