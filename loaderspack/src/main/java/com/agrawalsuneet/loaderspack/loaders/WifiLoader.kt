@@ -18,6 +18,11 @@ class WifiLoader : View, LoaderContract {
 
     var wifiColor: Int = resources.getColor(android.R.color.holo_green_light)
 
+    var incrementalAngle: Float = 1.0f
+        set(value) {
+            field = if (value < 0.1) 1.0f else value
+        }
+
     private val centerCirclePaint: Paint = Paint()
     private val sidesPaint: Paint = Paint()
 
@@ -26,20 +31,19 @@ class WifiLoader : View, LoaderContract {
     private var calWidth = 0
     private var calHeight = 0
 
-    private val startAngle: Float = 230.0f
-    private val sweepAngle: Float = 80.0f
-    private val incrementalAngle: Float = 1.0f
-
-    private var currentStartAngle: Float = startAngle
-    private var currentSweepAngle: Float = 0.0f
-
-    private var visibleShapePos: Int = 0
-    private var isDrawingForward: Boolean = true
-    private val waitFrame: Int = 60
-    private var currentWaitFrame: Int = 0
-
     private var xCor: Float = 0.0f
     private var yCor: Float = 0.0f
+
+    private val startAngle: Float = 230.0f
+    private val sweepAngle: Float = 80.0f
+    private val waitFrame: Int = 60
+
+    private var currentSweepAngle: Float = 0.0f
+    private var visibleShapePos: Int = 0
+    private var isDrawingForward: Boolean = true
+
+    private var currentWaitFrame: Int = 0
+
 
     constructor(context: Context) : super(context) {
         initPaints()
