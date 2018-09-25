@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRippleLoader() {
         val ripple = RippleLoader(baseContext)/*.apply {
             circleInitialRadius = 80
-            circleColor = resources.getColor(R.color.black)
+            wifiColor = resources.getColor(R.color.black)
             fromAlpha = 1.0f
             toAlpha = 0f
             animationDuration = 1000

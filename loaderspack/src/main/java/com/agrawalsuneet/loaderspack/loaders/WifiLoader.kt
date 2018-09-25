@@ -16,7 +16,7 @@ class WifiLoader : View, LoaderContract {
 
     var centerCircleRadius: Int = 30
 
-    var circleColor: Int = resources.getColor(android.R.color.holo_red_dark)
+    var wifiColor: Int = resources.getColor(android.R.color.holo_green_light)
 
     private val centerCirclePaint: Paint = Paint()
     private val sidesPaint: Paint = Paint()
@@ -37,6 +37,9 @@ class WifiLoader : View, LoaderContract {
     private var isDrawingForward: Boolean = true
     private val waitFrame: Int = 60
     private var currentWaitFrame: Int = 0
+
+    private var xCor: Float = 0.0f
+    private var yCor: Float = 0.0f
 
     constructor(context: Context) : super(context) {
         initPaints()
@@ -100,12 +103,12 @@ class WifiLoader : View, LoaderContract {
 
     private fun initPaints() {
         centerCirclePaint.isAntiAlias = true
-        centerCirclePaint.color = circleColor
+        centerCirclePaint.color = wifiColor
         centerCirclePaint.style = Paint.Style.FILL
 
 
         sidesPaint.isAntiAlias = true
-        sidesPaint.color = resources.getColor(android.R.color.holo_green_light)
+        sidesPaint.color = wifiColor
         sidesPaint.style = Paint.Style.STROKE
         sidesPaint.strokeWidth = (2 * centerCircleRadius).toFloat()
         sidesPaint.strokeCap = Paint.Cap.ROUND
@@ -129,46 +132,48 @@ class WifiLoader : View, LoaderContract {
             rectfArray.set(i - 1, acrRectF)
 
         }
+
+        xCor = (calWidth / 2).toFloat()
+        yCor = (calHeight - centerCircleRadius).toFloat()
+    }
+
+    private fun drawCenterCircle(canvas: Canvas) {
+        canvas.drawCircle(xCor, yCor,
+                centerCircleRadius.toFloat(),
+                centerCirclePaint)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        var xCor = (calWidth / 2).toFloat()
-        var yCor = (calHeight - centerCircleRadius).toFloat()
-
-        canvas.drawCircle(xCor, yCor,
-                centerCircleRadius.toFloat(),
-                centerCirclePaint)
-
         when (visibleShapePos) {
             0 -> {
+                currentWaitFrame++
                 if (isDrawingForward) {
-                    yCor = (calHeight - centerCircleRadius).toFloat()
-                    canvas.drawCircle(xCor, yCor,
-                            centerCircleRadius.toFloat(),
-                            centerCirclePaint)
-
-                    visibleShapePos++
+                    if (currentWaitFrame > (waitFrame / 2)) {
+                        drawCenterCircle(canvas)
+                        if (currentWaitFrame > waitFrame) {
+                            visibleShapePos++
+                            currentWaitFrame = 0
+                        }
+                    }
                 } else {
-                    currentWaitFrame++
-                    if (currentWaitFrame > waitFrame) {
+                    if (currentWaitFrame < (waitFrame / 2)) {
+                        drawCenterCircle(canvas)
+                    } else if (currentWaitFrame > waitFrame) {
                         isDrawingForward = true
                         currentWaitFrame = 0
                     }
+
                 }
             }
 
             1, 2, 3 -> {
 
+                drawCenterCircle(canvas)
+
                 for (i in 1 until visibleShapePos) {
-
                     canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
-
-                    /*yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
-                    canvas.drawCircle(xCor, yCor,
-                            centerCircleRadius.toFloat(),
-                            centerCirclePaint)*/
                 }
 
                 canvas.drawArc(rectfArray.get(visibleShapePos - 1), startAngle, currentSweepAngle, false, sidesPaint)
@@ -178,7 +183,6 @@ class WifiLoader : View, LoaderContract {
                     if (visibleShapePos <= 3) {
 
                         currentSweepAngle += incrementalAngle
-
 
                         if (currentSweepAngle >= sweepAngle) {
                             currentSweepAngle = 0.0f
@@ -201,6 +205,7 @@ class WifiLoader : View, LoaderContract {
             }
 
             4 -> {
+                drawCenterCircle(canvas)
                 for (i in 1 until visibleShapePos) {
                     canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
                 }
@@ -214,27 +219,6 @@ class WifiLoader : View, LoaderContract {
                 }
             }
         }
-
-
-        //for (i in 1..3) {
-
-        /*val acrRectF = RectF().apply {
-            left = ((calWidth / 2) - (i * 4 * centerCircleRadius)).toFloat()
-            right = ((calWidth / 2) + (i * 4 * centerCircleRadius)).toFloat()
-            top = ((calHeight - centerCircleRadius) - (((i * 4)) * centerCircleRadius)).toFloat()
-            bottom = ((calHeight - centerCircleRadius) + (((i * 4)) * centerCircleRadius)).toFloat()
-        }
-
-        canvas.drawArc(acrRectF, 230.0f, 80.0f, false, sidesPaint)*/
-
-        /*canvas.drawArc(rectfArray.get(i - 1), 230.0f, 80.0f, false, sidesPaint)
-
-        yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
-        canvas.drawCircle(xCor, yCor,
-                centerCircleRadius.toFloat(),
-                centerCirclePaint)*/
-        //}
-
 
         postInvalidateOnAnimation()
     }
