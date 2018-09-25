@@ -21,21 +21,38 @@ class WifiLoader : View, LoaderContract {
     private val centerCirclePaint: Paint = Paint()
     private val sidesPaint: Paint = Paint()
 
+    private var rectfArray = Array<RectF?>(3) { it -> null }
+
     private var calWidth = 0
     private var calHeight = 0
 
+    private val startAngle: Float = 230.0f
+    private val sweepAngle: Float = 80.0f
+    private val incrementalAngle: Float = 1.0f
+
+    private var currentStartAngle: Float = startAngle
+    private var currentSweepAngle: Float = 0.0f
+
+    private var visibleShapePos: Int = 0
+    private var isDrawingForward: Boolean = true
+    private val waitFrame: Int = 60
+    private var currentWaitFrame: Int = 0
+
     constructor(context: Context) : super(context) {
         initPaints()
+        initValues()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
         initPaints()
+        initValues()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
         initPaints()
+        initValues()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -82,32 +99,6 @@ class WifiLoader : View, LoaderContract {
 
 
     private fun initPaints() {
-        /*borderPaint = Paint()
-        borderPaint.color = outerCircleBorderColor
-        borderPaint.style = Paint.Style.STROKE
-        borderPaint.isAntiAlias = true
-        borderPaint.strokeWidth = outerCircleBorderWidth
-
-        bigCirclePaint = Paint()
-        bigCirclePaint.color = bigCircleColor
-        bigCirclePaint.style = Paint.Style.FILL
-        bigCirclePaint.isAntiAlias = true
-
-        innerCirclePaint = Paint()
-        innerCirclePaint.color = innerCircleColor
-        innerCirclePaint.style = Paint.Style.FILL
-        innerCirclePaint.isAntiAlias = true
-
-        hourHandPaint = Paint()
-        hourHandPaint.color = hourHandColor
-        hourHandPaint.style = Paint.Style.FILL
-        hourHandPaint.isAntiAlias = true
-
-        minuteHandPaint = Paint()
-        minuteHandPaint.color = minuteHandColor
-        minuteHandPaint.style = Paint.Style.FILL
-        minuteHandPaint.isAntiAlias = true*/
-
         centerCirclePaint.isAntiAlias = true
         centerCirclePaint.color = circleColor
         centerCirclePaint.style = Paint.Style.FILL
@@ -121,25 +112,10 @@ class WifiLoader : View, LoaderContract {
     }
 
     private fun initValues() {
-
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-
         if (calWidth == 0 || calHeight == 0) {
             calWidth = 18 * centerCircleRadius
             calHeight = 14 * centerCircleRadius
         }
-
-        var xCor = (calWidth / 2).toFloat()
-        var yCor = (calHeight - centerCircleRadius).toFloat()
-
-        canvas.drawCircle(xCor, yCor,
-                centerCircleRadius.toFloat(),
-                centerCirclePaint)
-
-
 
         for (i in 1..3) {
 
@@ -150,55 +126,116 @@ class WifiLoader : View, LoaderContract {
                 bottom = ((calHeight - centerCircleRadius) + (((i * 4)) * centerCircleRadius)).toFloat()
             }
 
-            canvas.drawArc(acrRectF, 230.0f, 80.0f, false, sidesPaint)
+            rectfArray.set(i - 1, acrRectF)
 
-            yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
-            canvas.drawCircle(xCor, yCor,
-                    centerCircleRadius.toFloat(),
-                    centerCirclePaint)
+        }
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+
+        var xCor = (calWidth / 2).toFloat()
+        var yCor = (calHeight - centerCircleRadius).toFloat()
+
+        canvas.drawCircle(xCor, yCor,
+                centerCircleRadius.toFloat(),
+                centerCirclePaint)
+
+        when (visibleShapePos) {
+            0 -> {
+                if (isDrawingForward) {
+                    yCor = (calHeight - centerCircleRadius).toFloat()
+                    canvas.drawCircle(xCor, yCor,
+                            centerCircleRadius.toFloat(),
+                            centerCirclePaint)
+
+                    visibleShapePos++
+                } else {
+                    currentWaitFrame++
+                    if (currentWaitFrame > waitFrame) {
+                        isDrawingForward = true
+                        currentWaitFrame = 0
+                    }
+                }
+            }
+
+            1, 2, 3 -> {
+
+                for (i in 1 until visibleShapePos) {
+
+                    canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
+
+                    /*yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
+                    canvas.drawCircle(xCor, yCor,
+                            centerCircleRadius.toFloat(),
+                            centerCirclePaint)*/
+                }
+
+                canvas.drawArc(rectfArray.get(visibleShapePos - 1), startAngle, currentSweepAngle, false, sidesPaint)
+
+                if (isDrawingForward) {
+
+                    if (visibleShapePos <= 3) {
+
+                        currentSweepAngle += incrementalAngle
+
+
+                        if (currentSweepAngle >= sweepAngle) {
+                            currentSweepAngle = 0.0f
+                            visibleShapePos++
+                        }
+                    }
+                } else {
+                    currentSweepAngle -= incrementalAngle
+
+                    if (currentSweepAngle <= 0.0f) {
+                        currentSweepAngle = sweepAngle
+                        visibleShapePos--
+                    }
+
+                    if (visibleShapePos == 0) {
+                        currentSweepAngle = 0.0f
+                        currentWaitFrame = 0
+                    }
+                }
+            }
+
+            4 -> {
+                for (i in 1 until visibleShapePos) {
+                    canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
+                }
+
+                currentWaitFrame++
+
+                if (currentWaitFrame > waitFrame) {
+                    visibleShapePos--
+                    isDrawingForward = false
+                    currentSweepAngle = sweepAngle
+                }
+            }
         }
 
 
-        /*for (i in 1..3) {
+        //for (i in 1..3) {
 
-            val acrRectF = RectF().apply {
-                left = ((calWidth / 2) - (((i * 4)) * centerCircleRadius)).toFloat()
-                right = ((calWidth / 2) + (((i * 4)) * centerCircleRadius)).toFloat()
-                top = (calHeight - (((i * 4) + 1) * centerCircleRadius) - (2 * centerCircleRadius)).toFloat()
-                bottom = (calHeight + (((i * 4)) * centerCircleRadius) - (2 * centerCircleRadius)).toFloat()
-            }
+        /*val acrRectF = RectF().apply {
+            left = ((calWidth / 2) - (i * 4 * centerCircleRadius)).toFloat()
+            right = ((calWidth / 2) + (i * 4 * centerCircleRadius)).toFloat()
+            top = ((calHeight - centerCircleRadius) - (((i * 4)) * centerCircleRadius)).toFloat()
+            bottom = ((calHeight - centerCircleRadius) + (((i * 4)) * centerCircleRadius)).toFloat()
+        }
 
-            canvas.drawArc(acrRectF, 0.0f, 360.0f, false, sidesPaint)
+        canvas.drawArc(acrRectF, 230.0f, 80.0f, false, sidesPaint)*/
 
-            yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
-            canvas.drawCircle(xCor, yCor,
-                    centerCircleRadius.toFloat(),
-                    centerCirclePaint)
-        }*/
+        /*canvas.drawArc(rectfArray.get(i - 1), 230.0f, 80.0f, false, sidesPaint)
 
-
-/*canvas.drawCircle(xCor, yCor,
-        centerCircleRadius.toFloat(),
-        centerCirclePaint)
+        yCor = (calHeight - ((i * 4) + 1) * centerCircleRadius).toFloat()
+        canvas.drawCircle(xCor, yCor,
+                centerCircleRadius.toFloat(),
+                centerCirclePaint)*/
+        //}
 
 
-yCor = (calHeight - 5 * centerCircleRadius).toFloat()
-canvas.drawCircle(xCor, yCor,
-        centerCircleRadius.toFloat(),
-        centerCirclePaint)*/
-
-
-/*for (i in 1..3) {
-    val acrRectF = RectF().apply {
-        left = ((calWidth / 2) - (((i * 4) + 1) * centerCircleRadius)).toFloat()
-        right = ((calWidth / 2) + (((i * 4) + 1) * centerCircleRadius)).toFloat()
-        top = (calHeight - (((i * 4) + 1) * centerCircleRadius) - (2 * centerCircleRadius)).toFloat()
-        bottom = (calHeight + (((i * 4) + 1) * centerCircleRadius) - (2 * centerCircleRadius)).toFloat()
-    }
-
-    canvas.drawArc(acrRectF, 225.0f, 90.0f, false, sidesPaint)
-}*/
-
-//postInvalidateOnAnimation()
+        postInvalidateOnAnimation()
     }
 }

@@ -3,7 +3,6 @@ package com.agrawalsuneet.loaders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.LinearLayout;
 
 /**
@@ -125,37 +124,6 @@ public class MainActivityJava extends AppCompatActivity {
         fidgetLoader.setInterpolator(new BounceInterpolator());
 
         container.addView(fidgetLoader);*/
-
-        /*String str = "asdqwe";
-        //str.charAt()
-
-        char a = 'a';
-        char c = 'c';
-        char z = 'z';
-
-        *//*int av = Character.getNumericValue(a) - 10;
-        int cv = Character.getNumericValue(c) - 10;
-        int zv = Character.getNumericValue(z) - 10;*//*
-
-        int av = Integer.valueOf(a - 'a');
-        int cv = Integer.valueOf(c - 'a');
-        int zv = Integer.valueOf(z - 'a');
-
-        Log.d("Suneet Agrawal", Integer.toString(av));
-        Log.d("Suneet Agrawal", Integer.toString(cv));
-        Log.d("Suneet Agrawal", Integer.toString(zv));
-
-        int result = 0;
-
-        for(int pos = 0; pos< oldVar.length(); pos++){
-            int i = Character.getNumericValue(oldVar.charAt(pos)) - 10;
-            int j = Character.getNumericValue(newVar.charAt(pos)) - 10;
-
-            result += A[i][j];
-        }
-
-        return result;*/
-
     }
 
 
