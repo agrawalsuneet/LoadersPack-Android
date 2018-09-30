@@ -2,8 +2,11 @@ package com.agrawalsuneet.loaders;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
+
+import com.agrawalsuneet.loaderspack.loaders.WifiLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -124,6 +127,14 @@ public class MainActivityJava extends AppCompatActivity {
         fidgetLoader.setInterpolator(new BounceInterpolator());
 
         container.addView(fidgetLoader);*/
+
+        WifiLoader wifiLoader = new WifiLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected));
+
+        wifiLoader.setIncrementalAngle(1.2f);
+
+        container.addView(wifiLoader);
     }
 
 

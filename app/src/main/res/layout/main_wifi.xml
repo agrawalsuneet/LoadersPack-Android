@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -57,7 +57,7 @@
         android:layout_margin="8dp"
         app:wifi_centerCircleRadius="6dp"
         app:wifi_incrementalAngle="2.0"
-        app:wifi_wifiColor="@android:color/darker_gray" />-->
+        app:wifi_wifiColor="@android:color/darker_gray" />
 
 
 </LinearLayout>

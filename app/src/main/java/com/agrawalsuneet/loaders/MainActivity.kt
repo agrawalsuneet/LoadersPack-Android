@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         //initFidgetLoader()
 
-        initWifiLoader()
+        //initWifiLoader()
     }
 
     private fun initWifiLoader() {
