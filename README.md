@@ -41,13 +41,18 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![fidgetloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
 
 
+### WifiLoader
+![ezgif com-resize-min](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.9'
 ```
+
 
 ### ClockLoader
 ##### Through XML
@@ -111,6 +116,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
         container.addView(clockLoader);
 ```
 
+
 ### RippleLoader
 ##### Through XML
 ```
@@ -155,6 +161,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
         container.addView(ripple);
 ```
 
+
 ### RotatingCircularSticksLoader
 ##### Through XML
 ```
@@ -191,6 +198,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
                 loader.setAnimDuration(5000);
                 container.addView(loader);
 ```
+
 
 ### CircularSticksLoader
 ##### Through XML
@@ -243,6 +251,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
                 container.addView(loader);
 ```
 
+
 ### MultipleRippleLoader
 ##### Through XML
 ```
@@ -289,6 +298,7 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
         
                 container.addView(multipleRippleLoader);
 ```
+
 
 ### CurvesLoaders
 ##### Through XML
@@ -389,7 +399,6 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
 ```
 
 
-
 ### ArcProgressLoader
 ```
 <array name="colors_rgb">
@@ -400,6 +409,40 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
     </array>
 ```
 
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:arcprogress_arcColorsArray="@array/colors_rgb"
+        app:arcprogress_arcRadius="60dp"
+        app:arcprogress_arcWidth="8dp"
+        app:arcprogress_incrementalAngle="7.0"
+        app:arcprogress_maxArcAngle="220.0" />
+```
+##### Through Code
+* Kotlin
+```
+         val arcProgressLoader = ArcProgressLoader(this,
+                        120, 20,
+                        10.0f, 180.0f,
+                        resources.getIntArray(R.array.colors_rgb))
+
+                containerLayout.addView(arcProgressLoader)
+```
+
+* Java
+```
+        ArcProgressLoader arcProgressLoader = new ArcProgressLoader(this,
+                        120, 20,
+                        10.0f, 180.0f,
+                        getResources().getIntArray(R.array.colors_rgb));
+
+                container.addView(arcProgressLoader);
+```
+
+
+### FidgetLoader
 ##### Through XML
 ```
 <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
@@ -443,37 +486,39 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.8'
 ```
 
 
-### FidgetLoader
+### WifiLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.loaderspack.loaders.ArcProgressLoader
+<com.agrawalsuneet.loaderspack.loaders.WifiLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:arcprogress_arcColorsArray="@array/colors_rgb"
-        app:arcprogress_arcRadius="60dp"
-        app:arcprogress_arcWidth="8dp"
-        app:arcprogress_incrementalAngle="7.0"
-        app:arcprogress_maxArcAngle="220.0" />
+        android:layout_margin="16dp"
+        app:wifi_centerCircleRadius="6dp"
+        app:wifi_incrementalAngle="1.0"
+        app:wifi_wifiColor="@color/blue_selected" />
 ```
 ##### Through Code
 * Kotlin
 ```
-         val arcProgressLoader = ArcProgressLoader(this,
-                        120, 20,
-                        10.0f, 180.0f,
-                        resources.getIntArray(R.array.colors_rgb))
+         val wifiLoader = WifiLoader(this,
+                         20,
+                         ContextCompat.getColor(this, R.color.blue_selected))
+                         .apply {
+                             incrementalAngle = 2.0f
+                         }
 
-                containerLayout.addView(arcProgressLoader)
+                 containerLayout.addView(wifiLoader)
 ```
 
 * Java
 ```
-        ArcProgressLoader arcProgressLoader = new ArcProgressLoader(this,
-                        120, 20,
-                        10.0f, 180.0f,
-                        getResources().getIntArray(R.array.colors_rgb));
+        WifiLoader wifiLoader = new WifiLoader(this,
+                        20,
+                        ContextCompat.getColor(this, R.color.blue_selected));
 
-                container.addView(arcProgressLoader);
+                wifiLoader.setIncrementalAngle(1.2f);
+
+                container.addView(wifiLoader);
 ```
 
 

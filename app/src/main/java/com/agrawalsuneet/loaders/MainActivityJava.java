@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.BounceInterpolator;
 import android.widget.LinearLayout;
 
-import com.agrawalsuneet.loaderspack.loaders.FidgetLoader;
+import com.agrawalsuneet.loaderspack.loaders.WifiLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -118,7 +117,7 @@ public class MainActivityJava extends AppCompatActivity {
         container.addView(arcProgressLoader);*/
 
 
-        FidgetLoader fidgetLoader = new FidgetLoader(this,
+        /*FidgetLoader fidgetLoader = new FidgetLoader(this,
                 20,
                 ContextCompat.getColor(this, R.color.blue_selected),
                 ContextCompat.getColor(this, R.color.amber));
@@ -127,7 +126,15 @@ public class MainActivityJava extends AppCompatActivity {
         fidgetLoader.setNoOfRotation(1);
         fidgetLoader.setInterpolator(new BounceInterpolator());
 
-        container.addView(fidgetLoader);
+        container.addView(fidgetLoader);*/
+
+        WifiLoader wifiLoader = new WifiLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected));
+
+        wifiLoader.setIncrementalAngle(1.2f);
+
+        container.addView(wifiLoader);
     }
 
 
