@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_fidget)
+        setContentView(R.layout.main_wifi)
 
-        supportActionBar?.setTitle("FidgetLoader")
+        supportActionBar?.setTitle("WifiLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -34,6 +34,19 @@ class MainActivity : AppCompatActivity() {
         //initArcProgressLoader()
 
         //initFidgetLoader()
+
+        //initWifiLoader()
+    }
+
+    private fun initWifiLoader() {
+        val wifiLoader = WifiLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected))
+                .apply {
+                    incrementalAngle = 2.0f
+                }
+
+        containerLayout.addView(wifiLoader)
     }
 
     private fun initFidgetLoader() {
@@ -136,7 +149,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRippleLoader() {
         val ripple = RippleLoader(baseContext)/*.apply {
             circleInitialRadius = 80
-            circleColor = resources.getColor(R.color.black)
+            wifiColor = resources.getColor(R.color.black)
             fromAlpha = 1.0f
             toAlpha = 0f
             animationDuration = 1000
