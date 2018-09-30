@@ -138,4 +138,10 @@
         <attr name="fidget_interpolator" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="WifiLoader">
+        <attr name="wifi_centerCircleRadius" format="dimension" />
+        <attr name="wifi_wifiColor" format="color" />
+        <attr name="wifi_incrementalAngle" format="float" />
+    </declare-styleable>
+
 </resources>

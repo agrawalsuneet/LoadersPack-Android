@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 /**
@@ -63,34 +64,17 @@ class WifiLoader : View, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClockLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WifiLoader, 0, 0)
 
-        this.outerCircleBorderWidth = typedArray
-                .getDimension(R.styleable.ClockLoader_clock_outerCircleBorderWidth, 30.0f)
-        this.bigCircleRadius = typedArray
-                .getDimension(R.styleable.ClockLoader_clock_bigCircleRadius, 350.0f)
-        this.innerCircleRadius = typedArray
-                .getDimension(R.styleable.ClockLoader_clock_innerCircleRadius, 20.0f)
-        this.hourHandLength = typedArray
-                .getDimension(R.styleable.ClockLoader_clock_hourHandLength, 240.0f)
-        this.minuteHandLength = typedArray
-                .getDimension(R.styleable.ClockLoader_clock_minuteHandLength, 300.0f)
+        this.centerCircleRadius = typedArray
+                .getDimensionPixelSize(R.styleable.WifiLoader_wifi_centerCircleRadius, 30)
 
-        this.outerCircleBorderColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_outerCircleBorderColor, resources.getColor(android.R.color.darker_gray))
-        this.bigCircleColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_bigCircleColor, resources.getColor(android.R.color.black))
-        this.innerCircleColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_innerCircleColor, resources.getColor(android.R.color.darker_gray))
-        this.hourHandColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_hourHandColor, resources.getColor(android.R.color.darker_gray))
-        this.minuteHandColor = typedArray
-                .getColor(R.styleable.ClockLoader_clock_minuteHandColor, resources.getColor(android.R.color.darker_gray))
+        this.wifiColor = typedArray
+                .getColor(R.styleable.WifiLoader_wifi_wifiColor, resources.getColor(android.R.color.holo_green_light))
 
-        this.animSpeedMultiplier = typedArray
-                .getFloat(R.styleable.ClockLoader_clock_animSpeedMultiplier, 1.0f)
+        this.incrementalAngle = typedArray.getFloat(R.styleable.WifiLoader_wifi_incrementalAngle, 1.0f)
 
-        typedArray.recycle()*/
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
