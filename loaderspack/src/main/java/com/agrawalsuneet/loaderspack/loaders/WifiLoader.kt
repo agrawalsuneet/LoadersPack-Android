@@ -15,7 +15,7 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 class WifiLoader : View, LoaderContract {
 
-    var centerCircleRadius: Int = 30
+    var centerCircleRadius: Int = 20
 
     var wifiColor: Int = resources.getColor(android.R.color.holo_green_light)
 
@@ -63,11 +63,18 @@ class WifiLoader : View, LoaderContract {
         initValues()
     }
 
+    constructor(context: Context, centerCircleRadius: Int, wifiColor: Int) : super(context) {
+        this.centerCircleRadius = centerCircleRadius
+        this.wifiColor = wifiColor
+        initPaints()
+        initValues()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WifiLoader, 0, 0)
 
         this.centerCircleRadius = typedArray
-                .getDimensionPixelSize(R.styleable.WifiLoader_wifi_centerCircleRadius, 30)
+                .getDimensionPixelSize(R.styleable.WifiLoader_wifi_centerCircleRadius, 20)
 
         this.wifiColor = typedArray
                 .getColor(R.styleable.WifiLoader_wifi_wifiColor, resources.getColor(android.R.color.holo_green_light))

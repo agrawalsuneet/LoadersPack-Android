@@ -34,6 +34,19 @@ class MainActivity : AppCompatActivity() {
         //initArcProgressLoader()
 
         //initFidgetLoader()
+
+        initWifiLoader()
+    }
+
+    private fun initWifiLoader() {
+        val wifiLoader = WifiLoader(this,
+                20,
+                ContextCompat.getColor(this, R.color.blue_selected))
+                .apply {
+                    incrementalAngle = 2.0f
+                }
+
+        containerLayout.addView(wifiLoader)
     }
 
     private fun initFidgetLoader() {
