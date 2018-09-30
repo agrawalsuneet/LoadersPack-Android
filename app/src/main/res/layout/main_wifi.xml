@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        <com.agrawalsuneet.loaderspack.loaders.WifiLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:fidget_animDuration="5000"
-            app:fidget_bodyColor="@color/red"
-            app:fidget_fidgetRadius="18dp"
-            app:fidget_interpolator="@android:anim/linear_interpolator"
-            app:fidget_noOfRotation="5"
-            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+            app:wifi_centerCircleRadius="4dp"
+            app:wifi_incrementalAngle="2.0"
+            app:wifi_wifiColor="@color/red" />
 
-        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+        <com.agrawalsuneet.loaderspack.loaders.WifiLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:fidget_animDuration="5000"
-            app:fidget_bodyColor="@color/amber"
-            app:fidget_fidgetRadius="18dp"
-            app:fidget_interpolator="@android:anim/linear_interpolator"
-            app:fidget_noOfRotation="5"
-            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+            app:wifi_centerCircleRadius="4dp"
+            app:wifi_incrementalAngle="2.0"
+            app:wifi_wifiColor="@color/amber" />
 
-        <com.agrawalsuneet.loaderspack.loaders.FidgetLoader
+
+        <com.agrawalsuneet.loaderspack.loaders.WifiLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:fidget_animDuration="5000"
-            app:fidget_bodyColor="@color/green"
-            app:fidget_fidgetRadius="18dp"
-            app:fidget_interpolator="@android:anim/linear_interpolator"
-            app:fidget_noOfRotation="5"
-            app:fidget_sideCirclesColor="@android:color/darker_gray" />
+            app:wifi_centerCircleRadius="4dp"
+            app:wifi_incrementalAngle="2.0"
+            app:wifi_wifiColor="@color/green" />
 
-    </LinearLayout>-->
+
+    </LinearLayout>
 
 
     <com.agrawalsuneet.loaderspack.loaders.WifiLoader
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:wifi_centerCircleRadius="8dp"
+        app:wifi_incrementalAngle="2.0"
+        app:wifi_wifiColor="@color/blue_selected" />
+
+
+    <com.agrawalsuneet.loaderspack.loaders.WifiLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:wifi_centerCircleRadius="6dp"
+        app:wifi_incrementalAngle="2.0"
+        app:wifi_wifiColor="@android:color/darker_gray" />
 
 
 </LinearLayout>
