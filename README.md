@@ -42,7 +42,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### WifiLoader
-![wifiloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
+![ezgif com-resize-min](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
