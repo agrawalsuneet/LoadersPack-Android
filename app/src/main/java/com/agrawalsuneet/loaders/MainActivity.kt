@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_wifi)
+        setContentView(R.layout.main_pulse)
 
-        supportActionBar?.setTitle("WifiLoader")
+        supportActionBar?.setTitle("PulseLoader")
 
         containerLayout = findViewById(R.id.container)
 
