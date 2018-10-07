@@ -13,15 +13,21 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 class PulseLoader : View, LoaderContract {
 
-    var radius: Int = 20
+    var pulseLineThickness: Int = 10
+    var normalIncrementalValue: Float = 4.0f
+    var pulseIncrementalValue: Float = 20.0f
 
-    var calWidth: Int = 0
-    var calHeight: Int = 0
-
-    var pulseColor: Int = resources.getColor(android.R.color.holo_red_dark)
+    var pulseColor: Int = resources.getColor(android.R.color.holo_green_light)
 
     private val paint: Paint = Paint()
 
+    private var step: Int = 0
+    private val maxSteps : Int = 6
+
+    private var currentXValue = 0.0f
+    private var currentYValue = 0.0f
+
+    private var posArray = Array(maxSteps) { LineCordinates() }
 
     constructor(context: Context) : super(context) {
         initValues()
@@ -65,18 +71,23 @@ class PulseLoader : View, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        calWidth = (40 * radius)
-        calHeight = (20 * radius)
+
+        val calWidth = (40 * pulseLineThickness)
+        val calHeight = (20 * pulseLineThickness)
         setMeasuredDimension(calWidth, calHeight)
     }
 
     private fun initValues() {
 
+        initCordinated()
+
+
+
         paint.color = pulseColor
         paint.isAntiAlias = true
 
         paint.style = Paint.Style.FILL
-        paint.strokeWidth = radius.toFloat()
+        paint.strokeWidth = pulseLineThickness.toFloat()
         paint.strokeCap = Paint.Cap.ROUND
     }
 
@@ -86,63 +97,184 @@ class PulseLoader : View, LoaderContract {
 
 
         //first line
-        canvas.drawLine(
-                (0.5 * radius).toFloat(), // startX
-                (10 * radius).toFloat(), // startY
-                (16 * radius).toFloat(), // stopX
-                (10 * radius).toFloat(), // stopY
+        /*canvas.drawLine(
+                (0.5 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
+                (16 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
                 paint // Paint
         )
 
         canvas.drawLine(
-                (16 * radius).toFloat(),
-                (10 * radius).toFloat(),
-                (18 * radius).toFloat(),
-                (0.5 * radius).toFloat(),
+                (16 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
+                (18 * pulseLineThickness).toFloat(),
+                (0.5 * pulseLineThickness).toFloat(),
                 paint
         )
 
         canvas.drawLine(
-                (18 * radius).toFloat(),
-                (radius).toFloat(),
-                (21 * radius).toFloat(),
-                (19 * radius).toFloat(),
+                (18 * pulseLineThickness).toFloat(),
+                (0.5 * pulseLineThickness).toFloat(),
+                (21 * pulseLineThickness).toFloat(),
+                (19 * pulseLineThickness).toFloat(),
                 paint
         )
 
         canvas.drawLine(
-                (18 * radius).toFloat(),
-                (radius).toFloat(),
-                (21 * radius).toFloat(),
-                (19 * radius).toFloat(),
+                (18 * pulseLineThickness).toFloat(),
+                (pulseLineThickness).toFloat(),
+                (21 * pulseLineThickness).toFloat(),
+                (19.5 * pulseLineThickness).toFloat(),
                 paint
         )
 
         canvas.drawLine(
-                (21 * radius).toFloat(),
-                (19.5 * radius).toFloat(),
-                (23 * radius).toFloat(),
-                (6 * radius).toFloat(),
+                (21 * pulseLineThickness).toFloat(),
+                (19.5 * pulseLineThickness).toFloat(),
+                (23 * pulseLineThickness).toFloat(),
+                (6 * pulseLineThickness).toFloat(),
                 paint
         )
 
         canvas.drawLine(
-                (23 * radius).toFloat(),
-                (6 * radius).toFloat(),
-                (24 * radius).toFloat(),
-                (10 * radius).toFloat(),
+                (23 * pulseLineThickness).toFloat(),
+                (6 * pulseLineThickness).toFloat(),
+                (24 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
                 paint
         )
 
         canvas.drawLine(
-                (24 * radius).toFloat(),
-                (10 * radius).toFloat(),
-                (39.5 * radius).toFloat(),
-                (10 * radius).toFloat(),
+                (24 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
+                (39.5 * pulseLineThickness).toFloat(),
+                (10 * pulseLineThickness).toFloat(),
                 paint
-        )
+        )*/
 
+        for (pos in 0 until step) {
+            val lineCordinates = posArray[pos]
+            canvas.drawLine(lineCordinates.xStartCor,
+                    lineCordinates.yStartCor,
+                    lineCordinates.xEndCor,
+                    lineCordinates.yEndCor,
+                    paint)
+        }
 
+        // draw current line
+        val lineCordinates = posArray[step]
+        canvas.drawLine(lineCordinates.xStartCor,
+                lineCordinates.yStartCor,
+                currentXValue,
+                currentYValue,
+                paint)
+
+        currentXValue += lineCordinates.xIncrementalValue
+        currentYValue += lineCordinates.yIncrementalValue
+
+        if(currentXValue >= lineCordinates.xEndCor){
+            step = (step + 1) % maxSteps
+            currentXValue = posArray[step].xStartCor
+            currentYValue = posArray[step].yStartCor
+        }
+
+        postInvalidateOnAnimation()
+    }
+
+    private inner class LineCordinates {
+        var xStartCor = 0.0f
+        var xEndCor = 0.0f
+        var yStartCor = 0.0f
+        var yEndCor = 0.0f
+
+        var xIncrementalValue = 0.0f
+        var yIncrementalValue = 0.0f
+    }
+
+    private fun initCordinated(){
+        for (pos in 0 until maxSteps) {
+            val lineCordinates = LineCordinates()
+
+            when (pos) {
+                0 -> {
+                    lineCordinates.xStartCor = (0.5 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (16 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
+
+                    lineCordinates.xIncrementalValue = normalIncrementalValue
+                }
+
+                1 -> {
+                    lineCordinates.xStartCor = (16 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (18 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (0.5 * pulseLineThickness).toFloat()
+
+                    lineCordinates.yIncrementalValue = -pulseIncrementalValue
+                    //negative because going up
+
+                    lineCordinates.xIncrementalValue =
+                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                                    / (lineCordinates.yStartCor - lineCordinates.yEndCor))
+                }
+
+                2 -> {
+                    lineCordinates.xStartCor = (18 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (21 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (0.5 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (19.5 * pulseLineThickness).toFloat()
+
+                    lineCordinates.yIncrementalValue = pulseIncrementalValue
+
+                    lineCordinates.xIncrementalValue =
+                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                                    / (lineCordinates.yEndCor - lineCordinates.yStartCor))
+                }
+
+                3 -> {
+                    lineCordinates.xStartCor = (21 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (23 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (19.5 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (6 * pulseLineThickness).toFloat()
+
+                    lineCordinates.yIncrementalValue = -pulseIncrementalValue
+                    //negative because going up
+
+                    lineCordinates.xIncrementalValue =
+                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                                    / (lineCordinates.yStartCor - lineCordinates.yEndCor))
+                }
+
+                4 -> {
+                    lineCordinates.xStartCor = (23 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (24 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (6 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
+
+                    lineCordinates.yIncrementalValue = pulseIncrementalValue
+
+                    lineCordinates.xIncrementalValue =
+                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                                    / (lineCordinates.yEndCor - lineCordinates.yStartCor))
+                }
+
+                5 ->{
+                    lineCordinates.xStartCor = (24 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (39.5 * pulseLineThickness).toFloat()
+                    lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
+                    lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
+
+                    lineCordinates.xIncrementalValue = normalIncrementalValue
+                }
+            }
+
+            posArray[pos] = lineCordinates
+        }
+
+        currentXValue = posArray[0].xStartCor
+        currentYValue = posArray[0].yStartCor
     }
 
 }
