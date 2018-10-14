@@ -45,12 +45,16 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![wifiloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
 
 
+### PulseLoader
+![pulseloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.9'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.0'
 ```
 
 
@@ -519,6 +523,44 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:0.9'
                 wifiLoader.setIncrementalAngle(1.2f);
 
                 container.addView(wifiLoader);
+```
+
+
+### PulseLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.PulseLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pulse_LineThickness="6dp"
+        app:pulse_normalIncrementalValue="4.0"
+        app:pulse_pulseColor="@color/blue_selected"
+        app:pulse_pulseIncrementalValue="20.0"
+        app:pulse_sideLength="100dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val pulseLoader = PulseLoader(this,
+                        15,
+                        400,
+                        4.0f,
+                        15.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected))
+
+                containerLayout.addView(pulseLoader)
+```
+
+* Java
+```
+        PulseLoader pulseLoader = new PulseLoader(this,
+                        15,
+                        400,
+                        4.0f,
+                        15.0f,
+                        ContextCompat.getColor(this, R.color.blue_selected));
+
+                container.addView(pulseLoader);
 ```
 
 

@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import com.agrawalsuneet.loaderspack.loaders.PulseLoader;
 import com.agrawalsuneet.loaderspack.loaders.WifiLoader;
 
 /**
@@ -128,13 +129,22 @@ public class MainActivityJava extends AppCompatActivity {
 
         container.addView(fidgetLoader);*/
 
-        WifiLoader wifiLoader = new WifiLoader(this,
+        /*WifiLoader wifiLoader = new WifiLoader(this,
                 20,
                 ContextCompat.getColor(this, R.color.blue_selected));
 
         wifiLoader.setIncrementalAngle(1.2f);
 
-        container.addView(wifiLoader);
+        container.addView(wifiLoader);*/
+
+        PulseLoader pulseLoader = new PulseLoader(this,
+                15,
+                400,
+                4.0f,
+                15.0f,
+                ContextCompat.getColor(this, R.color.blue_selected));
+
+        container.addView(pulseLoader);
     }
 
 
