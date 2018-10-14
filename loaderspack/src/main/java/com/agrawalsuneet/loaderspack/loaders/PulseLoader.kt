@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 /**
@@ -13,14 +14,13 @@ import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 class PulseLoader : View, LoaderContract {
 
-    var pulseLineThickness: Int = 10
-    var normalIncrementalValue: Float = 4.0f
-    var pulseIncrementalValue: Float = 20.0f
+    var pulseLineThickness: Int = 15
     var sideLength: Int = 300
 
-    var pulseColor: Int = resources.getColor(android.R.color.holo_green_light)
+    var normalIncrementalValue: Float = 4.0f
+    var pulseIncrementalValue: Float = 20.0f
 
-    var waitCountOnFinish: Int = 60
+    var pulseColor: Int = resources.getColor(android.R.color.holo_green_light)
 
     private val paint: Paint = Paint()
 
@@ -48,27 +48,19 @@ class PulseLoader : View, LoaderContract {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcProgressLoader)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PulseLoader)
 
-        arcRadius = typedArray.getDimensionPixelSize(R.styleable.ArcProgressLoader_arcprogress_arcRadius, 200)
+        pulseLineThickness = typedArray.getDimensionPixelSize(R.styleable.PulseLoader_pulse_LineThickness, 15)
+        sideLength = typedArray.getDimensionPixelSize(R.styleable.PulseLoader_pulse_sideLength, 300)
 
-        arcWidth = typedArray.getDimensionPixelSize(R.styleable.ArcProgressLoader_arcprogress_arcWidth, 40)
+        normalIncrementalValue = typedArray.getFloat(R.styleable.PulseLoader_pulse_normalIncrementalValue, 4.0f)
 
-        incrementalAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_incrementalAngle, 6.0f)
+        pulseIncrementalValue = typedArray.getFloat(R.styleable.PulseLoader_pulse_pulseIncrementalValue, 20.0f)
 
-        maxArcAngle = typedArray.getFloat(R.styleable.ArcProgressLoader_arcprogress_maxArcAngle, 200.0f)
-
-        val colorsArrayId = typedArray.getResourceId(R.styleable.ArcProgressLoader_arcprogress_arcColorsArray, 0)
+        pulseColor = typedArray
+                .getColor(R.styleable.PulseLoader_pulse_pulseColor, resources.getColor(android.R.color.holo_green_light))
 
         typedArray.recycle()
-
-        if (colorsArrayId != 0) {
-            arcColorsArray = resources.getIntArray(colorsArrayId)
-
-            if (arcColorsArray == null || arcColorsArray.size < 1) {
-                throw RuntimeException("ArcProgressLoader : Please provide a valid, non-empty colors array")
-            }
-        }*/
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -82,9 +74,7 @@ class PulseLoader : View, LoaderContract {
 
     private fun initValues() {
 
-        initCordinated()
-
-
+        initCordinates()
 
         paint.color = pulseColor
         paint.isAntiAlias = true
@@ -97,64 +87,6 @@ class PulseLoader : View, LoaderContract {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-
-        //first line
-        /*canvas.drawLine(
-                (0.5 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                (16 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                paint // Paint
-        )
-
-        canvas.drawLine(
-                (16 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                (18 * pulseLineThickness).toFloat(),
-                (0.5 * pulseLineThickness).toFloat(),
-                paint
-        )
-
-        canvas.drawLine(
-                (18 * pulseLineThickness).toFloat(),
-                (0.5 * pulseLineThickness).toFloat(),
-                (21 * pulseLineThickness).toFloat(),
-                (19 * pulseLineThickness).toFloat(),
-                paint
-        )
-
-        canvas.drawLine(
-                (18 * pulseLineThickness).toFloat(),
-                (pulseLineThickness).toFloat(),
-                (21 * pulseLineThickness).toFloat(),
-                (19.5 * pulseLineThickness).toFloat(),
-                paint
-        )
-
-        canvas.drawLine(
-                (21 * pulseLineThickness).toFloat(),
-                (19.5 * pulseLineThickness).toFloat(),
-                (23 * pulseLineThickness).toFloat(),
-                (6 * pulseLineThickness).toFloat(),
-                paint
-        )
-
-        canvas.drawLine(
-                (23 * pulseLineThickness).toFloat(),
-                (6 * pulseLineThickness).toFloat(),
-                (24 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                paint
-        )
-
-        canvas.drawLine(
-                (24 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                (39.5 * pulseLineThickness).toFloat(),
-                (10 * pulseLineThickness).toFloat(),
-                paint
-        )*/
 
         for (pos in 0 until step) {
             val lineCordinates = posArray[pos]
@@ -195,7 +127,7 @@ class PulseLoader : View, LoaderContract {
         var yIncrementalValue = 0.0f
     }
 
-    private fun initCordinated() {
+    private fun initCordinates() {
         for (pos in 0 until maxSteps) {
             val lineCordinates = LineCordinates()
 
