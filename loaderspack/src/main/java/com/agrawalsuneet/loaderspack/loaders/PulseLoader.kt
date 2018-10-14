@@ -18,7 +18,14 @@ class PulseLoader : View, LoaderContract {
     var sideLength: Int = 300
 
     var normalIncrementalValue: Float = 4.0f
+        set(value) {
+            field = if (value <= 0) 1.0f else value
+        }
+
     var pulseIncrementalValue: Float = 20.0f
+        set(value) {
+            field = if (value <= 0) 1.0f else value
+        }
 
     var pulseColor: Int = resources.getColor(android.R.color.holo_green_light)
 
