@@ -16,13 +16,16 @@ class PulseLoader : View, LoaderContract {
     var pulseLineThickness: Int = 10
     var normalIncrementalValue: Float = 4.0f
     var pulseIncrementalValue: Float = 20.0f
+    var sideLength: Int = 300
 
     var pulseColor: Int = resources.getColor(android.R.color.holo_green_light)
+
+    var waitCountOnFinish: Int = 60
 
     private val paint: Paint = Paint()
 
     private var step: Int = 0
-    private val maxSteps : Int = 6
+    private val maxSteps: Int = 6
 
     private var currentXValue = 0.0f
     private var currentYValue = 0.0f
@@ -72,7 +75,7 @@ class PulseLoader : View, LoaderContract {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
 
-        val calWidth = (40 * pulseLineThickness)
+        val calWidth = (2 * sideLength) + (8 * pulseLineThickness)
         val calHeight = (20 * pulseLineThickness)
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -173,7 +176,7 @@ class PulseLoader : View, LoaderContract {
         currentXValue += lineCordinates.xIncrementalValue
         currentYValue += lineCordinates.yIncrementalValue
 
-        if(currentXValue >= lineCordinates.xEndCor){
+        if (currentXValue >= lineCordinates.xEndCor) {
             step = (step + 1) % maxSteps
             currentXValue = posArray[step].xStartCor
             currentYValue = posArray[step].yStartCor
@@ -192,14 +195,14 @@ class PulseLoader : View, LoaderContract {
         var yIncrementalValue = 0.0f
     }
 
-    private fun initCordinated(){
+    private fun initCordinated() {
         for (pos in 0 until maxSteps) {
             val lineCordinates = LineCordinates()
 
             when (pos) {
                 0 -> {
                     lineCordinates.xStartCor = (0.5 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (16 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = (sideLength).toFloat()
                     lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
 
@@ -207,8 +210,8 @@ class PulseLoader : View, LoaderContract {
                 }
 
                 1 -> {
-                    lineCordinates.xStartCor = (16 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (18 * pulseLineThickness).toFloat()
+                    lineCordinates.xStartCor = (sideLength).toFloat()
+                    lineCordinates.xEndCor = (sideLength + (2 * pulseLineThickness)).toFloat()
                     lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (0.5 * pulseLineThickness).toFloat()
 
@@ -216,26 +219,26 @@ class PulseLoader : View, LoaderContract {
                     //negative because going up
 
                     lineCordinates.xIncrementalValue =
-                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                            (((lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
                                     / (lineCordinates.yStartCor - lineCordinates.yEndCor))
                 }
 
                 2 -> {
-                    lineCordinates.xStartCor = (18 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (21 * pulseLineThickness).toFloat()
+                    lineCordinates.xStartCor = (sideLength + (2 * pulseLineThickness)).toFloat()
+                    lineCordinates.xEndCor = sideLength + (5 * pulseLineThickness).toFloat()
                     lineCordinates.yStartCor = (0.5 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (19.5 * pulseLineThickness).toFloat()
 
                     lineCordinates.yIncrementalValue = pulseIncrementalValue
 
                     lineCordinates.xIncrementalValue =
-                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                            (((lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
                                     / (lineCordinates.yEndCor - lineCordinates.yStartCor))
                 }
 
                 3 -> {
-                    lineCordinates.xStartCor = (21 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (23 * pulseLineThickness).toFloat()
+                    lineCordinates.xStartCor = sideLength + (5 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = sideLength + (7 * pulseLineThickness).toFloat()
                     lineCordinates.yStartCor = (19.5 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (6 * pulseLineThickness).toFloat()
 
@@ -243,26 +246,28 @@ class PulseLoader : View, LoaderContract {
                     //negative because going up
 
                     lineCordinates.xIncrementalValue =
-                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                            (((lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
                                     / (lineCordinates.yStartCor - lineCordinates.yEndCor))
                 }
 
                 4 -> {
-                    lineCordinates.xStartCor = (23 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (24 * pulseLineThickness).toFloat()
+                    lineCordinates.xStartCor = sideLength + (7 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = sideLength + (8 * pulseLineThickness).toFloat()
                     lineCordinates.yStartCor = (6 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
 
                     lineCordinates.yIncrementalValue = pulseIncrementalValue
 
                     lineCordinates.xIncrementalValue =
-                            (( (lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
+                            (((lineCordinates.xEndCor - lineCordinates.xStartCor) * pulseIncrementalValue)
                                     / (lineCordinates.yEndCor - lineCordinates.yStartCor))
                 }
 
-                5 ->{
-                    lineCordinates.xStartCor = (24 * pulseLineThickness).toFloat()
-                    lineCordinates.xEndCor = (39.5 * pulseLineThickness).toFloat()
+                5 -> {
+                    lineCordinates.xStartCor = sideLength + (8 * pulseLineThickness).toFloat()
+                    lineCordinates.xEndCor = ((2 * sideLength)
+                            + (8 * pulseLineThickness)
+                            - (pulseLineThickness / 2)).toFloat()
                     lineCordinates.yStartCor = (10 * pulseLineThickness).toFloat()
                     lineCordinates.yEndCor = (10 * pulseLineThickness).toFloat()
 
