@@ -36,6 +36,19 @@ class MainActivity : AppCompatActivity() {
         //initFidgetLoader()
 
         //initWifiLoader()
+
+        //initPulseLoader()
+    }
+
+    private fun initPulseLoader() {
+        val pulseLoader = PulseLoader(this,
+                15,
+                400,
+                4.0f,
+                15.0f,
+                ContextCompat.getColor(this, R.color.blue_selected))
+
+        containerLayout.addView(pulseLoader)
     }
 
     private fun initWifiLoader() {

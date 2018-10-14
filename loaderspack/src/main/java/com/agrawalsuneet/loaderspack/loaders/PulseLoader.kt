@@ -53,6 +53,16 @@ class PulseLoader : View, LoaderContract {
         initValues()
     }
 
+    constructor(context: Context, pulseLineThickness: Int, sideLength: Int, normalIncrementalValue: Float,
+                pulseIncrementalValue: Float, pulseColor: Int) : super(context) {
+        this.pulseLineThickness = pulseLineThickness
+        this.sideLength = sideLength
+        this.normalIncrementalValue = normalIncrementalValue
+        this.pulseIncrementalValue = pulseIncrementalValue
+        this.pulseColor = pulseColor
+        initValues()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PulseLoader)
