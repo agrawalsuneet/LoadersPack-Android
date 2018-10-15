@@ -144,4 +144,14 @@
         <attr name="wifi_incrementalAngle" format="float" />
     </declare-styleable>
 
+    <declare-styleable name="PulseLoader">
+        <attr name="pulse_LineThickness" format="dimension" />
+        <attr name="pulse_sideLength" format="dimension" />
+
+        <attr name="pulse_normalIncrementalValue" format="float" />
+        <attr name="pulse_pulseIncrementalValue" format="float" />
+
+        <attr name="pulse_pulseColor" format="color" />
+    </declare-styleable>
+
 </resources>

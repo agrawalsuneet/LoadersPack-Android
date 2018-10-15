@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.loaderspack.loaders.PulseLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:pulse_LineThickness="3dp"
+            app:pulse_normalIncrementalValue="2.0"
+            app:pulse_pulseColor="@color/red"
+            app:pulse_pulseIncrementalValue="8.0"
+            app:pulse_sideLength="30dp" />
+
+
+        <com.agrawalsuneet.loaderspack.loaders.PulseLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:pulse_LineThickness="3dp"
+            app:pulse_normalIncrementalValue="2.0"
+            app:pulse_pulseColor="@color/amber"
+            app:pulse_pulseIncrementalValue="8.0"
+            app:pulse_sideLength="30dp" />
+
+        <com.agrawalsuneet.loaderspack.loaders.PulseLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:pulse_LineThickness="3dp"
+            app:pulse_normalIncrementalValue="2.0"
+            app:pulse_pulseColor="@color/green"
+            app:pulse_pulseIncrementalValue="8.0"
+            app:pulse_sideLength="30dp" />
+
+    </LinearLayout>
+
+
+    <com.agrawalsuneet.loaderspack.loaders.PulseLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:pulse_LineThickness="6dp"
+        app:pulse_normalIncrementalValue="4.0"
+        app:pulse_pulseColor="@color/blue_selected"
+        app:pulse_pulseIncrementalValue="20.0"
+        app:pulse_sideLength="100dp" />
+
+    <com.agrawalsuneet.loaderspack.loaders.PulseLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:pulse_LineThickness="5dp"
+        app:pulse_normalIncrementalValue="3.0"
+        app:pulse_pulseColor="@android:color/darker_gray"
+        app:pulse_pulseIncrementalValue="15.0"
+        app:pulse_sideLength="80dp" />
+
+
+</LinearLayout>
