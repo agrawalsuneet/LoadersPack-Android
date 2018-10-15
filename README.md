@@ -46,7 +46,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### PulseLoader
-![pulseloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
+![pulseloader](https://user-images.githubusercontent.com/12999622/46934218-8b7fea80-d074-11e8-980e-70bdbb361f87.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
