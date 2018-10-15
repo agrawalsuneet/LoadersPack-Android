@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_wifi)
+        setContentView(R.layout.main_pulse)
 
-        supportActionBar?.setTitle("WifiLoader")
+        supportActionBar?.setTitle("PulseLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -36,6 +36,19 @@ class MainActivity : AppCompatActivity() {
         //initFidgetLoader()
 
         //initWifiLoader()
+
+        //initPulseLoader()
+    }
+
+    private fun initPulseLoader() {
+        val pulseLoader = PulseLoader(this,
+                15,
+                400,
+                4.0f,
+                15.0f,
+                ContextCompat.getColor(this, R.color.blue_selected))
+
+        containerLayout.addView(pulseLoader)
     }
 
     private fun initWifiLoader() {
