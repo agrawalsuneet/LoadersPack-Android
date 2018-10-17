@@ -23,6 +23,13 @@
         <attr name="fidgetSideCirclesColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="NeedleView">
+        <attr name="needleLength" format="dimension" />
+        <attr name="needleWidth" format="dimension" />
+        <attr name="needleJointRadius" format="dimension" />
+        <attr name="needleColor" format="color" />
+    </declare-styleable>
+
 
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
