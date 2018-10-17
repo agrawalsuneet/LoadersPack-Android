@@ -3,11 +3,9 @@ package com.agrawalsuneet.loaderspack.basicviews
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.R.attr.*
 
 class NeedleView : View {
 
@@ -41,7 +39,7 @@ class NeedleView : View {
         this.needleLength = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleLength, 160)
         this.needleWidth = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleWidth, 20)
 
-        this.needleJointRadius = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleWidth, 140)
+        this.needleJointRadius = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleJointRadius, 40)
 
         this.needleColor = typedArray.getColor(R.styleable.NeedleView_needleColor, resources.getColor(android.R.color.holo_red_dark))
         typedArray.recycle()
