@@ -17,6 +17,14 @@ class NeedleView : View {
 
     private val paint: Paint = Paint()
 
+    constructor(context: Context, needleLength: Int, needleWidth: Int, needleJointRadius: Int, needleColor: Int) : super(context) {
+        this.needleLength = needleLength
+        this.needleWidth = needleWidth
+        this.needleJointRadius = needleJointRadius
+        this.needleColor = needleColor
+        initValues()
+    }
+
     constructor(context: Context) : super(context) {
         initValues()
     }
@@ -30,7 +38,6 @@ class NeedleView : View {
         initAttributes(attrs)
         initValues()
     }
-
 
     fun initAttributes(attrs: AttributeSet) {
 
