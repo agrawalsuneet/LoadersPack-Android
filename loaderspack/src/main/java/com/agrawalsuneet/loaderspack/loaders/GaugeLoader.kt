@@ -13,6 +13,7 @@ class GaugeLoader : RelativeLayout, LoaderContract {
     var rangeIndicatorRadius: Int = 140
     var rangeIndicatorWidth: Int = 100
     var needleWidth: Int = 20
+    var needleJointRadius : Int = 45
 
     var lowerRangeColor: Int = resources.getColor(android.R.color.holo_green_light)
     var higherRangeColor: Int = resources.getColor(android.R.color.holo_green_dark)
@@ -76,13 +77,13 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         addView(lowerRangeArcView)
         addView(higherRangeArcView)
 
-        needleView = NeedleView(context, rangeIndicatorRadius, needleWidth,
-                (rangeIndicatorRadius - rangeIndicatorWidth), needleColor)
+        needleView = NeedleView(context, (rangeIndicatorRadius - needleJointRadius), needleWidth,
+                needleJointRadius, needleColor)
 
         val layoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        layoutParams.topMargin = rangeIndicatorWidth / 8
+        layoutParams.topMargin = rangeIndicatorWidth / 2
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
 
         addView(needleView, layoutParams)
