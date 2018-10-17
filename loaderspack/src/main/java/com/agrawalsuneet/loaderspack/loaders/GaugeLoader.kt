@@ -2,22 +2,26 @@ package com.agrawalsuneet.loaderspack.loaders
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.LinearLayout
+import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.agrawalsuneet.loaderspack.basicviews.ArcView
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.basicviews.NeedleView
 
 class GaugeLoader : RelativeLayout, LoaderContract {
 
     var rangeIndicatorRadius: Int = 140
-    var rangeIndicatorWidth = 100
+    var rangeIndicatorWidth: Int = 100
+    var needleWidth: Int = 20
 
     var lowerRangeColor: Int = resources.getColor(android.R.color.holo_green_light)
     var higherRangeColor: Int = resources.getColor(android.R.color.holo_green_dark)
+    var needleColor: Int = resources.getColor(android.R.color.holo_orange_dark)
 
     private lateinit var lowerRangeArcView: ArcView
     private lateinit var higherRangeArcView: ArcView
 
+    private lateinit var needleView: NeedleView
 
     constructor(context: Context) : super(context) {
         initView()
@@ -63,14 +67,25 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         gravity = CENTER_IN_PARENT
 
         lowerRangeArcView = ArcView(context, rangeIndicatorRadius, rangeIndicatorWidth,
-                150.0f, 150.0f, lowerRangeColor, true, false)
+                150.0f, 155.0f, lowerRangeColor, true, false)
 
         higherRangeArcView = ArcView(context, rangeIndicatorRadius, rangeIndicatorWidth,
                 300.0f, 90.0f, higherRangeColor, true, false)
 
+
         addView(lowerRangeArcView)
         addView(higherRangeArcView)
 
+        needleView = NeedleView(context, rangeIndicatorRadius, needleWidth,
+                (rangeIndicatorRadius - rangeIndicatorWidth), needleColor)
+
+        val layoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        layoutParams.topMargin = rangeIndicatorWidth / 8
+        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
+
+        addView(needleView, layoutParams)
     }
 
 }
