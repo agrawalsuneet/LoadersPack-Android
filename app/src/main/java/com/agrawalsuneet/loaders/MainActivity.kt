@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_pulse)
+        setContentView(R.layout.main_gauge)
 
-        supportActionBar?.setTitle("PulseLoader")
+        supportActionBar?.setTitle("GaugeLoader")
 
         containerLayout = findViewById(R.id.container)
 
