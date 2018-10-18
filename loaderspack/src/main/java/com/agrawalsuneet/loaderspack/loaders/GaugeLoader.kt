@@ -3,7 +3,10 @@ package com.agrawalsuneet.loaderspack.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.view.animation.*
 import android.widget.RelativeLayout
+import com.agrawalsuneet.dotsloader.utils.random
 import com.agrawalsuneet.loaderspack.basicviews.ArcView
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 import com.agrawalsuneet.loaderspack.basicviews.NeedleView
@@ -13,7 +16,7 @@ class GaugeLoader : RelativeLayout, LoaderContract {
     var rangeIndicatorRadius: Int = 140
     var rangeIndicatorWidth: Int = 100
     var needleWidth: Int = 20
-    var needleJointRadius : Int = 45
+    var needleJointRadius: Int = 45
 
     var lowerRangeColor: Int = resources.getColor(android.R.color.holo_green_light)
     var higherRangeColor: Int = resources.getColor(android.R.color.holo_green_dark)
@@ -87,6 +90,64 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
 
         addView(needleView, layoutParams)
+
+        val viewTreeObserver = this.viewTreeObserver
+        val loaderView = this
+
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                startLoading()
+
+                val vto = loaderView.viewTreeObserver
+                vto.removeOnGlobalLayoutListener(this)
+            }
+        })
+    }
+
+    fun startLoading() {
+        val rotateAnim = getRotateAnimation()
+
+        rotateAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationRepeat(anim: Animation?) {
+            }
+
+            override fun onAnimationEnd(anim: Animation?) {
+                startLoading()
+            }
+
+            override fun onAnimationStart(anim: Animation?) {
+            }
+
+        })
+
+        needleView.startAnimation(rotateAnim)
+    }
+
+    fun getRotateAnimation(): RotateAnimation {
+
+        val toDegree = (30..90).random()
+
+        val anim = RotateAnimation(-90.0f, toDegree.toFloat(),
+                needleJointRadius.toFloat(),
+                (needleView.height - needleJointRadius).toFloat())
+
+        anim.duration = 1000
+        anim.repeatCount = 1
+        anim.repeatMode = Animation.REVERSE
+
+        val random = (0..6).random()
+        when(random){
+            0 -> anim.interpolator = LinearInterpolator()
+            1 -> anim.interpolator = AccelerateInterpolator()
+            2 -> anim.interpolator = DecelerateInterpolator()
+            3 -> anim.interpolator = AccelerateDecelerateInterpolator()
+            4 -> anim.interpolator = AnticipateInterpolator()
+            5 -> anim.interpolator = OvershootInterpolator()
+            6 -> anim.interpolator = AnticipateOvershootInterpolator()
+        }
+
+
+        return anim
     }
 
 }
