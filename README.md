@@ -5,6 +5,8 @@
 
 latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/loaderspack/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/loaderspack/_latestVersion)
 
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-LoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7247 )
+
 ### ClockLoader
 ![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
 
