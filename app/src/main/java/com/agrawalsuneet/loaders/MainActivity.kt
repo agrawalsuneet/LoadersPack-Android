@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         //initWifiLoader()
         //initPulseLoader()
 
-        initGaugeLoader()
+        //initGaugeLoader()
     }
 
     private fun initGaugeLoader() {
