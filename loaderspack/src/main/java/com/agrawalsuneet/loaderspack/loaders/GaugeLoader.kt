@@ -57,7 +57,10 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context?, rangeIndicatorRadius: Int, rangeIndicatorWidth: Int, needleWidth: Int, needleJointRadius: Int, lowerRangeColor: Int, higherRangeColor: Int, needleColor: Int, defaultStartLoading: Boolean) : super(context) {
+    constructor(context: Context, rangeIndicatorRadius: Int,
+                rangeIndicatorWidth: Int, needleWidth: Int,
+                needleJointRadius: Int, lowerRangeColor: Int,
+                higherRangeColor: Int, needleColor: Int, defaultStartLoading: Boolean) : super(context) {
         this.rangeIndicatorRadius = rangeIndicatorRadius
         this.rangeIndicatorWidth = rangeIndicatorWidth
         this.needleWidth = needleWidth
@@ -99,11 +102,16 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         typedArray.recycle()
     }
 
+    /*override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+        val widthHeight = (2 * (rangeIndicatorRadius)) + rangeIndicatorWidth
+        setMeasuredDimension(widthHeight, widthHeight)
+    }*/
+
     private fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
-
-        gravity = CENTER_IN_PARENT
 
         lowerRangeArcView = ArcView(context, rangeIndicatorRadius, rangeIndicatorWidth,
                 150.0f, 155.0f, lowerRangeColor, true, false)
@@ -112,19 +120,23 @@ class GaugeLoader : RelativeLayout, LoaderContract {
                 300.0f, 90.0f, higherRangeColor, true, false)
 
 
-        addView(lowerRangeArcView)
-        addView(higherRangeArcView)
+        val arcLayoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+        arcLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+
+        addView(lowerRangeArcView, arcLayoutParams)
+        addView(higherRangeArcView, arcLayoutParams)
 
         needleView = NeedleView(context, (rangeIndicatorRadius - needleJointRadius), needleWidth,
                 needleJointRadius, needleColor)
 
-        val layoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+        val needleLayoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        layoutParams.topMargin = rangeIndicatorWidth / 2
-        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
+        needleLayoutParams.topMargin = rangeIndicatorWidth / 2
+        needleLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
 
-        addView(needleView, layoutParams)
+        addView(needleView, needleLayoutParams)
 
         if (defaultStartLoading) {
 
