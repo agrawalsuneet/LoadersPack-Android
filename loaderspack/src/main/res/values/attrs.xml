@@ -161,4 +161,17 @@
         <attr name="pulse_pulseColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="GaugeLoader">
+        <attr name="gauge_rangeIndicatorRadius" format="dimension" />
+        <attr name="gauge_rangeIndicatorWidth" format="dimension" />
+        <attr name="gauge_needleWidth" format="dimension" />
+        <attr name="gauge_needleJointRadius" format="dimension" />
+
+        <attr name="gauge_lowerRangeColor" format="color" />
+        <attr name="gauge_higherRangeColor" format="color" />
+        <attr name="gauge_needleColor" format="color" />
+
+        <attr name="gauge_defaultStartLoading" format="boolean" />
+    </declare-styleable>
+
 </resources>

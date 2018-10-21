@@ -15,16 +15,12 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
 
 
-### RotatingCircularSticksLoader
-![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
-
-
-### CircularSticksLoader
-![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
-
-
 ### MultipleRippleLoader
 ![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
+
+
+### GaugeLoader
+![gaugeLloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
 
 
 ### CurvesLoader
@@ -51,12 +47,20 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![pulseloader](https://user-images.githubusercontent.com/12999622/46934218-8b7fea80-d074-11e8-980e-70bdbb361f87.gif)
 
 
+### RotatingCircularSticksLoader
+![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
+
+
+### CircularSticksLoader
+![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.0'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.1'
 ```
 
 
@@ -168,96 +172,6 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.0'
 ```
 
 
-### RotatingCircularSticksLoader
-##### Through XML
-```
-<com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:rotatingsticks_noOfSticks="50"
-        app:rotatingsticks_innerCircleRadius="15dp"
-        app:rotatingsticks_outerCircleRadius="30dp"
-        app:rotatingsticks_stickColor="@color/grey"
-        app:rotatingsticks_viewBackgroundColor="@color/white"
-        app:rotatingsticks_animDuration="5000"/>
-```
-##### Through Code
-* Kotlin
-```
-        val loader = RotatingCircularSticksLoader(this, 16, 100f, 50f,
-                        ContextCompat.getColor(this, R.color.blue),
-                        ContextCompat.getColor(this, android.R.color.white))
-                        .apply {
-                            animDuration = 5000
-                        }
-        
-                containerLayout.addView(loader)
-```
-
-* Java
-```
-        RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
-                        16, 100f, 50f,
-                        ContextCompat.getColor(this, R.color.blue),
-                        ContextCompat.getColor(this, android.R.color.white));
-        
-                loader.setAnimDuration(5000);
-                container.addView(loader);
-```
-
-
-### CircularSticksLoader
-##### Through XML
-```
-<com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:circularsticks_animDuration="100"
-        app:circularsticks_firstShadowColor="#aa000000"
-        app:circularsticks_innerCircleRadius="50dp"
-        app:circularsticks_noOfSticks="32"
-        app:circularsticks_outerCircleRadius="80dp"
-        app:circularsticks_secondShadowColor="#77000000"
-        app:circularsticks_selectedStickColor="@color/black"
-        app:circularsticks_showRunningShadow="true"
-        app:circularsticks_stickColor="@color/grey"
-        app:circularsticks_viewBackgroundColor="@color/white" />
-```
-##### Through Code
-* Kotlin
-```
-        val loader = CircularSticksLoader(this, 16, 200f, 100f,
-                        ContextCompat.getColor(this, R.color.blue),
-                        ContextCompat.getColor(this, R.color.red),
-                        ContextCompat.getColor(this, android.R.color.white))
-                        .apply {
-                            showRunningShadow = true
-                            firstShadowColor = ContextCompat.getColor(context, R.color.green)
-                            secondShadowColor = ContextCompat.getColor(context, R.color.yellow)
-                            animDuration = 100
-                        }
-        
-                containerLayout.addView(loader)
-```
-
-* Java
-```
-        CircularSticksLoader loader = new CircularSticksLoader(this, 16,
-                        200f, 100f,
-                        ContextCompat.getColor(this, R.color.blue),
-                        ContextCompat.getColor(this, R.color.red),
-                        ContextCompat.getColor(this, android.R.color.white));
-        
-                loader.setShowRunningShadow(true);
-                loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.green));
-                loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
-                loader.setAnimDuration(100);
-        
-                container.addView(loader);
-```
-
-
 ### MultipleRippleLoader
 ##### Through XML
 ```
@@ -304,6 +218,93 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.0'
         
                 container.addView(multipleRippleLoader);
 ```
+
+
+### GaugeLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.GaugeLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:gauge_defaultStartLoading="true"
+        app:gauge_higherRangeColor="@color/blue_selected"
+        app:gauge_lowerRangeColor="@color/blue_delfault"
+        app:gauge_needleColor="@android:color/holo_orange_dark"
+        app:gauge_needleJointRadius="20dp"
+        app:gauge_needleWidth="8dp"
+        app:gauge_rangeIndicatorRadius="60dp"
+        app:gauge_rangeIndicatorWidth="40dp" />
+```
+##### Through Code
+* Kotlin
+```
+        val gaugeLoader = GaugeLoader(this, 150, 80,
+                        20, 50,
+                        ContextCompat.getColor(this, R.color.blue_delfault),
+                        ContextCompat.getColor(this, R.color.blue_selected),
+                        ContextCompat.getColor(this, android.R.color.black), true)
+                        
+        containerLayout.addView(gaugeLoader)
+        
+        //or you can provide custom rotate animation for needle
+        
+        val gaugeLoader = GaugeLoader(this, 150, 80,
+                        20, 50,
+                        ContextCompat.getColor(this, R.color.blue_delfault),
+                        ContextCompat.getColor(this, R.color.blue_selected),
+                        ContextCompat.getColor(this, android.R.color.black), false)
+        
+        Handler().postDelayed({
+            val anim = RotateAnimation(270.0f, 450.0f, gaugeLoader.needlePivotX, gaugeLoader.needlePivotY)
+            anim.duration = 1000
+            anim.interpolator = LinearInterpolator()
+            anim.repeatMode = Animation.REVERSE
+            anim.repeatCount = Animation.INFINITE
+            gaugeLoader.startLoading(anim)
+        }, 500)
+        
+        //delay because view will not be initialized
+        
+        containerLayout.addView(gaugeLoader)
+```
+
+* Java
+```
+        GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
+                        20, 50,
+                        ContextCompat.getColor(this, R.color.blue_delfault),
+                        ContextCompat.getColor(this, R.color.blue_selected),
+                        ContextCompat.getColor(this, android.R.color.black), true);
+        
+        container.addView(gaugeLoader);
+
+        //or you can provide custom rotate animation for needle
+                
+       final GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
+                       20, 50,
+                       ContextCompat.getColor(this, R.color.blue_delfault),
+                       ContextCompat.getColor(this, R.color.blue_selected),
+                       ContextCompat.getColor(this, android.R.color.black), false);
+       
+               new Handler().postDelayed(new Runnable() {
+                   @Override
+                   public void run() {
+                       RotateAnimation anim = new RotateAnimation(270.0f, 450.0f,
+                               gaugeLoader.getNeedlePivotX(), gaugeLoader.getNeedlePivotY());
+                       anim.setDuration(1000);
+                       anim.setInterpolator(new LinearInterpolator());
+                       anim.setRepeatMode(Animation.REVERSE);
+                       anim.setRepeatCount(Animation.INFINITE);
+                       gaugeLoader.startLoading(anim);
+                   }
+               }, 500);
+       
+       //delay because view will not be initialized
+
+       container.addView(gaugeLoader);         
+```
+
+
 
 
 ### CurvesLoaders
@@ -566,8 +567,97 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.0'
 ```
 
 
-Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/v0SZS0oI9rvInzdB3).
-It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
+### RotatingCircularSticksLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.RotatingCircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rotatingsticks_noOfSticks="50"
+        app:rotatingsticks_innerCircleRadius="15dp"
+        app:rotatingsticks_outerCircleRadius="30dp"
+        app:rotatingsticks_stickColor="@color/grey"
+        app:rotatingsticks_viewBackgroundColor="@color/white"
+        app:rotatingsticks_animDuration="5000"/>
+```
+##### Through Code
+* Kotlin
+```
+        val loader = RotatingCircularSticksLoader(this, 16, 100f, 50f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, android.R.color.white))
+                        .apply {
+                            animDuration = 5000
+                        }
+        
+                containerLayout.addView(loader)
+```
+
+* Java
+```
+        RotatingCircularSticksLoader loader = new RotatingCircularSticksLoader(this,
+                        16, 100f, 50f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, android.R.color.white));
+        
+                loader.setAnimDuration(5000);
+                container.addView(loader);
+```
+
+
+### CircularSticksLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.CircularSticksLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:circularsticks_animDuration="100"
+        app:circularsticks_firstShadowColor="#aa000000"
+        app:circularsticks_innerCircleRadius="50dp"
+        app:circularsticks_noOfSticks="32"
+        app:circularsticks_outerCircleRadius="80dp"
+        app:circularsticks_secondShadowColor="#77000000"
+        app:circularsticks_selectedStickColor="@color/black"
+        app:circularsticks_showRunningShadow="true"
+        app:circularsticks_stickColor="@color/grey"
+        app:circularsticks_viewBackgroundColor="@color/white" />
+```
+##### Through Code
+* Kotlin
+```
+        val loader = CircularSticksLoader(this, 16, 200f, 100f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.red),
+                        ContextCompat.getColor(this, android.R.color.white))
+                        .apply {
+                            showRunningShadow = true
+                            firstShadowColor = ContextCompat.getColor(context, R.color.green)
+                            secondShadowColor = ContextCompat.getColor(context, R.color.yellow)
+                            animDuration = 100
+                        }
+        
+                containerLayout.addView(loader)
+```
+
+* Java
+```
+        CircularSticksLoader loader = new CircularSticksLoader(this, 16,
+                        200f, 100f,
+                        ContextCompat.getColor(this, R.color.blue),
+                        ContextCompat.getColor(this, R.color.red),
+                        ContextCompat.getColor(this, android.R.color.white));
+        
+                loader.setShowRunningShadow(true);
+                loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.green));
+                loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.yellow));
+                loader.setAnimDuration(100);
+        
+                container.addView(loader);
+```
+
+
+Feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 ```
 Copyright 2018 Suneet Agrawal
 
