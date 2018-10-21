@@ -102,13 +102,6 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         typedArray.recycle()
     }
 
-    /*override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
-        val widthHeight = (2 * (rangeIndicatorRadius)) + rangeIndicatorWidth
-        setMeasuredDimension(widthHeight, widthHeight)
-    }*/
-
     private fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
