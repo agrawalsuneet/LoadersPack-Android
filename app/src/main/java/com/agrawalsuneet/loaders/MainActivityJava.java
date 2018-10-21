@@ -1,13 +1,16 @@
 package com.agrawalsuneet.loaders;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.LinearLayout;
 
-import com.agrawalsuneet.loaderspack.loaders.PulseLoader;
-import com.agrawalsuneet.loaderspack.loaders.WifiLoader;
+import com.agrawalsuneet.loaderspack.loaders.GaugeLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -137,14 +140,49 @@ public class MainActivityJava extends AppCompatActivity {
 
         container.addView(wifiLoader);*/
 
-        PulseLoader pulseLoader = new PulseLoader(this,
+        /*PulseLoader pulseLoader = new PulseLoader(this,
                 15,
                 400,
                 4.0f,
                 15.0f,
                 ContextCompat.getColor(this, R.color.blue_selected));
 
-        container.addView(pulseLoader);
+        container.addView(pulseLoader);*/
+
+
+        /*GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
+                20, 50,
+                ContextCompat.getColor(this, R.color.blue_delfault),
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, android.R.color.black), true);
+
+        container.addView(gaugeLoader);
+
+        //or you can provide custom rotate animation for needle*/
+
+        final GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
+                20, 50,
+                ContextCompat.getColor(this, R.color.blue_delfault),
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, android.R.color.black), false);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                RotateAnimation anim = new RotateAnimation(270.0f, 450.0f,
+                        gaugeLoader.getNeedlePivotX(), gaugeLoader.getNeedlePivotY());
+                anim.setDuration(1000);
+                anim.setInterpolator(new LinearInterpolator());
+                anim.setRepeatMode(Animation.REVERSE);
+                anim.setRepeatCount(Animation.INFINITE);
+                gaugeLoader.startLoading(anim);
+            }
+        }, 500);
+
+        //delay because view will not be initialized
+
+        container.addView(gaugeLoader);
+
     }
 
 

@@ -1,10 +1,13 @@
 package com.agrawalsuneet.loaders
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
 
@@ -14,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_pulse)
+        setContentView(R.layout.main_gauge)
 
-        supportActionBar?.setTitle("PulseLoader")
+        supportActionBar?.setTitle("GaugeLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -26,18 +29,40 @@ class MainActivity : AppCompatActivity() {
         //initCircularSticksLoader()
 
         //initMultipleRippleLoader()
-
         //initCurvesLoader()
-
         //initRingAndCircleLoader()
-
         //initArcProgressLoader()
 
         //initFidgetLoader()
-
         //initWifiLoader()
-
         //initPulseLoader()
+
+        initGaugeLoader()
+    }
+
+    private fun initGaugeLoader() {
+        /*val gaugeLoader = GaugeLoader(this, 150, 80,
+                20, 50,
+                ContextCompat.getColor(this, R.color.blue_delfault),
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, android.R.color.black), true)*/
+
+        val gaugeLoader = GaugeLoader(this, 150, 80,
+                20, 50,
+                ContextCompat.getColor(this, R.color.blue_delfault),
+                ContextCompat.getColor(this, R.color.blue_selected),
+                ContextCompat.getColor(this, android.R.color.black), false)
+
+        Handler().postDelayed({
+            val anim = RotateAnimation(270.0f, 450.0f, gaugeLoader.needlePivotX, gaugeLoader.needlePivotY)
+            anim.duration = 1000
+            anim.interpolator = LinearInterpolator()
+            anim.repeatMode = Animation.REVERSE
+            anim.repeatCount = Animation.INFINITE
+            gaugeLoader.startLoading(anim)
+        }, 500)
+
+        containerLayout.addView(gaugeLoader)
     }
 
     private fun initPulseLoader() {

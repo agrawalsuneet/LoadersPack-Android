@@ -24,17 +24,23 @@ class ArcView : View {
     var arcColor: Int = resources.getColor(android.R.color.holo_red_dark)
     var drawOnlyStroke: Boolean = true
 
+    var roundedEdges: Boolean = true
+
     private val paint: Paint = Paint()
     private var centerPoint: Float = 0.0f
     private var acrRect = RectF()
 
-    constructor(context: Context?, arcRadius: Int, arcWidth: Int, startAngle: Float, sweepAngle: Float, arcColor: Int, drawOnlyStroke: Boolean) : super(context) {
+    constructor(context: Context, arcRadius: Int, arcWidth: Int,
+                startAngle: Float, sweepAngle:
+                Float, arcColor: Int, drawOnlyStroke: Boolean,
+                roundedEdges: Boolean = true) : super(context) {
         this.arcRadius = arcRadius
         this.arcWidth = arcWidth
         this.startAngle = startAngle
         this.sweepAngle = sweepAngle
         this.arcColor = arcColor
         this.drawOnlyStroke = drawOnlyStroke
+        this.roundedEdges = roundedEdges
 
         initValues()
     }
@@ -98,7 +104,9 @@ class ArcView : View {
         if (drawOnlyStroke) {
             paint.style = Paint.Style.STROKE
             paint.strokeWidth = arcWidth.toFloat()
-            paint.strokeCap = Paint.Cap.ROUND
+            if (roundedEdges) {
+                paint.strokeCap = Paint.Cap.ROUND
+            }
         } else {
             paint.style = Paint.Style.FILL
         }
