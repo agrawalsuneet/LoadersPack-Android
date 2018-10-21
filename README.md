@@ -20,7 +20,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ### GaugeLoader
-![gaugeLloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
+![gaugeloader](https://user-images.githubusercontent.com/12999622/47268641-e8960780-d570-11e8-95cf-76ef886e104e.gif)
 
 
 ### CurvesLoader
