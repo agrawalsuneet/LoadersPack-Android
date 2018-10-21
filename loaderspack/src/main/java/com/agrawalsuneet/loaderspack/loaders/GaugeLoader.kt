@@ -22,6 +22,8 @@ class GaugeLoader : RelativeLayout, LoaderContract {
     var higherRangeColor: Int = resources.getColor(android.R.color.holo_green_dark)
     var needleColor: Int = resources.getColor(android.R.color.holo_orange_dark)
 
+    var defaultStartLoading: Boolean = true
+
     private lateinit var lowerRangeArcView: ArcView
     private lateinit var higherRangeArcView: ArcView
 
@@ -91,34 +93,41 @@ class GaugeLoader : RelativeLayout, LoaderContract {
 
         addView(needleView, layoutParams)
 
-        val viewTreeObserver = this.viewTreeObserver
-        val loaderView = this
+        if (defaultStartLoading) {
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                startLoading()
+            val viewTreeObserver = this.viewTreeObserver
+            val loaderView = this
 
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
-            }
-        })
+            viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    startLoading(null)
+
+                    val vto = loaderView.viewTreeObserver
+                    vto.removeOnGlobalLayoutListener(this)
+                }
+            })
+        }
     }
 
-    fun startLoading() {
-        val rotateAnim = getRotateAnimation()
+    fun startLoading(animation: Animation?) {
 
-        rotateAnim.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(anim: Animation?) {
-            }
+        var rotateAnim = animation
 
-            override fun onAnimationEnd(anim: Animation?) {
-                startLoading()
-            }
+        if (rotateAnim == null) {
+            rotateAnim = getRotateAnimation()
 
-            override fun onAnimationStart(anim: Animation?) {
-            }
+            rotateAnim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(anim: Animation?) {
+                }
 
-        })
+                override fun onAnimationEnd(anim: Animation?) {
+                    startLoading(null)
+                }
+
+                override fun onAnimationStart(anim: Animation?) {
+                }
+            })
+        }
 
         needleView.startAnimation(rotateAnim)
     }
@@ -136,7 +145,7 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         anim.repeatMode = Animation.REVERSE
 
         val random = (0..6).random()
-        when(random){
+        when (random) {
             0 -> anim.interpolator = LinearInterpolator()
             1 -> anim.interpolator = AccelerateInterpolator()
             2 -> anim.interpolator = DecelerateInterpolator()
