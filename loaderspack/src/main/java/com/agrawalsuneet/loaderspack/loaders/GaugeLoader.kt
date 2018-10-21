@@ -7,6 +7,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.utils.random
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.ArcView
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 import com.agrawalsuneet.loaderspack.basicviews.NeedleView
@@ -24,10 +25,23 @@ class GaugeLoader : RelativeLayout, LoaderContract {
 
     var defaultStartLoading: Boolean = true
 
+    var needlePivotX: Float = 0.0f
+        private set
+        get() {
+            return needleJointRadius.toFloat()
+        }
+
+    var needlePivotY: Float = 0.0f
+        private set
+        get() {
+            return (needleView.height - needleJointRadius).toFloat()
+        }
+
     private lateinit var lowerRangeArcView: ArcView
     private lateinit var higherRangeArcView: ArcView
 
     private lateinit var needleView: NeedleView
+
 
     constructor(context: Context) : super(context) {
         initView()
@@ -43,27 +57,46 @@ class GaugeLoader : RelativeLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context?, rangeIndicatorRadius: Int, rangeIndicatorWidth: Int, needleWidth: Int, needleJointRadius: Int, lowerRangeColor: Int, higherRangeColor: Int, needleColor: Int, defaultStartLoading: Boolean) : super(context) {
+        this.rangeIndicatorRadius = rangeIndicatorRadius
+        this.rangeIndicatorWidth = rangeIndicatorWidth
+        this.needleWidth = needleWidth
+        this.needleJointRadius = needleJointRadius
+        this.lowerRangeColor = lowerRangeColor
+        this.higherRangeColor = higherRangeColor
+        this.needleColor = needleColor
+        this.defaultStartLoading = defaultStartLoading
+        initView()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RotatingCircularSticksLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GaugeLoader, 0, 0)
 
-        this.noOfSticks = typedArray
-                .getInteger(R.styleable.RotatingCircularSticksLoader_rotatingsticks_noOfSticks, 50)
+        this.rangeIndicatorRadius = typedArray
+                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_rangeIndicatorRadius, 140)
 
-        this.outerCircleRadius = typedArray
-                .getDimension(R.styleable.RotatingCircularSticksLoader_rotatingsticks_outerCircleRadius, 200.0f)
-        this.innerCircleRadius = typedArray
-                .getDimension(R.styleable.RotatingCircularSticksLoader_rotatingsticks_innerCircleRadius, 100.0f)
+        this.rangeIndicatorWidth = typedArray
+                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_rangeIndicatorWidth, 100)
 
+        this.needleWidth = typedArray
+                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_needleWidth, 20)
 
-        this.sticksColor = typedArray
-                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_stickColor, resources.getColor(android.R.color.darker_gray))
-        this.viewBackgroundColor = typedArray
-                .getColor(R.styleable.RotatingCircularSticksLoader_rotatingsticks_viewBackgroundColor, resources.getColor(android.R.color.white))
+        this.needleJointRadius = typedArray
+                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_needleJointRadius, 45)
 
-        this.animDuration = typedArray
-                .getInteger(R.styleable.RotatingCircularSticksLoader_rotatingsticks_animDuration, 5000)
+        this.lowerRangeColor = typedArray
+                .getColor(R.styleable.GaugeLoader_gauge_lowerRangeColor, resources.getColor(android.R.color.holo_green_light))
 
-        typedArray.recycle()*/
+        this.higherRangeColor = typedArray
+                .getColor(R.styleable.GaugeLoader_gauge_higherRangeColor, resources.getColor(android.R.color.holo_green_dark))
+
+        this.needleColor = typedArray
+                .getColor(R.styleable.GaugeLoader_gauge_needleColor, resources.getColor(android.R.color.holo_orange_dark))
+
+        this.defaultStartLoading = typedArray
+                .getBoolean(R.styleable.GaugeLoader_gauge_defaultStartLoading, true)
+
+        typedArray.recycle()
     }
 
     private fun initView() {
@@ -135,12 +168,13 @@ class GaugeLoader : RelativeLayout, LoaderContract {
     fun getRotateAnimation(): RotateAnimation {
 
         val toDegree = (30..90).random()
+        val animDuration = (500..1000).random()
 
         val anim = RotateAnimation(-90.0f, toDegree.toFloat(),
-                needleJointRadius.toFloat(),
-                (needleView.height - needleJointRadius).toFloat())
+                needlePivotX,
+                needlePivotY)
 
-        anim.duration = 1000
+        anim.duration = animDuration.toLong()
         anim.repeatCount = 1
         anim.repeatMode = Animation.REVERSE
 
@@ -154,7 +188,6 @@ class GaugeLoader : RelativeLayout, LoaderContract {
             5 -> anim.interpolator = OvershootInterpolator()
             6 -> anim.interpolator = AnticipateOvershootInterpolator()
         }
-
 
         return anim
     }
