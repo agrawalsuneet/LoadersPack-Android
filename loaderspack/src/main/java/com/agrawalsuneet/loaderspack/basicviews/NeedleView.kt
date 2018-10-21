@@ -3,11 +3,9 @@ package com.agrawalsuneet.loaderspack.basicviews
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.R.attr.*
 
 class NeedleView : View {
 
@@ -18,6 +16,14 @@ class NeedleView : View {
     var needleColor: Int = resources.getColor(android.R.color.holo_red_dark)
 
     private val paint: Paint = Paint()
+
+    constructor(context: Context, needleLength: Int, needleWidth: Int, needleJointRadius: Int, needleColor: Int) : super(context) {
+        this.needleLength = needleLength
+        this.needleWidth = needleWidth
+        this.needleJointRadius = needleJointRadius
+        this.needleColor = needleColor
+        initValues()
+    }
 
     constructor(context: Context) : super(context) {
         initValues()
@@ -33,7 +39,6 @@ class NeedleView : View {
         initValues()
     }
 
-
     fun initAttributes(attrs: AttributeSet) {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.NeedleView, 0, 0)
@@ -41,7 +46,7 @@ class NeedleView : View {
         this.needleLength = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleLength, 160)
         this.needleWidth = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleWidth, 20)
 
-        this.needleJointRadius = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleWidth, 140)
+        this.needleJointRadius = typedArray.getDimensionPixelSize(R.styleable.NeedleView_needleJointRadius, 40)
 
         this.needleColor = typedArray.getColor(R.styleable.NeedleView_needleColor, resources.getColor(android.R.color.holo_red_dark))
         typedArray.recycle()
