@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_gauge)
+        setContentView(R.layout.main_search)
 
         supportActionBar?.setTitle("GaugeLoader")
 
