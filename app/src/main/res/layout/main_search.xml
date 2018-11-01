@@ -68,7 +68,11 @@
 
     <com.agrawalsuneet.loaderspack.basicviews.MagnifyingGlassView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:glassBorderWidth="8dp"
+        app:glassRadius="20dp"
+        app:glassHandleLength="30dp"
+        app:glassColor="@color/blue_selected"/>
 
 
 </LinearLayout>
