@@ -5,21 +5,20 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.agrawalsuneet.loaderspack.R
 
 /**
  * Created by agrawalsuneet on 11/1/18.
  */
 
-class LensView : View {
+class MagnifyingGlassView : View {
 
-    var lensRadius: Int = 50
-    var borderWidth: Int = 20
+    var glassRadius: Int = 50
+    var glassBorderWidth: Int = 20
 
-    var handleLength: Int = 80
+    var glassHandleLength: Int = 80
 
-    var lensColor: Int = resources.getColor(android.R.color.holo_green_light)
-    var drawOnlyStroke: Boolean = true
-
+    var glassColor: Int = resources.getColor(android.R.color.holo_green_light)
 
     private val paint: Paint = Paint()
 
@@ -46,41 +45,39 @@ class LensView : View {
 
     fun initAttributes(attrs: AttributeSet) {
 
-        /* val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ArcView, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MagnifyingGlassView, 0, 0)
 
-         this.arcRadius = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcRadius, 60)
-         this.arcWidth = typedArray.getDimensionPixelSize(R.styleable.ArcView_arcWidth, 10)
+        this.glassRadius = typedArray.getDimensionPixelSize(R.styleable.MagnifyingGlassView_glassRadius, 50)
+        this.glassBorderWidth = typedArray.getDimensionPixelSize(R.styleable.MagnifyingGlassView_glassBorderWidth, 20)
 
-         this.startAngle = typedArray.getFloat(R.styleable.ArcView_startAngle, 0.0f)
-         this.sweepAngle = typedArray.getFloat(R.styleable.ArcView_sweepAngle, 180.0f)
+        this.glassHandleLength = typedArray.getDimensionPixelSize(R.styleable.MagnifyingGlassView_glassHandleLength, 80)
 
-         this.lensColor = typedArray.getColor(R.styleable.ArcView_arcColor, resources.getColor(android.R.color.holo_red_dark))
+        this.glassColor = typedArray.getColor(R.styleable.MagnifyingGlassView_glassColor,
+                resources.getColor(android.R.color.holo_green_light))
 
-         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.ArcView_drawOnlyStroke, true)
-
-         typedArray.recycle()*/
+        typedArray.recycle()
     }
 
     private fun initValues() {
 
-        paint.color = lensColor
+        paint.color = glassColor
         paint.isAntiAlias = true
-        paint.strokeWidth = borderWidth.toFloat()
+        paint.strokeWidth = glassBorderWidth.toFloat()
 
         paint.strokeCap = Paint.Cap.ROUND
 
-        circleCenterPoint = (lensRadius + borderWidth / 2).toFloat()
-        handleStartPoint = (circleCenterPoint + (lensRadius * sin45))
+        circleCenterPoint = (glassRadius + glassBorderWidth / 2).toFloat()
+        handleStartPoint = (circleCenterPoint + (glassRadius * sin45))
 
-        handleEndPoint = (handleStartPoint + (handleLength * sin45))
+        handleEndPoint = (handleStartPoint + (glassHandleLength * sin45))
 
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val widthHeight = ((2 * lensRadius) + (borderWidth)
-                + (handleLength * sin45) - (0.29 * (lensRadius))).toInt()
+        val widthHeight = ((2 * glassRadius) + (glassBorderWidth)
+                + (glassHandleLength * sin45) - (0.29 * (glassRadius))).toInt()
 
         setMeasuredDimension(widthHeight, widthHeight)
     }
@@ -92,7 +89,7 @@ class LensView : View {
         paint.style = Paint.Style.STROKE
         canvas.drawCircle(circleCenterPoint,
                 circleCenterPoint,
-                lensRadius.toFloat(),
+                glassRadius.toFloat(),
                 paint)
 
         paint.style = Paint.Style.FILL

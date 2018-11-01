@@ -30,6 +30,14 @@
         <attr name="needleColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="MagnifyingGlassView">
+        <attr name="glassRadius" format="dimension" />
+        <attr name="glassBorderWidth" format="dimension" />
+        <attr name="glassHandleLength" format="dimension" />
+
+        <attr name="glassColor" format="color" />
+    </declare-styleable>
+
 
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
