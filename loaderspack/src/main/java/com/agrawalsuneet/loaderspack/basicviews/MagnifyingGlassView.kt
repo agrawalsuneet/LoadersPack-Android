@@ -42,6 +42,13 @@ class MagnifyingGlassView : View {
         initValues()
     }
 
+    constructor(context: Context?, glassRadius: Int, glassBorderWidth: Int, glassHandleLength: Int, glassColor: Int) : super(context) {
+        this.glassRadius = glassRadius
+        this.glassBorderWidth = glassBorderWidth
+        this.glassHandleLength = glassHandleLength
+        this.glassColor = glassColor
+        initValues()
+    }
 
     fun initAttributes(attrs: AttributeSet) {
 
