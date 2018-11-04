@@ -7,6 +7,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.utils.random
+import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 import com.agrawalsuneet.loaderspack.basicviews.MagnifyingGlassView
 
@@ -48,6 +49,16 @@ class SearchLoader : RelativeLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context?, lensRadius: Int, lensBorderWidth: Int, lensHandleLength: Int, lensColor: Int, defaultStartLoading: Boolean) : super(context) {
+        this.lensRadius = lensRadius
+        this.lensBorderWidth = lensBorderWidth
+        this.lensHandleLength = lensHandleLength
+        this.lensColor = lensColor
+        this.defaultStartLoading = defaultStartLoading
+        initView()
+    }
+
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
@@ -56,33 +67,31 @@ class SearchLoader : RelativeLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        /*val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GaugeLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchLoader, 0, 0)
 
-        this.rangeIndicatorRadius = typedArray
-                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_rangeIndicatorRadius, 140)
+        this.lensRadius = typedArray
+                .getDimensionPixelSize(R.styleable.SearchLoader_search_lensRadius, 50)
 
-        this.rangeIndicatorWidth = typedArray
-                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_rangeIndicatorWidth, 100)
+        this.lensBorderWidth = typedArray
+                .getDimensionPixelSize(R.styleable.SearchLoader_search_lensBorderWidth, 20)
 
-        this.needleWidth = typedArray
-                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_needleWidth, 20)
+        this.lensHandleLength = typedArray
+                .getDimensionPixelSize(R.styleable.SearchLoader_search_lensHandleLength, 80)
 
-        this.needleJointRadius = typedArray
-                .getDimensionPixelSize(R.styleable.GaugeLoader_gauge_needleJointRadius, 45)
 
-        this.lowerRangeColor = typedArray
-                .getColor(R.styleable.GaugeLoader_gauge_lowerRangeColor, resources.getColor(android.R.color.holo_green_light))
+        this.lensColor = typedArray
+                .getColor(R.styleable.SearchLoader_search_lensColor, resources.getColor(android.R.color.holo_green_light))
 
-        this.higherRangeColor = typedArray
-                .getColor(R.styleable.GaugeLoader_gauge_higherRangeColor, resources.getColor(android.R.color.holo_green_dark))
+        this.xRangeToSearch = typedArray
+                .getDimensionPixelSize(R.styleable.SearchLoader_search_xRangeToSearch, 400)
 
-        this.needleColor = typedArray
-                .getColor(R.styleable.GaugeLoader_gauge_needleColor, resources.getColor(android.R.color.holo_orange_dark))
+        this.yRangeToSearch = typedArray
+                .getDimensionPixelSize(R.styleable.SearchLoader_search_yRangeToSearch, 400)
 
         this.defaultStartLoading = typedArray
                 .getBoolean(R.styleable.GaugeLoader_gauge_defaultStartLoading, true)
 
-        typedArray.recycle()*/
+        typedArray.recycle()
     }
 
     private fun initView() {
@@ -137,7 +146,7 @@ class SearchLoader : RelativeLayout, LoaderContract {
         magnifyingGlassView.startAnimation(translateAnim)
     }
 
-    fun getTranslateAnimation(): TranslateAnimation {
+    private fun getTranslateAnimation(): TranslateAnimation {
 
         val animDuration = (500..1000).random()
 

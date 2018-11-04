@@ -73,7 +73,8 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/ic_text"/>
+            app:srcCompat="@drawable/ic_text"
+            android:foreground="#33ffffff"/>
 
         <com.agrawalsuneet.loaderspack.loaders.SearchLoader
             android:layout_width="wrap_content"
