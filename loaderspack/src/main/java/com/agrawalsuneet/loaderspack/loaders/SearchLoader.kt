@@ -49,11 +49,13 @@ class SearchLoader : RelativeLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context?, lensRadius: Int, lensBorderWidth: Int, lensHandleLength: Int, lensColor: Int, defaultStartLoading: Boolean) : super(context) {
+    constructor(context: Context?, lensRadius: Int, lensBorderWidth: Int, lensHandleLength: Int, lensColor: Int, xRangeToSearch: Int, yRangeToSearch: Int, defaultStartLoading: Boolean) : super(context) {
         this.lensRadius = lensRadius
         this.lensBorderWidth = lensBorderWidth
         this.lensHandleLength = lensHandleLength
         this.lensColor = lensColor
+        this.xRangeToSearch = xRangeToSearch
+        this.yRangeToSearch = yRangeToSearch
         this.defaultStartLoading = defaultStartLoading
         initView()
     }
@@ -148,10 +150,14 @@ class SearchLoader : RelativeLayout, LoaderContract {
 
     private fun getTranslateAnimation(): TranslateAnimation {
 
-        val animDuration = (500..1000).random()
+        val animDuration = (300..1000).random()
 
-        val toXCor = (0..(xRangeToSearch - magnifyingGlassView.width)).random().toFloat()
-        val toYCor = (0..(yRangeToSearch - magnifyingGlassView.height)).random().toFloat()
+        val maxX = (xRangeToSearch - magnifyingGlassView.width)
+        val maxY = (yRangeToSearch - magnifyingGlassView.height)
+
+
+        val toXCor = (0..(if (maxX > 0) maxX else magnifyingGlassView.width)).random().toFloat()
+        val toYCor = (0..(if (maxY > 0) maxY else magnifyingGlassView.height)).random().toFloat()
 
         val anim = TranslateAnimation(xCor, toXCor, yCor, toYCor)
 

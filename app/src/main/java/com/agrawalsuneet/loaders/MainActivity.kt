@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_search)
 
-        supportActionBar?.setTitle("GaugeLoader")
+        supportActionBar?.setTitle("SearchLoader")
 
         containerLayout = findViewById(R.id.container)
 

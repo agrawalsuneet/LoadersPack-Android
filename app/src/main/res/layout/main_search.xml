@@ -7,82 +7,135 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <!-- <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal">
-
-         <com.agrawalsuneet.loaderspack.loaders.PulseLoader
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_margin="16dp"
-             app:pulse_LineThickness="3dp"
-             app:pulse_normalIncrementalValue="2.0"
-             app:pulse_pulseColor="@color/red"
-             app:pulse_pulseIncrementalValue="8.0"
-             app:pulse_sideLength="30dp" />
-
-
-         <com.agrawalsuneet.loaderspack.loaders.PulseLoader
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_margin="16dp"
-             app:pulse_LineThickness="3dp"
-             app:pulse_normalIncrementalValue="2.0"
-             app:pulse_pulseColor="@color/amber"
-             app:pulse_pulseIncrementalValue="8.0"
-             app:pulse_sideLength="30dp" />
-
-         <com.agrawalsuneet.loaderspack.loaders.PulseLoader
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_margin="16dp"
-             app:pulse_LineThickness="3dp"
-             app:pulse_normalIncrementalValue="2.0"
-             app:pulse_pulseColor="@color/green"
-             app:pulse_pulseIncrementalValue="8.0"
-             app:pulse_sideLength="30dp" />
-
-     </LinearLayout>-->
-
-
-    <!--<com.agrawalsuneet.loaderspack.loaders.PulseLoader
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:pulse_LineThickness="6dp"
-        app:pulse_normalIncrementalValue="4.0"
-        app:pulse_pulseColor="@color/blue_selected"
-        app:pulse_pulseIncrementalValue="20.0"
-        app:pulse_sideLength="100dp" />
+        android:orientation="horizontal">
 
-    <com.agrawalsuneet.loaderspack.loaders.PulseLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:pulse_LineThickness="5dp"
-        app:pulse_normalIncrementalValue="3.0"
-        app:pulse_pulseColor="@android:color/darker_gray"
-        app:pulse_pulseIncrementalValue="15.0"
-        app:pulse_sideLength="80dp" />-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/red"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/amber"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/green"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
 
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/ic_text"
-            android:foreground="#33ffffff"/>
+            android:foreground="#55ffffff"
+            app:srcCompat="@drawable/ic_text" />
 
         <com.agrawalsuneet.loaderspack.loaders.SearchLoader
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:search_defaultStartLoading="true"
+            app:search_lensBorderWidth="6dp"
+            app:search_lensColor="@color/blue_selected"
+            app:search_lensHandleLength="20dp"
+            app:search_lensRadius="18dp"
+            app:search_xRangeToSearch="140dp"
+            app:search_yRangeToSearch="140dp" />
 
     </FrameLayout>
 
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:foreground="#55ffffff"
+            app:srcCompat="@drawable/ic_pdf" />
+
+        <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:search_defaultStartLoading="true"
+            app:search_lensBorderWidth="5dp"
+            app:search_lensColor="@color/darkmagenta"
+            app:search_lensHandleLength="20dp"
+            app:search_lensRadius="16dp"
+            app:search_xRangeToSearch="140dp"
+            app:search_yRangeToSearch="140dp" />
+
+    </FrameLayout>
 
 
 </LinearLayout>
