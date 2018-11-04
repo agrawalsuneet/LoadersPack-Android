@@ -2,7 +2,6 @@ package com.agrawalsuneet.loaderspack.loaders
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.RelativeLayout
@@ -102,11 +101,7 @@ class SearchLoader : RelativeLayout, LoaderContract {
 
         magnifyingGlassView = MagnifyingGlassView(context, lensRadius, lensBorderWidth, lensHandleLength, lensColor)
 
-        val lensParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT)
-        lensParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
-
-        addView(magnifyingGlassView, lensParams)
+        addView(magnifyingGlassView)
 
 
         if (defaultStartLoading) {
@@ -166,7 +161,6 @@ class SearchLoader : RelativeLayout, LoaderContract {
         anim.fillAfter = true
 
         val random = (0..3).random()
-        //val random = 0
         when (random) {
             0 -> anim.interpolator = LinearInterpolator()
             1 -> anim.interpolator = AccelerateInterpolator()

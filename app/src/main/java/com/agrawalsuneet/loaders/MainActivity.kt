@@ -38,6 +38,16 @@ class MainActivity : AppCompatActivity() {
         //initPulseLoader()
 
         //initGaugeLoader()
+        //initSearchLoader()
+    }
+
+    private fun initSearchLoader() {
+        val searchLoader = SearchLoader(this,
+                60, 20, 80,
+                ContextCompat.getColor(this, R.color.red),
+                500, 500, true)
+
+        containerLayout.addView(searchLoader)
     }
 
     private fun initGaugeLoader() {
