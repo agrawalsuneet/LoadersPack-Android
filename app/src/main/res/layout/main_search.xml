@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/red"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/amber"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:foreground="#55ffffff"
+                app:srcCompat="@drawable/ic_text" />
+
+            <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:search_defaultStartLoading="true"
+                app:search_lensBorderWidth="4dp"
+                app:search_lensColor="@color/green"
+                app:search_lensHandleLength="14dp"
+                app:search_lensRadius="10dp"
+                app:search_xRangeToSearch="72dp"
+                app:search_yRangeToSearch="72dp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:foreground="#55ffffff"
+            app:srcCompat="@drawable/ic_text" />
+
+        <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:search_defaultStartLoading="true"
+            app:search_lensBorderWidth="6dp"
+            app:search_lensColor="@color/blue_selected"
+            app:search_lensHandleLength="20dp"
+            app:search_lensRadius="18dp"
+            app:search_xRangeToSearch="140dp"
+            app:search_yRangeToSearch="140dp" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:foreground="#55ffffff"
+            app:srcCompat="@drawable/ic_pdf" />
+
+        <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:search_defaultStartLoading="true"
+            app:search_lensBorderWidth="5dp"
+            app:search_lensColor="@color/darkmagenta"
+            app:search_lensHandleLength="20dp"
+            app:search_lensRadius="16dp"
+            app:search_xRangeToSearch="140dp"
+            app:search_yRangeToSearch="140dp" />
+
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -30,6 +30,14 @@
         <attr name="needleColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="MagnifyingGlassView">
+        <attr name="glassRadius" format="dimension" />
+        <attr name="glassBorderWidth" format="dimension" />
+        <attr name="glassHandleLength" format="dimension" />
+
+        <attr name="glassColor" format="color" />
+    </declare-styleable>
+
 
     <declare-styleable name="CircularSticksBaseView">
         <attr name="sticksbase_noOfSticks" format="integer" />
@@ -172,6 +180,19 @@
         <attr name="gauge_needleColor" format="color" />
 
         <attr name="gauge_defaultStartLoading" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SearchLoader">
+        <attr name="search_lensRadius" format="dimension" />
+        <attr name="search_lensBorderWidth" format="dimension" />
+        <attr name="search_lensHandleLength" format="dimension" />
+        <attr name="search_lensColor" format="color" />
+
+        <attr name="search_xRangeToSearch" format="dimension" />
+        <attr name="search_yRangeToSearch" format="dimension" />
+
+        <attr name="search_defaultStartLoading" format="boolean" />
+
     </declare-styleable>
 
 </resources>

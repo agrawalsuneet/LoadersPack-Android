@@ -60,7 +60,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.1'
+implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.2'
 ```
 
 
