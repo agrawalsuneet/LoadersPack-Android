@@ -90,7 +90,7 @@ class SearchLoader : RelativeLayout, LoaderContract {
                 .getDimensionPixelSize(R.styleable.SearchLoader_search_yRangeToSearch, 400)
 
         this.defaultStartLoading = typedArray
-                .getBoolean(R.styleable.GaugeLoader_gauge_defaultStartLoading, true)
+                .getBoolean(R.styleable.SearchLoader_search_defaultStartLoading, true)
 
         typedArray.recycle()
     }
