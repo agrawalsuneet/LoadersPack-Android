@@ -11,6 +11,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.LinearLayout;
 
 import com.agrawalsuneet.loaderspack.loaders.GaugeLoader;
+import com.agrawalsuneet.loaderspack.loaders.SearchLoader;
 
 /**
  * Created by suneet on 10/31/17.
@@ -160,7 +161,7 @@ public class MainActivityJava extends AppCompatActivity {
 
         //or you can provide custom rotate animation for needle*/
 
-        final GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
+        /*final GaugeLoader gaugeLoader = new GaugeLoader(this, 150, 80,
                 20, 50,
                 ContextCompat.getColor(this, R.color.blue_delfault),
                 ContextCompat.getColor(this, R.color.blue_selected),
@@ -181,7 +182,15 @@ public class MainActivityJava extends AppCompatActivity {
 
         //delay because view will not be initialized
 
-        container.addView(gaugeLoader);
+        container.addView(gaugeLoader);*/
+
+
+        SearchLoader searchLoader = new SearchLoader(this,
+                60, 20, 80,
+                ContextCompat.getColor(this, R.color.red),
+                500, 500, true);
+
+        container.addView(searchLoader);
 
     }
 

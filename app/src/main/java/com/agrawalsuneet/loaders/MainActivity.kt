@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_gauge)
+        setContentView(R.layout.main_search)
 
-        supportActionBar?.setTitle("GaugeLoader")
+        supportActionBar?.setTitle("SearchLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -38,6 +38,16 @@ class MainActivity : AppCompatActivity() {
         //initPulseLoader()
 
         //initGaugeLoader()
+        //initSearchLoader()
+    }
+
+    private fun initSearchLoader() {
+        val searchLoader = SearchLoader(this,
+                60, 20, 80,
+                ContextCompat.getColor(this, R.color.red),
+                500, 500, true)
+
+        containerLayout.addView(searchLoader)
     }
 
     private fun initGaugeLoader() {
