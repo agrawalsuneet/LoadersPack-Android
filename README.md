@@ -7,55 +7,23 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-LoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7247 )
 
-### ClockLoader
-![clockloader](https://user-images.githubusercontent.com/12999622/34564685-9690034c-f14f-11e7-8ea8-f0b7086b79be.gif)
+![clockloader](https://user-images.githubusercontent.com/12999622/48309733-f524e300-e5a5-11e8-888b-fc6c07247723.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![rippleloader](https://user-images.githubusercontent.com/12999622/48309746-28677200-e5a6-11e8-8281-917af9a174cb.gif)
 
 
-### RippleLoader
-![rippleloader](https://user-images.githubusercontent.com/12999622/33661635-ba4f9d3c-da80-11e7-8f0a-d551b4dca4e5.gif)
+![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![gaugeloader](https://user-images.githubusercontent.com/12999622/47268641-e8960780-d570-11e8-95cf-76ef886e104e.gif)
 
 
-### MultipleRippleLoader
-![multiplerippleloader](https://user-images.githubusercontent.com/12999622/39401278-296a4180-4b39-11e8-8a8b-208edde9cc65.gif)
+![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![ringandcircleloader](https://user-images.githubusercontent.com/12999622/45266388-59b2ad00-b452-11e8-9e51-28cdb5c538b3.gif)
+
+![arcprogressloader](https://user-images.githubusercontent.com/12999622/45809206-3fe05800-bce5-11e8-90ef-f68e46de64cc.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![fidgetloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
 
 
-### GaugeLoader
-![gaugeloader](https://user-images.githubusercontent.com/12999622/47268641-e8960780-d570-11e8-95cf-76ef886e104e.gif)
+![wifiloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![searchloader](https://user-images.githubusercontent.com/12999622/48309628-66fc2d00-e5a4-11e8-9802-feee36a41e3d.gif)
 
 
-### CurvesLoader
-![curvesloader](https://user-images.githubusercontent.com/12999622/45126558-d6e8d400-b16b-11e8-89bd-973e11a8e54e.gif)
+![pulseloader](https://user-images.githubusercontent.com/12999622/46934218-8b7fea80-d074-11e8-980e-70bdbb361f87.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
 
 
-### RingAndCircleLoader
-![ringandcircleloader](https://user-images.githubusercontent.com/12999622/45266388-59b2ad00-b452-11e8-9e51-28cdb5c538b3.gif)
-
-
-### ArcProgressLoader
-![arcprogressloader](https://user-images.githubusercontent.com/12999622/45809206-3fe05800-bce5-11e8-90ef-f68e46de64cc.gif)
-
-
-### FidgetLoader
-![fidgetloader](https://user-images.githubusercontent.com/12999622/45921114-dfac0a80-becc-11e8-8a1e-8c8d78c31dd4.gif)
-
-
-### WifiLoader
-![wifiloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
-
-
-### SearchLoader
-![searchloader](https://user-images.githubusercontent.com/12999622/48309628-66fc2d00-e5a4-11e8-9802-feee36a41e3d.gif)
-
-
-### PulseLoader
-![pulseloader](https://user-images.githubusercontent.com/12999622/46934218-8b7fea80-d074-11e8-980e-70bdbb361f87.gif)
-
-
-### RotatingCircularSticksLoader
-![RotatingCircularSticksLoader](https://user-images.githubusercontent.com/12999622/34488210-6dafe19e-efcf-11e7-9558-5740e1d0a42b.gif)
-
-
-### CircularSticksLoader
 ![circularsticksloader](https://user-images.githubusercontent.com/12999622/34639868-0a358574-f2e0-11e7-8b10-10ce9c6f3a6e.gif)
 
 
