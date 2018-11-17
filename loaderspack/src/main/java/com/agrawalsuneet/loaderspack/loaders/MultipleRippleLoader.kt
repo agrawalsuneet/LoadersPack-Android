@@ -10,11 +10,12 @@ import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircleView
+import com.agrawalsuneet.loaderspack.contracts.RippleAbstractView
 
 /**
  * Created by suneet on 04/28/18.
  */
-class MultipleRippleLoader : RippleLoader {
+class MultipleRippleLoader : RippleAbstractView {
 
     var noOfRipples: Int = 3
 
@@ -39,6 +40,7 @@ class MultipleRippleLoader : RippleLoader {
         this.circleInitialRadius = circleInitialRadius
         this.circleColor = circleColor
         this.noOfRipples = noOfRipples
+        initView()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -63,6 +65,14 @@ class MultipleRippleLoader : RippleLoader {
                         android.R.anim.decelerate_interpolator))
 
         typedArray.recycle()
+    }
+
+    override fun setVisibility(visibility: Int) {
+        super.setVisibility(visibility)
+
+        if(visibility == View.VISIBLE){
+            initView()
+        }
     }
 
     override fun initView() {
@@ -91,15 +101,11 @@ class MultipleRippleLoader : RippleLoader {
             rippleCircles[i] = circle
         }
 
-        val viewTreeObserver = this.viewTreeObserver
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@MultipleRippleLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
     }
