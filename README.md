@@ -43,6 +43,10 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![wifiloader](https://user-images.githubusercontent.com/12999622/46253316-13230200-c496-11e8-80f9-358abe44bd34.gif)
 
 
+### SearchLoader
+![searchloader](https://user-images.githubusercontent.com/12999622/48309628-66fc2d00-e5a4-11e8-9802-feee36a41e3d.gif)
+
+
 ### PulseLoader
 ![pulseloader](https://user-images.githubusercontent.com/12999622/46934218-8b7fea80-d074-11e8-980e-70bdbb361f87.gif)
 
@@ -527,6 +531,43 @@ implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.2'
 
                 container.addView(wifiLoader);
 ```
+
+
+### SearchLoader
+##### Through XML
+```
+<com.agrawalsuneet.loaderspack.loaders.SearchLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:search_defaultStartLoading="true"
+            app:search_lensBorderWidth="6dp"
+            app:search_lensColor="@color/blue_selected"
+            app:search_lensHandleLength="20dp"
+            app:search_lensRadius="18dp"
+            app:search_xRangeToSearch="140dp"
+            app:search_yRangeToSearch="140dp" />
+```
+##### Through Code
+* Kotlin
+```
+         val searchLoader = SearchLoader(this,
+                         60, 20, 80,
+                         ContextCompat.getColor(this, R.color.red),
+                         500, 500, true)
+
+                 containerLayout.addView(searchLoader)
+```
+
+* Java
+```
+        SearchLoader searchLoader = new SearchLoader(this,
+                        60, 20, 80,
+                        ContextCompat.getColor(this, R.color.red),
+                        500, 500, true);
+
+                container.addView(searchLoader);
+```
+
 
 
 ### PulseLoader
