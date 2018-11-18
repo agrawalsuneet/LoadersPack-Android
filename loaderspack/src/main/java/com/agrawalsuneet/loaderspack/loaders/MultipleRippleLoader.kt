@@ -89,7 +89,6 @@ class MultipleRippleLoader : RippleAbstractView {
                 4 * circleInitialRadius,
                 4 * circleInitialRadius)
 
-
         this.addView(relativeLayout, relParam)
 
         rippleCircles = arrayOfNulls(noOfRipples)
@@ -97,6 +96,7 @@ class MultipleRippleLoader : RippleAbstractView {
         for (i in 0 until noOfRipples) {
             val circle = CircleView(context, circleInitialRadius, circleColor)
             relativeLayout.addView(circle)
+
             circle.visibility = View.INVISIBLE
             rippleCircles[i] = circle
         }
