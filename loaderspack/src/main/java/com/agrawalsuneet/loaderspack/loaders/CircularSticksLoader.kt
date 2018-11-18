@@ -3,11 +3,12 @@ package com.agrawalsuneet.loaderspack.loaders
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Handler
 import android.util.AttributeSet
+import android.view.View
 import com.agrawalsuneet.dotsloader.utils.Helper
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.contracts.CircularSticksAbstractView
+import java.util.*
 
 /**
  * Created by suneet on 1/5/18.
@@ -69,7 +70,7 @@ class CircularSticksLoader : CircularSticksAbstractView {
     private var firstShadowPaint: Paint? = null
     private var secondShadowPaint: Paint? = null
 
-    private var logTime: Long = 0
+    private var timer: Timer? = null
 
     constructor(context: Context) : super(context) {
         initPaints()
@@ -129,26 +130,20 @@ class CircularSticksLoader : CircularSticksAbstractView {
         typedArray.recycle()
     }
 
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility != VISIBLE) {
+            timer?.cancel()
+        } else if(shouldAnimate) {
+            scheduleTimer()
+        }
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         drawCircle(canvas)
-
-        if (shouldAnimate) {
-            Handler().postDelayed({
-                if (System.currentTimeMillis() - logTime >= animDuration) {
-
-                    selectedStickPos++
-
-                    if (selectedStickPos > noOfSticks) {
-                        selectedStickPos = 1
-                    }
-
-                    invalidate()
-                    logTime = System.currentTimeMillis()
-                }
-            }, animDuration.toLong())
-        }
     }
 
     private fun drawCircle(canvas: Canvas) {
@@ -208,11 +203,26 @@ class CircularSticksLoader : CircularSticksAbstractView {
 
     fun startAnimation() {
         shouldAnimate = true
-        invalidate()
+        scheduleTimer()
     }
 
     fun stopAnimation() {
         shouldAnimate = false
-        invalidate()
+        timer?.cancel()
+    }
+
+    private fun scheduleTimer() {
+        timer = Timer()
+        timer?.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                selectedStickPos++
+
+                if (selectedStickPos > noOfSticks) {
+                    selectedStickPos = 1
+                }
+
+                invalidate()
+            }
+        }, 0, animDuration.toLong())
     }
 }
