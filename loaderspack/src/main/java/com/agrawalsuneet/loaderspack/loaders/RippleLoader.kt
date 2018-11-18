@@ -4,37 +4,16 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
-import android.view.animation.*
-import android.widget.LinearLayout
+import android.view.animation.AnimationUtils
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircleView
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.RippleAbstractView
 
 /**
  * Created by suneet on 11/15/17.
  */
-open class RippleLoader : LinearLayout, LoaderContract {
+open class RippleLoader : RippleAbstractView {
 
-
-    var circleInitialRadius: Int = 40
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var circleColor: Int = resources.getColor(android.R.color.holo_red_dark)
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var fromAlpha: Float = 0.9f
-
-    var toAlpha: Float = 0.01f
-
-    var animationDuration = 2000
-
-    var interpolator: Interpolator = DecelerateInterpolator()
 
     private lateinit var circleView: CircleView
 
@@ -81,7 +60,7 @@ open class RippleLoader : LinearLayout, LoaderContract {
     }
 
 
-    protected open fun initView() {
+    override fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
 
@@ -90,45 +69,17 @@ open class RippleLoader : LinearLayout, LoaderContract {
 
         addView(circleView)
 
-        val viewTreeObserver = this.viewTreeObserver
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@RippleLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
     }
 
-    open fun startLoading() {
+    override fun startLoading() {
         var animSet = getAnimSet()
         circleView.startAnimation(animSet)
-    }
-
-    protected fun getAnimSet(): Animation {
-        var set = AnimationSet(true)
-
-        val scaleAnim = ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        scaleAnim.duration = animationDuration.toLong()
-        scaleAnim.repeatCount = Animation.INFINITE
-
-
-        val alphaAnim = AlphaAnimation(fromAlpha, toAlpha)
-        alphaAnim.duration = animationDuration.toLong()
-        alphaAnim.repeatCount = Animation.INFINITE
-
-        set.addAnimation(scaleAnim)
-        set.addAnimation(alphaAnim)
-
-        set.duration = animationDuration.toLong()
-        set.interpolator = interpolator
-        set.repeatCount = Animation.INFINITE
-        set.repeatMode = Animation.RESTART
-
-        return set
     }
 }

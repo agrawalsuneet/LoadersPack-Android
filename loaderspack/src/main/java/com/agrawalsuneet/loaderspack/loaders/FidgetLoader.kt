@@ -8,7 +8,7 @@ import android.view.animation.*
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.FidgetView
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.LoaderContract
 
 /**
  * Created by agrawalsuneet on 9/20/18.

@@ -1,18 +1,20 @@
 package com.agrawalsuneet.loaderspack.loaders
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Handler
 import android.util.AttributeSet
+import android.view.View
 import com.agrawalsuneet.dotsloader.utils.Helper
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
+import com.agrawalsuneet.loaderspack.contracts.CircularSticksAbstractView
+import java.util.*
 
 /**
  * Created by suneet on 1/5/18.
  */
-class CircularSticksLoader : CircularSticksBaseView {
+class CircularSticksLoader : CircularSticksAbstractView {
 
     override var sticksColor: Int = resources.getColor(android.R.color.darker_gray)
         set(defaultColor) {
@@ -22,7 +24,7 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
-    open var selectedStickColor: Int = resources.getColor(android.R.color.black)
+    var selectedStickColor: Int = resources.getColor(android.R.color.black)
         set(selectedColor) {
             field = selectedColor
             if (selectedStickPaint != null) {
@@ -69,7 +71,7 @@ class CircularSticksLoader : CircularSticksBaseView {
     private var firstShadowPaint: Paint? = null
     private var secondShadowPaint: Paint? = null
 
-    private var logTime: Long = 0
+    private var timer: Timer? = null
 
     constructor(context: Context) : super(context) {
         initPaints()
@@ -129,26 +131,20 @@ class CircularSticksLoader : CircularSticksBaseView {
         typedArray.recycle()
     }
 
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility != VISIBLE) {
+            timer?.cancel()
+        } else if(shouldAnimate) {
+            scheduleTimer()
+        }
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         drawCircle(canvas)
-
-        if (shouldAnimate) {
-            Handler().postDelayed({
-                if (System.currentTimeMillis() - logTime >= animDuration) {
-
-                    selectedStickPos++
-
-                    if (selectedStickPos > noOfSticks) {
-                        selectedStickPos = 1
-                    }
-
-                    invalidate()
-                    logTime = System.currentTimeMillis()
-                }
-            }, animDuration.toLong())
-        }
     }
 
     private fun drawCircle(canvas: Canvas) {
@@ -161,11 +157,11 @@ class CircularSticksLoader : CircularSticksBaseView {
         for (i in 0 until noOfSticks) {
 
             if (i + 1 == selectedStickPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, selectedStickPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, selectedStickPaint!!)
             } else if (this.showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, firstShadowPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, firstShadowPaint!!)
             } else if (this.showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, secondShadowPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, secondShadowPaint!!)
             } else {
                 canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, sticksPaint)
             }
@@ -208,11 +204,26 @@ class CircularSticksLoader : CircularSticksBaseView {
 
     fun startAnimation() {
         shouldAnimate = true
-        invalidate()
+        scheduleTimer()
     }
 
     fun stopAnimation() {
         shouldAnimate = false
-        invalidate()
+        timer?.cancel()
+    }
+
+    private fun scheduleTimer() {
+        timer = Timer()
+        timer?.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                selectedStickPos++
+
+                if (selectedStickPos > noOfSticks) {
+                    selectedStickPos = 1
+                }
+
+                (context as Activity).runOnUiThread { invalidate() }
+            }
+        }, 0, animDuration.toLong())
     }
 }

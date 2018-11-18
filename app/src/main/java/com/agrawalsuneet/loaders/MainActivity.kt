@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_search)
+        setContentView(R.layout.activity_main_multipleripple)
 
         supportActionBar?.setTitle("SearchLoader")
 

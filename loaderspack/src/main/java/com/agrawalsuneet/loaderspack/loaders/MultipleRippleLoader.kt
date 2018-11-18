@@ -10,11 +10,12 @@ import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircleView
+import com.agrawalsuneet.loaderspack.contracts.RippleAbstractView
 
 /**
  * Created by suneet on 04/28/18.
  */
-class MultipleRippleLoader : RippleLoader {
+class MultipleRippleLoader : RippleAbstractView {
 
     var noOfRipples: Int = 3
 
@@ -39,6 +40,7 @@ class MultipleRippleLoader : RippleLoader {
         this.circleInitialRadius = circleInitialRadius
         this.circleColor = circleColor
         this.noOfRipples = noOfRipples
+        initView()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -65,6 +67,19 @@ class MultipleRippleLoader : RippleLoader {
         typedArray.recycle()
     }
 
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+
+        for (pos in 0 until noOfRipples) {
+            rippleCircles[pos]?.clearAnimation()
+        }
+
+        if (visibility == View.VISIBLE) {
+            startLoading()
+        }
+    }
+
     override fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
@@ -79,7 +94,6 @@ class MultipleRippleLoader : RippleLoader {
                 4 * circleInitialRadius,
                 4 * circleInitialRadius)
 
-
         this.addView(relativeLayout, relParam)
 
         rippleCircles = arrayOfNulls(noOfRipples)
@@ -87,19 +101,16 @@ class MultipleRippleLoader : RippleLoader {
         for (i in 0 until noOfRipples) {
             val circle = CircleView(context, circleInitialRadius, circleColor)
             relativeLayout.addView(circle)
+
             circle.visibility = View.INVISIBLE
             rippleCircles[i] = circle
         }
-
-        val viewTreeObserver = this.viewTreeObserver
-        val loaderView = this
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@MultipleRippleLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
     }
@@ -109,7 +120,7 @@ class MultipleRippleLoader : RippleLoader {
 
             Handler().postDelayed({
                 val animSet = getAnimSet()
-                rippleCircles[i]!!.startAnimation(animSet)
+                rippleCircles[i]?.startAnimation(animSet)
 
             }, ((i * animationDuration) / noOfRipples).toLong())
         }
