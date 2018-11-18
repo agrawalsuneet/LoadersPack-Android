@@ -67,14 +67,6 @@ class MultipleRippleLoader : RippleAbstractView {
         typedArray.recycle()
     }
 
-    override fun setVisibility(visibility: Int) {
-        super.setVisibility(visibility)
-
-        if (visibility == View.VISIBLE) {
-            initView()
-        }
-    }
-
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
 

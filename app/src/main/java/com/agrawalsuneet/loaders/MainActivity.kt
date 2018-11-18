@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
-import kotlinx.android.synthetic.main.activity_main_multipleripple.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_multipleripple)
+        setContentView(R.layout.main_search)
 
         supportActionBar?.setTitle("SearchLoader")
 
@@ -41,12 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         //initGaugeLoader()
         //initSearchLoader()
-
-        btn.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(p0: View?) {
-                multipleripple.visibility = if( multipleripple.visibility == View.VISIBLE)  View.INVISIBLE else View.VISIBLE
-            }
-        })
     }
 
     private fun initSearchLoader() {

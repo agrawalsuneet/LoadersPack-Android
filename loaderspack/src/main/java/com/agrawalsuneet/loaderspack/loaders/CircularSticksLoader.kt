@@ -1,5 +1,6 @@
 package com.agrawalsuneet.loaderspack.loaders
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -221,7 +222,7 @@ class CircularSticksLoader : CircularSticksAbstractView {
                     selectedStickPos = 1
                 }
 
-                invalidate()
+                (context as Activity).runOnUiThread { invalidate() }
             }
         }, 0, animDuration.toLong())
     }
