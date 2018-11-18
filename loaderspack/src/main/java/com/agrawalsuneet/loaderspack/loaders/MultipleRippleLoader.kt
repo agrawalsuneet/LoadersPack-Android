@@ -70,8 +70,21 @@ class MultipleRippleLoader : RippleAbstractView {
     override fun setVisibility(visibility: Int) {
         super.setVisibility(visibility)
 
-        if(visibility == View.VISIBLE){
+        if (visibility == View.VISIBLE) {
             initView()
+        }
+    }
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+
+        for (pos in 0 until noOfRipples) {
+            rippleCircles[pos]?.clearAnimation()
+        }
+
+        if (visibility == View.VISIBLE) {
+            startLoading()
         }
     }
 
@@ -115,7 +128,7 @@ class MultipleRippleLoader : RippleAbstractView {
 
             Handler().postDelayed({
                 val animSet = getAnimSet()
-                rippleCircles[i]!!.startAnimation(animSet)
+                rippleCircles[i]?.startAnimation(animSet)
 
             }, ((i * animationDuration) / noOfRipples).toLong())
         }
