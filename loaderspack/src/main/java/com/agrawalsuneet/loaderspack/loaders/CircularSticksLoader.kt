@@ -7,12 +7,12 @@ import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.utils.Helper
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
+import com.agrawalsuneet.loaderspack.contracts.CircularSticksAbstractView
 
 /**
  * Created by suneet on 1/5/18.
  */
-class CircularSticksLoader : CircularSticksBaseView {
+class CircularSticksLoader : CircularSticksAbstractView {
 
     override var sticksColor: Int = resources.getColor(android.R.color.darker_gray)
         set(defaultColor) {
@@ -22,7 +22,7 @@ class CircularSticksLoader : CircularSticksBaseView {
             }
         }
 
-    open var selectedStickColor: Int = resources.getColor(android.R.color.black)
+    var selectedStickColor: Int = resources.getColor(android.R.color.black)
         set(selectedColor) {
             field = selectedColor
             if (selectedStickPaint != null) {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.animation.*
 import android.widget.LinearLayout
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
 
 abstract class RippleAbstractView : LinearLayout, LoaderContract {
 
