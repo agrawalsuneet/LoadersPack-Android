@@ -30,7 +30,7 @@ abstract class RippleAbstractView : LinearLayout, LoaderContract {
     abstract fun startLoading()
 
     protected fun getAnimSet(): Animation {
-        var set = AnimationSet(true)
+        val set = AnimationSet(true)
 
         val scaleAnim = ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)

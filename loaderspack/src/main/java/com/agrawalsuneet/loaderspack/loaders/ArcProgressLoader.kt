@@ -83,7 +83,7 @@ class ArcProgressLoader : View, LoaderContract {
         if (colorsArrayId != 0) {
             arcColorsArray = resources.getIntArray(colorsArrayId)
 
-            if (arcColorsArray == null || arcColorsArray.size < 1) {
+            if (arcColorsArray.isEmpty()) {
                 throw RuntimeException("ArcProgressLoader : Please provide a valid, non-empty colors array")
             }
         }

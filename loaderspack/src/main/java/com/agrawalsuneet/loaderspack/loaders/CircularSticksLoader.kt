@@ -161,11 +161,11 @@ class CircularSticksLoader : CircularSticksAbstractView {
         for (i in 0 until noOfSticks) {
 
             if (i + 1 == selectedStickPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, selectedStickPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, selectedStickPaint!!)
             } else if (this.showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, firstShadowPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, firstShadowPaint!!)
             } else if (this.showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, secondShadowPaint)
+                canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, secondShadowPaint!!)
             } else {
                 canvas.drawArc(outerCircleOval, startAngle, sweepAngle, true, sticksPaint)
             }
