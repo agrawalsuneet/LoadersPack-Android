@@ -7,7 +7,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.LoaderContract
 
 /**
  * Created by agrawalsuneet on 9/16/18.
@@ -83,7 +83,7 @@ class ArcProgressLoader : View, LoaderContract {
         if (colorsArrayId != 0) {
             arcColorsArray = resources.getIntArray(colorsArrayId)
 
-            if (arcColorsArray == null || arcColorsArray.size < 1) {
+            if (arcColorsArray.isEmpty()) {
                 throw RuntimeException("ArcProgressLoader : Please provide a valid, non-empty colors array")
             }
         }
