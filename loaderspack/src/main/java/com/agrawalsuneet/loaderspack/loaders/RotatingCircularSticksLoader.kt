@@ -9,7 +9,7 @@ import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.basicviews.CircularSticksBaseView
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.LoaderContract
 
 /**
  * Created by suneet on 1/1/18.

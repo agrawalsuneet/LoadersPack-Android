@@ -1,4 +1,4 @@
-package com.agrawalsuneet.loaderspack.basicviews
+package com.agrawalsuneet.loaderspack.contracts
 
 import android.util.AttributeSet
 

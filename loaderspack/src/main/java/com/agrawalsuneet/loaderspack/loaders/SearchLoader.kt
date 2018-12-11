@@ -7,7 +7,7 @@ import android.view.animation.*
 import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.utils.random
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.LoaderContract
 import com.agrawalsuneet.loaderspack.basicviews.MagnifyingGlassView
 
 /**

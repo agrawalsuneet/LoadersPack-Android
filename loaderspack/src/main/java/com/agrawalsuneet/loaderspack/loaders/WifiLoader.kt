@@ -7,7 +7,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.loaderspack.R
-import com.agrawalsuneet.loaderspack.basicviews.LoaderContract
+import com.agrawalsuneet.loaderspack.contracts.LoaderContract
 
 /**
  * Created by agrawalsuneet on 9/24/18.
@@ -124,7 +124,7 @@ class WifiLoader : View, LoaderContract {
                 bottom = ((calHeight - centerCircleRadius) + (((i * 4)) * centerCircleRadius)).toFloat()
             }
 
-            rectfArray.set(i - 1, acrRectF)
+            rectfArray[i - 1] = acrRectF
 
         }
 
@@ -168,10 +168,10 @@ class WifiLoader : View, LoaderContract {
                 drawCenterCircle(canvas)
 
                 for (i in 1 until visibleShapePos) {
-                    canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
+                    canvas.drawArc(rectfArray.get(i - 1)!!, startAngle, sweepAngle, false, sidesPaint)
                 }
 
-                canvas.drawArc(rectfArray.get(visibleShapePos - 1), startAngle, currentSweepAngle, false, sidesPaint)
+                canvas.drawArc(rectfArray.get(visibleShapePos - 1)!!, startAngle, currentSweepAngle, false, sidesPaint)
 
                 if (isDrawingForward) {
 
@@ -202,7 +202,7 @@ class WifiLoader : View, LoaderContract {
             4 -> {
                 drawCenterCircle(canvas)
                 for (i in 1 until visibleShapePos) {
-                    canvas.drawArc(rectfArray.get(i - 1), startAngle, sweepAngle, false, sidesPaint)
+                    canvas.drawArc(rectfArray[i - 1]!!, startAngle, sweepAngle, false, sidesPaint)
                 }
 
                 currentWaitFrame++
