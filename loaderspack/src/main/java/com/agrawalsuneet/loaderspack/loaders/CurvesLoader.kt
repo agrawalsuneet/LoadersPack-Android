@@ -3,6 +3,7 @@ package com.agrawalsuneet.loaderspack.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
@@ -136,17 +137,25 @@ class CurvesLoader : LinearLayout, LoaderContract {
         this.addView(relativeLayout, relParam)
 
 
-        val loaderView = this
-
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@CurvesLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
+    }
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility == View.VISIBLE) {
+            initView()
+        } else {
+            for (curve in curvesArray) {
+                curve.clearAnimation()
+            }
+        }
     }
 
     private fun startLoading() {
