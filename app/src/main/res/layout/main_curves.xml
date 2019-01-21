@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -49,24 +49,33 @@
             app:curves_distanceBetweenCurves="5dp"
             app:curves_interpolator="@android:anim/linear_interpolator"
             app:curves_noOfCurves="3" />
-    </LinearLayout>
+    </LinearLayout>-->
 
 
     <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+        android:id="@+id/curverloader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:curves_animDuration="1000"
+        app:curves_animDuration="5000"
         app:curves_curveColor="@color/blue_selected"
         app:curves_curveSweepAngle="160"
         app:curves_curveWidth="5dp"
         app:curves_distanceBetweenCurves="5dp"
         app:curves_interpolator="@android:anim/linear_interpolator"
         app:curves_noOfCurves="5"
-        app:curves_outermostCurveRadius="80dp" />
+        app:curves_outermostCurveRadius="80dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Show"/>
 
 
-    <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+    <!--<com.agrawalsuneet.loaderspack.loaders.CurvesLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -77,7 +86,7 @@
         app:curves_distanceBetweenCurves="5dp"
         app:curves_interpolator="@android:anim/linear_interpolator"
         app:curves_noOfCurves="4"
-        app:curves_outermostCurveRadius="60dp" />
+        app:curves_outermostCurveRadius="60dp" />-->
 
 
 </LinearLayout>
