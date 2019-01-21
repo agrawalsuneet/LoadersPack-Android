@@ -141,8 +141,7 @@ class CurvesLoader : LinearLayout, LoaderContract {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = this@CurvesLoader.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@CurvesLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
     }
@@ -150,12 +149,12 @@ class CurvesLoader : LinearLayout, LoaderContract {
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
 
-        for (curve in curvesArray) {
-            curve.clearAnimation()
-        }
-
         if (visibility == View.VISIBLE) {
             initView()
+        } else {
+            for (curve in curvesArray) {
+                curve.clearAnimation()
+            }
         }
     }
 

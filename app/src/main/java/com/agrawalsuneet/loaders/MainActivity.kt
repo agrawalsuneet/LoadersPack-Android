@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_curves)
 
-        supportActionBar?.setTitle("SearchLoader")
+        supportActionBar?.setTitle("CurvesLoader")
 
         containerLayout = findViewById(R.id.container)
 
@@ -41,11 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         //initGaugeLoader()
         //initSearchLoader()
-
-        btn_visibility.setOnClickListener {
-
-            curverloader.visibility = if (curverloader.visibility == View.GONE) View.VISIBLE else View.GONE
-        }
     }
 
     private fun initSearchLoader() {
