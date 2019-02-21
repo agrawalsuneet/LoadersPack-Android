@@ -11,6 +11,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.loaderspack.loaders.*
+import kotlinx.android.synthetic.main.activity_main_circular.*
 import kotlinx.android.synthetic.main.main_curves.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_curves)
+        setContentView(R.layout.activity_main_circular)
 
         supportActionBar?.setTitle("CurvesLoader")
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         //initClockLoader();
         //initRippleLoader()
         //initRotatingCircularSticksLoader()
-        //initCircularSticksLoader()
+        initCircularSticksLoader()
 
         //initMultipleRippleLoader()
         //initCurvesLoader()
@@ -183,6 +184,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
         containerLayout.addView(loader)
+
+        btn_visibility.setOnClickListener {
+            if (loader.isAnimating) loader.stopAnimation()
+            else loader.startAnimation()
+        }
     }
 
     private fun initRotatingCircularSticksLoader() {
