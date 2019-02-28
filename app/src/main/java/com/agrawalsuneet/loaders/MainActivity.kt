@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         //initClockLoader();
         //initRippleLoader()
         //initRotatingCircularSticksLoader()
-        initCircularSticksLoader()
+        //initCircularSticksLoader()
 
         //initMultipleRippleLoader()
         //initCurvesLoader()
@@ -184,11 +184,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
         containerLayout.addView(loader)
-
-        btn_visibility.setOnClickListener {
-            if (loader.isAnimating) loader.stopAnimation()
-            else loader.startAnimation()
-        }
     }
 
     private fun initRotatingCircularSticksLoader() {
