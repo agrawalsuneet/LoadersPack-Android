@@ -9,6 +9,7 @@ import android.view.View
 import com.agrawalsuneet.dotsloader.utils.Helper
 import com.agrawalsuneet.loaderspack.R
 import com.agrawalsuneet.loaderspack.contracts.CircularSticksAbstractView
+import com.agrawalsuneet.loaderspack.utils.Utils
 import java.util.*
 
 /**
@@ -73,6 +74,9 @@ class CircularSticksLoader : CircularSticksAbstractView {
 
     private var timer: Timer? = null
 
+    var isAnimating: Boolean = false
+        private set
+
     constructor(context: Context) : super(context) {
         initPaints()
     }
@@ -136,7 +140,8 @@ class CircularSticksLoader : CircularSticksAbstractView {
 
         if (visibility != VISIBLE) {
             timer?.cancel()
-        } else if(shouldAnimate) {
+            isAnimating = false
+        } else if (shouldAnimate) {
             scheduleTimer()
         }
     }
@@ -210,6 +215,7 @@ class CircularSticksLoader : CircularSticksAbstractView {
     fun stopAnimation() {
         shouldAnimate = false
         timer?.cancel()
+        isAnimating = false
     }
 
     private fun scheduleTimer() {
@@ -222,8 +228,10 @@ class CircularSticksLoader : CircularSticksAbstractView {
                     selectedStickPos = 1
                 }
 
-                (context as Activity).runOnUiThread { invalidate() }
+                (Utils.scanForActivity(context))?.runOnUiThread { invalidate() }
             }
         }, 0, animDuration.toLong())
+
+        isAnimating = true
     }
 }
