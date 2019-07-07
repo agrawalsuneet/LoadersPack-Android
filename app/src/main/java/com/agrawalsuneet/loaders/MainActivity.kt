@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_circular)
+        setContentView(R.layout.activity_main_universe_scene)
 
-        supportActionBar?.setTitle("CurvesLoader")
+        supportActionBar?.title = "UniverseScene"
 
         containerLayout = findViewById(R.id.container)
 
