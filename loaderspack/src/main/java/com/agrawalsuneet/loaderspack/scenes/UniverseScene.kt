@@ -3,6 +3,7 @@ package com.agrawalsuneet.loaderspack.scenes
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewTreeObserver
@@ -21,6 +22,7 @@ class UniverseScene : LinearLayout, LoaderContract {
     private var calWidth = 0
     private var calHeight = 0
 
+    private var sunRelativeLayout: RelativeLayout? = null
     private var relativeLayout: RelativeLayout? = null
 
 
@@ -49,7 +51,6 @@ class UniverseScene : LinearLayout, LoaderContract {
 
         calWidth = w
         calHeight = h
-        //drawViews()
     }
 
     private fun initView() {
@@ -66,6 +67,8 @@ class UniverseScene : LinearLayout, LoaderContract {
 
     private fun drawViews() {
 
+        Log.d("Suneet Agrawal", "drawViews")
+
         removeAllViews()
         removeAllViewsInLayout()
 
@@ -73,16 +76,56 @@ class UniverseScene : LinearLayout, LoaderContract {
         val relParam = RelativeLayout.LayoutParams(calWidth, calHeight)
 
 
-        val lowerRange = if (calWidth < calHeight) (calWidth / randomRadiusMultiplier) else (calHeight / randomRadiusMultiplier)
-        val upperRange = if (calWidth < calHeight) (calHeight / randomRadiusMultiplier) else (calWidth / randomRadiusMultiplier)
+        //draw stars
+        val lowerRange: Int
+        val upperRange: Int
+        val sunRadius: Int
+
+        if (calWidth < calHeight) {
+            lowerRange = (calWidth / randomRadiusMultiplier)
+            upperRange = (calHeight / randomRadiusMultiplier)
+
+            sunRadius = calWidth / 5
+        } else {
+            lowerRange = (calHeight / randomRadiusMultiplier)
+            upperRange = (calWidth / randomRadiusMultiplier)
+
+            sunRadius = calHeight / 5
+        }
 
         for (pos in 0..numberOfStars) {
             val radius = (lowerRange..upperRange).random()
-            val circleView = CircleView(context, radius, Color.parseColor(getRandomAlphaColor("ffffff")))
+            val starsCircleView = CircleView(context, radius, Color.parseColor(getRandomAlphaColor("ffffff")))
 
-            relativeLayout?.addView(circleView, getStarsRandomPosition(pos, radius))
-            Log.d("Suneet Agrawal", "circle Added")
+            relativeLayout?.addView(starsCircleView, getStarsRandomPosition(pos, radius))
         }
+
+        //draw sun
+        sunRelativeLayout = RelativeLayout(context)
+        val sunCircleView = CircleView(context = context,
+                circleRadius = sunRadius / 2,
+                circleColor = Color.parseColor("#f5ac2f"),
+                isAntiAlias = false)
+
+        val sunParams = RelativeLayout.LayoutParams(sunRadius / 2, sunRadius / 2)
+        sunParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+        sunRelativeLayout?.addView(sunCircleView, sunParams)
+
+        val sunGradient = GradientDrawable(
+                GradientDrawable.Orientation.BOTTOM_TOP,
+                intArrayOf(Color.parseColor("#ddf5ac2f"), Color.parseColor("#00f5ac2f")))
+        sunGradient.gradientType = GradientDrawable.RADIAL_GRADIENT
+        sunGradient.gradientRadius = (sunRadius * 1.5).toFloat()
+        sunRelativeLayout?.background = sunGradient
+
+
+        val sunRelParam = RelativeLayout.LayoutParams(3 * sunRadius, 3 * sunRadius)
+        sunRelParam.addRule(RelativeLayout.CENTER_VERTICAL)
+        sunRelParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
+        sunRelParam.rightMargin = (sunRadius * 0.2).toInt()
+        sunRelParam.bottomMargin = sunRadius
+
+        relativeLayout?.addView(sunRelativeLayout, sunRelParam)
 
         this.addView(relativeLayout, relParam)
     }

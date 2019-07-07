@@ -17,14 +17,20 @@ class CircleView : View {
     var circleRadius: Int = 30
     var strokeWidth: Int = 0
 
-    var circleColor: Int = resources.getColor(android.R.color.holo_red_light)
+    var circleColor: Int = 0
     var drawOnlyStroke: Boolean = false
 
+    var isAntiAlias: Boolean = true
+
+    private var xyCordinates: Float = 0.0f
     private val paint: Paint = Paint()
 
-    constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
+    constructor(context: Context, circleRadius: Int, circleColor: Int, isAntiAlias: Boolean = true) : super(context) {
         this.circleRadius = circleRadius
         this.circleColor = circleColor
+        this.isAntiAlias = isAntiAlias
+
+        initValues()
     }
 
     constructor(context: Context, circleRadius: Int, circleColor: Int, drawOnlyStroke: Boolean, strokeWidth: Int) : super(context) {
@@ -33,16 +39,22 @@ class CircleView : View {
 
         this.drawOnlyStroke = drawOnlyStroke
         this.strokeWidth = strokeWidth
+
+        initValues()
     }
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        initValues()
+    }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
+        initValues()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initValues()
     }
 
 
@@ -51,7 +63,7 @@ class CircleView : View {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
 
         this.circleRadius = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
-        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, resources.getColor(android.R.color.holo_red_light))
+        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, 0)
 
         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
 
@@ -69,11 +81,8 @@ class CircleView : View {
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-
-        paint.isAntiAlias = true
+    private fun initValues() {
+        paint.isAntiAlias = isAntiAlias
 
         if (drawOnlyStroke) {
             paint.style = Paint.Style.STROKE
@@ -83,12 +92,14 @@ class CircleView : View {
         }
         paint.color = circleColor
 
-        //adding half of arcWidth because
+        //adding half of strokeWidth because
         //the stroke will be half inside the drawing circle and half outside
-        val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
-
-        canvas!!.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+        xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
     }
 
 
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        canvas.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+    }
 }
